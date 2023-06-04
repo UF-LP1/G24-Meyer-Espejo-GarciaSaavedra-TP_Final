@@ -16,8 +16,9 @@ int cOncologo::get_Nro_Matricula()
 	return this->Nro_Matricula;
 }
 
-void cOncologo::AtenderCliente()
+void cOncologo::AtenderCliente()//determina segun los estudios que el paciente ya tiene hechos, las características de cada tumor (puede tener uno o mas)
 {
+
 }
 
 void cOncologo::DosisXSesion()
