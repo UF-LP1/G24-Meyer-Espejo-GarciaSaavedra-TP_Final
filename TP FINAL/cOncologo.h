@@ -1,6 +1,6 @@
 #pragma once
 #include "Header.h"
-#include "cPaciente.h"//????????????? iria asi la reclacion???????
+#include "cPaciente.h"
 
 
 
@@ -9,14 +9,11 @@ class cOncologo
 public:
 	cOncologo(string nombre, string apellido, unsigned int Nro_Matricula);
 	~cOncologo();
-
-	int get_Nro_Matricula();// nose si es necesario
-
-	void AtenderCliente();
+	void AtenderCliente(cPaciente paciente);
 	void DosisXSesion();
-	void FrecuenciaTratamiento();//se llama asi pero enrealidad seria cuanto tiempo va a estar el paciente en tratamiento, habria que cmabiarle el nombre
-	void VerificarFercha();
-	void Evaluacion(cPaciente);
+	void TiempoTratamiento(); 
+	void VerificarFecha();
+	void Evaluacion(cPaciente paciente);
 private:
 	string Nombre;
 	string Apellido;

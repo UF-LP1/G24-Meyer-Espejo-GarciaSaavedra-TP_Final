@@ -1,6 +1,6 @@
 #include "cPaciente.h"
 
-cPaciente::cPaciente(string nombre, string nacimiento, string sexo, string contacto, string tiposangre, float salud, bool tumor)
+cPaciente::cPaciente(string nombre, time_t nacimiento, string sexo, string contacto, string tiposangre, float salud)
 {
 	this->Nombre = nombre;
 	this->Nacimiento = nacimiento;
@@ -8,7 +8,7 @@ cPaciente::cPaciente(string nombre, string nacimiento, string sexo, string conta
 	this->Contacto = contacto;
 	this->TipoSangre = tiposangre;
 	this->Salud = salud;
-	this->Tumor = tumor;
+	
 }
 
 cPaciente::~cPaciente()
@@ -25,12 +25,13 @@ void cPaciente::set_Salud(float salud)
 	this->Salud = salud;
 }
 
-bool cPaciente::get_Tumor()
+cFicha cPaciente::get_miFicha()
 {
-	return this->Tumor;
+	return this->miFicha;
 }
 
-void cPaciente::set_Tumor(bool tumor)
+string cPaciente::get_Contacto()
 {
-	this->Tumor = tumor;
+	return this->Contacto;
 }
+

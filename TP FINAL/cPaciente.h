@@ -1,25 +1,25 @@
 #pragma once
 #include"Header.h"
+#include "cFicha.h"
+
 class cPaciente
 {
 public:
-	cPaciente(string nombre, string nacimiento, string sexo, string contacto, string tiposangre, float salud, bool tumor);
+	cPaciente(string nombre, time_t nacimiento, string sexo, string contacto, string tiposangre, float salud);
 	~cPaciente();	
 	float get_Salud();
 	void set_Salud(float salud);
-	bool get_Tumor();
-	void set_Tumor(bool tumor);
-
-
+	cFicha get_miFicha();
+	string get_Contacto();
 
 private: 
 	string Nombre;
-	string Nacimiento;
+	time_t Nacimiento;
 	string Sexo;
 	string Contacto;
 	string TipoSangre;
 	float  Salud;
-	bool Tumor;
+	cFicha miFicha;
 
 };
 
