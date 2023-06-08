@@ -5,9 +5,11 @@ cDosimetrista::cDosimetrista() {
 
 }
 cDosimetrista::~cDosimetrista(){}
-void cDosimetrista:: TipoTerapiaRecibir(cPaciente cMiPaciente, cTumor cMiTumor, cFicha cMiFicha) {
+void cDosimetrista:: TipoTerapiaRecibir(cPaciente MiPaciente, cTumor cMiTumor, cFicha cMiFicha) {
 	eUbicacion tipo;
-	tipo = cMiTumor.get_Ubicacion();
+	vector <cTumor>TumoresPresentes; //tenes que hacer un auxiliar donde se guarden la lista de tumores del paciente  y recorrerla para sacar de cada uno la ubicacion y hacer el los if para ver que tipo de terapia
+	tipo = cMiTumor.get_Ubicacion(); //esta mal tendria que ser
+	TumoresPresentes = MiPaciente.get_miFicha().get_Tumores();
 	if (tipo == 'ojo') {
 
 		cMiFicha.TipoT.push_back(cBT) ;

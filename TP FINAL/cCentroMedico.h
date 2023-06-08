@@ -6,7 +6,7 @@ class cCentroMedico {
 public:
 	cCentroMedico();
 	~cCentroMedico();
-	void AsistenciaPaciente(cPaciente miPaciente);
+	void AsistenciaPaciente(cPaciente &miPaciente);
 
 private:
 	string Nombre; 

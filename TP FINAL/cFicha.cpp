@@ -9,3 +9,8 @@ vector<cTumor> cFicha::get_Tumores()
 {
 	return this->Tumores;
 }
+
+void cFicha::set_Finalizado(bool termino)
+{
+	this->Finalizado = termino;
+}

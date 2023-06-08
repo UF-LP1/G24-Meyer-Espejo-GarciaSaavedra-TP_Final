@@ -12,10 +12,11 @@ public:
 	void set_Ubicacion(eUbicacion ubicacion);
 	eTamanio get_Tamanio();
 	void set_Tamanio(eTamanio tamanio);
-
+	bool get_sano();
 
 private:
 	eUbicacion Ubicacion;
 	eTamanio Tamanio;
-	int AcumRadiacion:
+	int AcumRadiacion;
+	bool sano;
 };

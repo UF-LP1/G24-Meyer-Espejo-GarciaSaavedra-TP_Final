@@ -11,6 +11,7 @@ public:
 	void set_Salud(float salud);
 	cFicha get_miFicha();
 	string get_Contacto();
+	void set_miFicha(cFicha fichaActualizada);
 
 private: 
 	string Nombre;

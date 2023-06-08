@@ -10,6 +10,7 @@ public:
 	~cFicha();
 	vector<cSesion> get_Sesiones();
 	vector<cTumor> get_Tumores();
+	void set_Finalizado(bool termino);
 
 private:
 	string Oncologo;
@@ -19,7 +20,7 @@ private:
 	time_t Tratamiento;
 	vector<cTerapia*>TipoT;
 	vector<cTumor> Tumores;
-	bool Alta;
+	bool Finalizado;
 	vector<cSesion> Sesiones;
 	int FrecSemanalTratamiento;
 };

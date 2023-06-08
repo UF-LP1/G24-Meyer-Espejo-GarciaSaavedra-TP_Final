@@ -6,7 +6,7 @@ cCentroMedico::cCentroMedico() {
 
 cCentroMedico::~cCentroMedico(){}
 
-void cCentroMedico::AsistenciaPaciente(cPaciente miPaciente) {
+void cCentroMedico::AsistenciaPaciente(cPaciente &miPaciente) {
 	vector<cSesion> SesionesPaciente = miPaciente.get_miFicha().get_Sesiones();
 	int contInasistencia = 0;
 	for (int i = 0; i < SesionesPaciente.size(); i++)
@@ -21,7 +21,12 @@ void cCentroMedico::AsistenciaPaciente(cPaciente miPaciente) {
 	{
 		//comunicarme con el paciente y ver si continua con el tratamiento
 		miPaciente.get_Contacto();
-
+		int aux = rand() % 2;
+		if (aux == 2) // considero que no va a seguir con el tratamiento
+		{
+			//le doy por finalizado el tratamiento
+			
+		}
 	}
 
 }

@@ -35,3 +35,8 @@ string cPaciente::get_Contacto()
 	return this->Contacto;
 }
 
+void cPaciente::set_miFicha(cFicha fichaActualizada)
+{
+	this->miFicha = fichaActualizada;
+}
+
