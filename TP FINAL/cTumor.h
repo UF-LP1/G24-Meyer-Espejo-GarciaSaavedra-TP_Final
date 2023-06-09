@@ -8,6 +8,7 @@ public:
 	cTumor();
 	~cTumor();
 	void set_AcumRadiacion(int radiacion);
+	int get_AcumRadiacion();
 	eUbicacion get_Ubicacion();
 	void set_Ubicacion(eUbicacion ubicacion);
 	eTamanio get_Tamanio();

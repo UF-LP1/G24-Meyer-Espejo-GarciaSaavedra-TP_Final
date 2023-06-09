@@ -21,6 +21,6 @@ private:
 	string TipoSangre;
 	float  Salud;
 	cFicha miFicha;
-
+	 
 };
 

@@ -11,6 +11,9 @@ public:
 	vector<cSesion> get_Sesiones();
 	vector<cTumor> get_Tumores();
 	void set_Finalizado(bool termino);
+	time_t get_Tratamiento();
+	void set_Tratamiento(time_t fechatratamiento);
+
 
 private:
 	string Oncologo;

@@ -12,7 +12,7 @@ public:
 	void AtenderCliente(cPaciente &paciente);
 	void DosisXSesion();
 	void TiempoTratamiento(); 
-	void VerificarFecha();
+	void VerificarFecha(cPaciente& paciente);
 	void Evaluacion(cPaciente &paciente);
 private:
 	string Nombre;

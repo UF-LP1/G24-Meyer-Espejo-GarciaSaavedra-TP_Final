@@ -1,5 +1,13 @@
 #include "cFicha.h"
 
+cFicha::cFicha()
+{
+}
+
+cFicha::~cFicha()
+{
+}
+
 vector<cSesion> cFicha::get_Sesiones()
 {
 	return this-> Sesiones;
@@ -13,4 +21,14 @@ vector<cTumor> cFicha::get_Tumores()
 void cFicha::set_Finalizado(bool termino)
 {
 	this->Finalizado = termino;
+}
+
+time_t cFicha::get_Tratamiento()
+{
+	return this->Tratamiento;
+}
+
+void cFicha::set_Tratamiento(time_t fechatratamiento)
+{
+	this->Tratamiento = fechatratamiento;
 }
