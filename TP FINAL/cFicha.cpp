@@ -32,3 +32,13 @@ void cFicha::set_Tratamiento(time_t fechatratamiento)
 {
 	this->Tratamiento = fechatratamiento;
 }
+
+vector<cTerapia*> cFicha::get_Terapia()
+{
+	return this-> TipoT;
+}
+
+void cFicha::set_Sesiones(vector<cSesion> sesiones)
+{
+	this->Sesiones = sesiones;
+}

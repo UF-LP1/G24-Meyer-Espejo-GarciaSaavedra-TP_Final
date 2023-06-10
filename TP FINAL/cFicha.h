@@ -13,7 +13,8 @@ public:
 	void set_Finalizado(bool termino);
 	time_t get_Tratamiento();
 	void set_Tratamiento(time_t fechatratamiento);
-
+	vector<cTerapia*> get_Terapia();
+	void set_Sesiones(vector<cSesion> sesiones);
 
 private:
 	string Oncologo;

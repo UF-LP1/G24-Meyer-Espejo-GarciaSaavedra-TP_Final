@@ -10,8 +10,8 @@ public:
 	cOncologo(string nombre, string apellido, unsigned int Nro_Matricula);
 	~cOncologo();
 	void AtenderCliente(cPaciente &paciente);
-	void DosisXSesion();
-	void TiempoTratamiento(); 
+	void DosisXSesion(cPaciente& paciente);
+	void TiempoTratamiento(cPaciente& paciente);
 	void VerificarFecha(cPaciente& paciente);
 	void Evaluacion(cPaciente &paciente);
 private:
