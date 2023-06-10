@@ -39,4 +39,13 @@ void cPaciente::set_miFicha(cFicha fichaActualizada)
 {
 	this->miFicha = fichaActualizada;
 }
+string cPaciente::to_string() {
+
+	
+	return Nombre + to_string(this->Nacimiento) + Sexo + Contacto + TipoSangre + to_string(this->Salud);
+
+
+
+
+}
 

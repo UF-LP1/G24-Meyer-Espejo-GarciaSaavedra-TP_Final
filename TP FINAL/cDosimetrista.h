@@ -5,7 +5,7 @@ class cDosimetrista
 public:
 	cDosimetrista();
 	~cDosimetrista();
-	void TipoTerapiaRecibir(cPaciente miPaciente, cTumor cMiTumor, cFicha cMiFicha);
+	void TipoTerapiaRecibir(cPaciente MiPaciente);
 	string get_Nombre();
 	string get_Apellido();
 	string get_ID();

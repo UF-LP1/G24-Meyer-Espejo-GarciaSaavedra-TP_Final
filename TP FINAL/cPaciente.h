@@ -12,6 +12,7 @@ public:
 	cFicha get_miFicha();
 	string get_Contacto();
 	void set_miFicha(cFicha fichaActualizada);
+	string to_string();
 
 private: 
 	string Nombre;

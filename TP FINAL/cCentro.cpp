@@ -11,3 +11,10 @@ cCentro::cCentro(string nombre, string direccion, string telefono)
 cCentro::~cCentro()
 {
 }
+string cCentro:: to_string() {
+
+
+
+
+	return (Nombre+Direccion+Telefono);
+}
