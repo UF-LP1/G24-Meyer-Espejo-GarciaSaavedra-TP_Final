@@ -2,8 +2,8 @@
 
 
 
-cTumor::cTumor()
-{
+cTumor::cTumor(){
+	this->AcumRadiacion = 0; //se va a ir incrementando en cada sesion
 }
 
 cTumor::~cTumor()
@@ -39,7 +39,12 @@ void cTumor::set_Tamanio(eTamanio tamanio)
 	this->Tamanio = tamanio;
 }
 
-bool cTumor::get_sano()
+bool cTumor::get_bedigno()
 {
 	return false;
+}
+
+void cTumor::set_bedigno(bool Sano)
+{
+	this->bedigno = Sano;
 }

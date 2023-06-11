@@ -1,0 +1,11 @@
+#pragma once
+#include "Header.h"
+#include "cTerapia.h"
+
+class cRTH :public cTerapia {
+	
+public:
+	cRTH();
+	~cRTH();
+
+};

@@ -1,11 +1,22 @@
 #include "cFicha.h"
 
-cFicha::cFicha()
+cFicha::cFicha(string oncologo, time_t fechainicio)
 {
+	this->Oncologo = oncologo;
+	this->FechaInicio = fechainicio;
+	this->estadoRad = 0;
+	this->espera = false;
+	this->Finalizado = false;
 }
 
 cFicha::~cFicha()
 {
+	for (cTerapia* aux : this->TipoT) {
+		if (aux != nullptr)
+		{
+			delete aux;
+		}
+	}
 }
 
 vector<cSesion> cFicha::get_Sesiones()
@@ -41,4 +52,9 @@ vector<cTerapia*> cFicha::get_Terapia()
 void cFicha::set_Sesiones(vector<cSesion> sesiones)
 {
 	this->Sesiones = sesiones;
+}
+
+void cFicha::set_Tumores(vector<cTumor> tumores)
+{
+	this->Tumores = tumores;
 }

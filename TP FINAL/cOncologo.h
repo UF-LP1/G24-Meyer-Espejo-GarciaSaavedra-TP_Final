@@ -7,13 +7,15 @@
 class cOncologo
 {
 public:
-	cOncologo(string nombre, string apellido, unsigned int Nro_Matricula);
+	cOncologo();
 	~cOncologo();
-	void AtenderCliente(cPaciente &paciente);
-	void DosisXSesion(cPaciente& paciente);
-	void TiempoTratamiento(cPaciente& paciente);
-	void VerificarFecha(cPaciente& paciente);
-	void Evaluacion(cPaciente &paciente);
+	void AtenderCliente(cPaciente* paciente);
+	void DosisXSesion(cPaciente* paciente);
+	time_t TiempoTratamiento(cPaciente* paciente);
+	void VerificarFecha(cPaciente* paciente);
+	void Evaluacion(cPaciente* paciente);
+	void ReevaluacionTumores(cPaciente* paciente);
+
 private:
 	string Nombre;
 	string Apellido;
