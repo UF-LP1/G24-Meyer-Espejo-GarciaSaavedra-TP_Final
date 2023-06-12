@@ -1,7 +1,11 @@
 #include "cOncologo.h"
 
-cOncologo::cOncologo()
-{}
+cOncologo::cOncologo(string nombre, string apellido, unsigned int nro_matricula)
+{
+	this->Apellido = apellido;
+	this->Nro_Matricula = nro_matricula;
+	this->Nombre = nombre;
+}
 
 cOncologo::~cOncologo()
 {}
@@ -113,7 +117,16 @@ void cOncologo::DosisXSesion(cPaciente* paciente)
 
 time_t cOncologo::TiempoTratamiento(cPaciente* paciente)//modifica el tiempo que va a estar el paciente en tratamiento, llamando al set de ficha
 {
+	//esta toda la explicacion en el DOC!!
 
+	time_t tiempoActual = time(nullptr);	
+	//una variable de dias agregados que este multiplicada por 60x60x24
+	time_t nuevoTiempo=tiempoActual;//es igual a tiempo actual hasta que se le sume algo
+	//tendriamos que hacer un for para ver cada tumor
+
+	if (paciente->get_miFicha().get_Espera() == true) {
+
+	}
 }
 
 void cOncologo::VerificarFecha(cPaciente *paciente)
@@ -133,12 +146,14 @@ void cOncologo::ReevaluacionTumores(cPaciente* paciente)
 	{
 		int num = rand() % 2 + 1;//si es 1 es true, si es 2 es false
 		if (num == 1)//es true; tumor benigno
-			Tumores[i].set_bedigno(true);
+			Tumores[i].set_benigno(true);
 		else // num==2; tumor maligno
-			Tumores[i].set_bedigno(false);
+			Tumores[i].set_benigno(false);
 	}
-
 }
+
+
+
 void cOncologo::Evaluacion(cPaciente* paciente)
 {
 	cFicha fichaaux = paciente->get_miFicha();
@@ -151,27 +166,23 @@ void cOncologo::Evaluacion(cPaciente* paciente)
 	{
 
 		while (i < tumoraux.size()) {
-			if (tumoraux[i].get_bedigno() == true) {
+			if (tumoraux[i].get_benigno() == true) {
 				tumoraux.erase(tumoraux.begin() + i);
 			}
-			else 
+			else
 				i++;
-			
+
 		}
 
 		/*Si se elimina un elemento, no se incrementa i en ese caso,
 			ya que el próximo elemento ocupa su posición.Solo se incrementa i si no se elimina un elemento.*/
 
-		if (tumoraux.empty())//si el vector no tiene mas tumores osea esta vacio, camnbio el estado de finalizacion a true
+		if (tumoraux.empty())//si el vector no tiene mas tumores osea esta vacio, cambio el estado de finalizacion a true
 			fichaaux.set_Finalizado(true);
 		else
 		{
 			time_t TimeTratamientoUpdate = TiempoTratamiento(paciente);
 			fichaaux.set_Tratamiento(TimeTratamientoUpdate);//alargar el tiempo de tratamiento
 		}
-
+	}
 }
-
-
-
-

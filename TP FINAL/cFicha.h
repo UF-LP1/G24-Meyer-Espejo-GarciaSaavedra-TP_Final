@@ -6,7 +6,7 @@
 
 class cFicha {
 public:
-	cFicha(string Oncologo,time_t FechaInicio);
+	cFicha(string Oncologo, time_t FechaInicio);
 	~cFicha();
 	vector<cSesion> get_Sesiones();
 	vector<cTumor> get_Tumores();
@@ -16,8 +16,9 @@ public:
 	vector<cTerapia*> get_Terapia();
 	void set_Sesiones(vector<cSesion> sesiones);
 	void set_Tumores(vector<cTumor> tumores);
-
-
+	void set_EstadoRad(unsigned int estadorad);
+	unsigned int get_EstadoRad();
+	bool get_Espera();
 private:
 	string Oncologo;
 	time_t FechaInicio;

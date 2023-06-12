@@ -1,7 +1,9 @@
 #include "cSesion.h"
 
-cSesion::cSesion()
+cSesion::cSesion(bool asistencia,float dosis)
 {
+	this->Asistencia = asistencia;
+	this->Dosis = dosis;
 }
 
 cSesion::~cSesion()

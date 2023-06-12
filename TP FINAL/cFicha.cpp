@@ -58,3 +58,18 @@ void cFicha::set_Tumores(vector<cTumor> tumores)
 {
 	this->Tumores = tumores;
 }
+
+void cFicha::set_EstadoRad(unsigned int estadorad)
+{
+	this->estadoRad = estadoRad;
+}
+
+unsigned int cFicha::get_EstadoRad()
+{
+	return this->estadoRad;
+}
+
+bool cFicha::get_Espera()
+{
+	return this->espera;
+}

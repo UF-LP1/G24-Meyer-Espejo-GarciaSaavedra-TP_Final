@@ -13,8 +13,8 @@ public:
 	void set_Ubicacion(eUbicacion ubicacion);
 	eTamanio get_Tamanio();
 	void set_Tamanio(eTamanio tamanio);
-	bool get_bedigno();
-	void set_bedigno(bool Sano);
+	bool get_benigno();
+	void set_benigno(bool Sano);
 
 private:
 	eUbicacion Ubicacion;

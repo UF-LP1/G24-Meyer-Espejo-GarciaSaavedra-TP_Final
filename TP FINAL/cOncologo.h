@@ -2,12 +2,10 @@
 #include "Header.h"
 #include "cPaciente.h"
 
-
-
 class cOncologo
 {
 public:
-	cOncologo();
+	cOncologo(string nombre, string apellido, unsigned int nro_matricula);
 	~cOncologo();
 	void AtenderCliente(cPaciente* paciente);
 	void DosisXSesion(cPaciente* paciente);

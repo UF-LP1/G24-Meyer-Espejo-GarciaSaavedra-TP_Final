@@ -39,12 +39,12 @@ void cTumor::set_Tamanio(eTamanio tamanio)
 	this->Tamanio = tamanio;
 }
 
-bool cTumor::get_bedigno()
+bool cTumor::get_benigno()
 {
 	return false;
 }
 
-void cTumor::set_bedigno(bool Sano)
+void cTumor::set_benigno(bool Sano)
 {
 	this->bedigno = Sano;
 }
