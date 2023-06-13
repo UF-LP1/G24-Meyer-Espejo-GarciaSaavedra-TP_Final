@@ -9,7 +9,7 @@ public:
 	string get_Nombre();
 	string get_Apellido();
 	string get_ID();
-	int CalcularDosisMax();
+	int CalcularDosisMax(cPaciente MiPaciente);
 	int CalcularRadiacionTotal();
 
 private:
