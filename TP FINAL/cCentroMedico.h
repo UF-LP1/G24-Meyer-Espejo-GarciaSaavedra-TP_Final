@@ -7,6 +7,8 @@ public:
 	cCentroMedico();
 	~cCentroMedico();
 	void AsistenciaPaciente(cPaciente *miPaciente);
+	string to_string();
+
 
 private:
 	string Nombre; 

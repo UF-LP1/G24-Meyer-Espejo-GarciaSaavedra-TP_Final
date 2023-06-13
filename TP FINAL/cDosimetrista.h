@@ -1,15 +1,17 @@
-#pragma once
+#pragma once"
 #include "Header.h"
+#include "cPaciente.h"
+#include "cTerapia.h"
 class cDosimetrista
 {
 public:
 	cDosimetrista();
 	~cDosimetrista();
-	void TipoTerapiaRecibir(cPaciente MiPaciente);
+	void TipoTerapiaRecibir(cPaciente *MiPaciente);
 	string get_Nombre();
 	string get_Apellido();
 	string get_ID();
-	int CalcularDosisMax(cPaciente MiPaciente);
+	bool CalcularDosisMax(cPaciente *MiPaciente);
 	int CalcularRadiacionTotal();
 
 private:

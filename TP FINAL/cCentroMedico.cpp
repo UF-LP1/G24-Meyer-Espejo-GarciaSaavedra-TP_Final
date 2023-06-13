@@ -30,3 +30,14 @@ void cCentroMedico::AsistenciaPaciente(cPaciente *miPaciente) {
 	}
 
 }
+string cCentroMedico::to_string() {
+	{
+		stringstream ss;
+		ss << "El centro medico" << this->Nombre << "se encuentra en" << this->Direccion << ",para contactarse puede utilizar este numero:" << this->Telefono;
+		return(ss.str());
+	}
+
+
+
+
+}
