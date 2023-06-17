@@ -1,11 +1,10 @@
 #include "cTerapia.h"
 
-cTerapia::cTerapia(unsigned int dosmaxp,unsigned int dosmaxt)
+cTerapia::cTerapia(unsigned int dosmaxp, unsigned int dosmaxt)
 {
 	this->DosMaxP = dosmaxp;
-	this->DosMaxT = dosmaxt;
+	this->DosMaxT = dosmaxt;
 }
-
 cTerapia::~cTerapia()
 {
 }

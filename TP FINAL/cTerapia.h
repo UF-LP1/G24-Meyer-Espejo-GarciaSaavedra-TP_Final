@@ -3,7 +3,7 @@
 
 class cTerapia {
 public:
-	cTerapia(unsigned int dosmaxp,unsigned int dosmaxt);
+	cTerapia(unsigned int dosmaxp, unsigned int dosmaxt);
 	~cTerapia();
 	unsigned int get_DosisMaxP();
 	unsigned int get_DosisMaxt();
