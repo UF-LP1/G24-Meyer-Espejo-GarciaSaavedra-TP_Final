@@ -4,16 +4,16 @@
 
 class cCentroMedico {
 public:
-	cCentroMedico();
+	cCentroMedico(string nombre, string direccion, string telefono);
 	~cCentroMedico();
 	void AsistenciaPaciente(cPaciente *miPaciente);
 	string to_string();
+	void Imprimir();
+
 
 
 private:
 	string Nombre; 
 	string Direccion;
 	string Telefono;
-	
-
 };

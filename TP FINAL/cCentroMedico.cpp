@@ -1,7 +1,9 @@
 #include "cCentroMedico.h"
 
-cCentroMedico::cCentroMedico() {
-
+cCentroMedico::cCentroMedico(string nombre, string direccion, string telefono) {
+	this->Nombre = nombre;
+	this->Direccion = direccion;
+	this->Telefono = telefono;
 }
 
 cCentroMedico::~cCentroMedico(){}
@@ -36,8 +38,13 @@ string cCentroMedico::to_string() {
 		ss << "El centro medico" << this->Nombre << "se encuentra en" << this->Direccion << ",para contactarse puede utilizar este numero:" << this->Telefono;
 		return(ss.str());
 	}
-
-
-
-
+}
+ostream& operator<<(ostream& OUT, cCentroMedico& centroM) {
+	OUT << centroM.to_string() << endl;
+	return OUT;
+}
+void cCentroMedico::Imprimir()
+{
+	cCentroMedico centro("zzzz", "sarmiento 1810", "3434344t65234");
+	cout << centro << endl;
 }

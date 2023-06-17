@@ -1,16 +1,14 @@
 #include "cPaciente.h"
 
-cPaciente::cPaciente(string nombre, time_t nacimiento, string sexo, string contacto, string tiposangre, float salud)
-{
+cPaciente::cPaciente(string nombre, time_t nacimiento, string sexo, string contacto, string tiposangre, float salud){
 	this->Nombre = nombre;
 	this->Nacimiento = nacimiento;
 	this->Sexo = sexo;
 	this->Contacto = contacto;
 	this->TipoSangre = tiposangre;
 	this->Salud = salud;
-	
+	//this->miFicha - - - inicializar esta maldita variable de alguna manera 
 }
-
 cPaciente::~cPaciente()
 {
 }
@@ -42,7 +40,7 @@ void cPaciente::set_miFicha(cFicha fichaActualizada)
 string cPaciente::to_string() {
 	stringstream ss;
 	ss << "Nombre del paciente:" << this->Nombre << ",Naciemiento:" << this->Nacimiento << ",Sexo:" << this->Sexo << ",Tipo de Sangre:" << this->TipoSangre << "Porcentaje de salud" << (this->Salud) * 100 << "%" << ;
-	return  ss.str();
+	return( ss.str());
 }
 	
 	

@@ -112,7 +112,7 @@ int CalcularDosisMax(cPaciente *MiPaciente) {
 
 
 
-int CalcularRadiacionTotal(cPaciente* MiPaciente, vector <cTerapia*> RadiacionTerapia) {
+int CalcularRadiacionTotal(cPaciente* MiPaciente) {
 
 	vector <cTerapia*> RadiacionTerapia;
 	RadiacionTerapia = MiPaciente->get_miFicha().get_Terapia();
@@ -155,19 +155,6 @@ int CalcularRadiacionTotal(cPaciente* MiPaciente, vector <cTerapia*> RadiacionTe
 	}
 
 
-
-	
-
-
-
-
-
-
-
-
-	}
-
-    }
 string cDosimetrista::get_Nombre() {
 	return this->Nombre;
 }

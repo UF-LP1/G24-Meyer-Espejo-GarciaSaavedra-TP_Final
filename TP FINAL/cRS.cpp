@@ -1,7 +1,8 @@
 #include "cRS.h"
 
-cRS::cRS():cTerapia()
-{
+cRS::cRS(int DosMaxP, int DosMaxT)
+		:cTerapia(DosMaxP, DosMaxT){
+
 }
 
 cRS::~cRS()

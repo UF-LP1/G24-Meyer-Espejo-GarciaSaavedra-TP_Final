@@ -80,19 +80,18 @@ void cOncologo::DosisXSesion(cPaciente* paciente)
 	{
 		ptr_aux = SusTerapias[j];
 
-		while (i < sesionaux.size() && saludaux > 0, 5) { //esta bien de salud; suponemos dosis mas alta
+		while (i < sesionaux.size() && saludaux > 0, 5) {
 
-			
-			if (dynamic_cast<cRTH*>(ptr_aux)!=NULL) { //RADIOTERAPIA HAZ EXTERNO
-					sesionaux[i].set_Dosis(1); 
+			if (dynamic_cast<cRTH*>(ptr_aux) != NULL) {
+				sesionaux[i].set_Dosis(1);
 			}
-			else if (dynamic_cast<cBT*>(ptr_aux) != NULL) { //BRANQUITERAPIA
+			else if (dynamic_cast<cBT*>(ptr_aux) != NULL) {
 				sesionaux[i].set_Dosis(6);
 			}
-			else if (dynamic_cast<cRS*>(ptr_aux) != NULL) {//RADIOTERAPIA SISTEMATICA
+			else if (dynamic_cast<cRS*>(ptr_aux) != NULL)
 				sesionaux[i].set_Dosis(2);
-			}
-			paciente->get_miFicha().set_Sesiones(sesionaux); //dudoso esto
+
+			paciente->get_miFicha().set_Sesiones(sesionaux); //dudoso esto 
 			i++;
 		}
 

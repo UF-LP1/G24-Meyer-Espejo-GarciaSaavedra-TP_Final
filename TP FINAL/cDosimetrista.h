@@ -1,4 +1,4 @@
-#pragma once"
+#pragma once
 #include "Header.h"
 #include "cPaciente.h"
 
@@ -15,7 +15,7 @@ public:
 	string get_Apellido();
 	string get_ID();
 	bool CalcularDosisMax(cPaciente *MiPaciente);
-	int CalcularRadiacionTotal(cPaciente* MiPaciente, vector<cTerapia*>RadiacionTerapia);
+	int CalcularRadiacionTotal(cPaciente* MiPaciente);
 
 private:
 	string Nombre; //registro de los pacientes en el centro

@@ -4,7 +4,6 @@
 
 class cRS :public cTerapia {
 public: 
-	cRS();
+	cRS(int DosMaxP, int DosMaxT);
 	~cRS();
-
 };
