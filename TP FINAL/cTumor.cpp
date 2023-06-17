@@ -7,10 +7,6 @@ cTumor::cTumor(eUbicacion ubicacion, eTamanio tamanio, int acumRadiacion, bool B
 	this->benigno = Benigno;
 	this->Tamanio = tamanio;
 	this->Ubicacion = ubicacion;
-
-
-
-
 }
 
 cTumor::~cTumor()
@@ -53,5 +49,5 @@ bool cTumor::get_benigno()
 
 void cTumor::set_benigno(bool Sano)
 {
-	this->bedigno = Sano;
+	this->benigno = Sano;
 }

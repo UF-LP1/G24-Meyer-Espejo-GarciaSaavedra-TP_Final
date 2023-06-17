@@ -8,3 +8,7 @@ cRS::cRS(int DosMaxP, int DosMaxT)
 cRS::~cRS()
 {
 }
+
+void cRS::curar() {
+	cout << "curo con Radioterapia Sistemica" << endl;
+}

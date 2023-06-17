@@ -5,7 +5,8 @@
 class cPaciente
 {
 public:
-	cPaciente(string nombre, time_t nacimiento, string sexo, string contacto, string tiposangre, float salud);
+	cPaciente(string nombre, time_t nacimiento, string sexo, string contacto, string tiposangre, float salud,cFicha ficha);
+	cPaciente(cFicha mificha);
 	~cPaciente();	
 	float get_Salud();
 	void set_Salud(float salud);
@@ -23,4 +24,3 @@ private:
 	float  Salud;
 	cFicha miFicha;
 };
-

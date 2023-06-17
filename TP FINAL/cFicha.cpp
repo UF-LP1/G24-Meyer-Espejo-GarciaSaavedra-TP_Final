@@ -1,12 +1,46 @@
 #include "cFicha.h"
 
-cFicha::cFicha(string oncologo, time_t fechainicio)
+cFicha::cFicha(string oncologo, time_t fechainicio, time_t& tratamiento, vector<cTerapia*>& tipotera, vector<cTumor>& tumores, vector<cSesion>& sesiones)
 {
 	this->Oncologo = oncologo;
 	this->FechaInicio = fechainicio;
 	this->estadoRad = 0;
 	this->espera = false;
 	this->Finalizado = false;
+	Tratamiento = tratamiento;
+	//this->Tratamiento = 0;
+	FrecSemanalTratamiento = 0;
+	this->TipoT = tipotera;
+	this->Tumores = tumores;
+	this->Sesiones = sesiones;
+}
+
+
+cFicha::cFicha(vector<cTerapia*>& tipotera, vector<cTumor>& tumores, vector<cSesion>& sesiones)//constructor por defecto por parametro
+{
+	this->Oncologo = "";
+	this->FechaInicio = 0;
+	this->estadoRad = 0;
+	this->espera = false;
+	this->Finalizado = false;
+	Tratamiento = 0;
+	//this->Tratamiento = 0;
+	FrecSemanalTratamiento = 0;
+	this->TipoT = tipotera;
+	this->Tumores = tumores;
+	this->Sesiones = sesiones;
+}
+
+cFicha::cFicha()//constructor por defecto
+{
+	this->Oncologo = "";
+	this->FechaInicio = 0;
+	this->estadoRad = 0;
+	this->espera = false;
+	this->Finalizado = false;
+	Tratamiento = 0;
+	//this->Tratamiento = 0;
+	FrecSemanalTratamiento = 0;
 }
 
 cFicha::~cFicha()

@@ -6,5 +6,5 @@ class cBT :public cTerapia {
 public: 
 	cBT();
 	~cBT();
-
+	void curar();
 };

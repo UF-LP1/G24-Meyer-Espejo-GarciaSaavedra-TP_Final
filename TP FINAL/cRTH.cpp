@@ -9,3 +9,7 @@ cRTH::cRTH(int DosMaxP,int DosMaxT):cTerapia(DosMaxP, DosMaxT)
 cRTH::~cRTH()
 {
 }
+
+void cRTH::curar() {
+	cout << "curo con Radioterapia de Haz Externo" << endl;
+}

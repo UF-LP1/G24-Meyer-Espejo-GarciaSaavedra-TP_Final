@@ -2,7 +2,9 @@
 #include "Header.h"
 #include "cPaciente.h"
 
-
+#include "cRS.h"
+#include "cBT.h"
+#include "cRTH.h"
 class cOncologo
 {
 public:

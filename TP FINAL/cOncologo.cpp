@@ -76,7 +76,7 @@ void cOncologo::DosisXSesion(cPaciente* paciente)
 	int r = 0;
 	int num = 0;
 
-	for (int j = 0; SusTerapias.size(); j++)
+	/*for (int j = 0; SusTerapias.size(); j++)
 	{
 		ptr_aux = SusTerapias[j];
 
@@ -110,7 +110,50 @@ void cOncologo::DosisXSesion(cPaciente* paciente)
 			r++;
 		}
 	}
+	*/
+
+	for (int j = 0; SusTerapias.size(); j++)
+	{
+		ptr_aux = SusTerapias[j];
 	
+
+		while (i < sesionaux.size() && saludaux > 0, 5) {
+
+			if (dynamic_cast<cRTH*>(ptr_aux) != NULL) {
+				sesionaux[i].set_Dosis(1);
+			}
+			else {
+				if (dynamic_cast<cBT*>(ptr_aux) != NULL) {
+					sesionaux[i].set_Dosis(6);
+				}
+
+				if (dynamic_cast<cRS*>(ptr_aux) != NULL) {
+					sesionaux[i].set_Dosis(2);
+				}
+			}
+
+			paciente->get_miFicha().set_Sesiones(sesionaux); //dudoso esto 
+			i++;
+		}
+
+		while (r < sesionaux.size() && saludaux < 0, 5) {
+
+			if (dynamic_cast<cRTH*>(ptr_aux) != NULL) {
+				sesionaux[r].set_Dosis(2);
+			}
+			else {
+				if (dynamic_cast<cBT*>(ptr_aux) != NULL) {
+					sesionaux[r].set_Dosis(6);
+				}
+				if (dynamic_cast<cRS*>(ptr_aux) != NULL) {
+					sesionaux[r].set_Dosis(4);
+				}
+				paciente->get_miFicha().set_Sesiones(sesionaux); //dudoso esto 
+				r++;
+			}
+
+		}
+	}
 	//llama al set de dosisxsesion de sesion y le modifica la dosis por sesion. Ademas cambia con un set el vector de sesiones actualizandolo
 }
 
@@ -126,6 +169,7 @@ time_t cOncologo::TiempoTratamiento(cPaciente* paciente)//modifica el tiempo que
 	if (paciente->get_miFicha().get_Espera() == true) {
 
 	}
+	return 0;
 }
 
 void cOncologo::VerificarFecha(cPaciente *paciente)
