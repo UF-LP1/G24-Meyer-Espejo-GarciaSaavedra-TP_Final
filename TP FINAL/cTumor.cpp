@@ -2,8 +2,15 @@
 
 
 
-cTumor::cTumor(){
+cTumor::cTumor(eUbicacion ubicacion, eTamanio tamanio, int acumRadiacion, bool Benigno){
 	this->AcumRadiacion = 0; //se va a ir incrementando en cada sesion
+	this->benigno = Benigno;
+	this->Tamanio = tamanio;
+	this->Ubicacion = ubicacion;
+
+
+
+
 }
 
 cTumor::~cTumor()

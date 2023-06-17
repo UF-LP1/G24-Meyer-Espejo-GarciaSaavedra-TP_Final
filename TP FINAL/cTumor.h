@@ -5,7 +5,7 @@
 
 class cTumor {
 public:
-	cTumor();
+	cTumor(eUbicacion ubicacion, eTamanio tamanio, int acumRadiacion, bool Benigno);
 	~cTumor();
 	void set_AcumRadiacion(int radiacion);
 	int get_AcumRadiacion();

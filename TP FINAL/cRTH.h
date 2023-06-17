@@ -5,7 +5,7 @@
 class cRTH :public cTerapia {
 	
 public:
-	cRTH();
+	cRTH(int DosMaxP, int DosMaxT);
 	~cRTH();
 
 };

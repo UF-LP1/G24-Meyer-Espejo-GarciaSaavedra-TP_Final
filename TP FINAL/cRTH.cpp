@@ -1,7 +1,9 @@
 #include "cRTH.h"
 
-cRTH::cRTH():cTerapia()
+cRTH::cRTH(int DosMaxP,int DosMaxT):cTerapia(DosMaxP, DosMaxT)
 {
+	this->DosMaxP = 0;
+	this->DosMaxT = 0;
 }
 
 cRTH::~cRTH()
