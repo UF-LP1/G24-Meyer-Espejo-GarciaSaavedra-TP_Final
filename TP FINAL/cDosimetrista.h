@@ -1,7 +1,10 @@
 #pragma once"
 #include "Header.h"
 #include "cPaciente.h"
-#include "cTerapia.h"
+
+#include "cRS.h"
+#include "cBT.h"
+#include "cRTH.h"
 class cDosimetrista
 {
 public:
@@ -12,7 +15,7 @@ public:
 	string get_Apellido();
 	string get_ID();
 	bool CalcularDosisMax(cPaciente *MiPaciente);
-	int CalcularRadiacionTotal();
+	int CalcularRadiacionTotal(cPaciente* MiPaciente, vector<cTerapia*>RadiacionTerapia);
 
 private:
 	string Nombre; //registro de los pacientes en el centro

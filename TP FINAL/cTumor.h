@@ -20,5 +20,5 @@ private:
 	eUbicacion Ubicacion;
 	eTamanio Tamanio;
 	int AcumRadiacion;
-	bool bedigno;
+	bool benigno;
 };
