@@ -9,11 +9,11 @@ cCentroMedico::cCentroMedico(string nombre, string direccion, string telefono) {
 cCentroMedico::~cCentroMedico(){}
 
 void cCentroMedico::AsistenciaPaciente(cPaciente *miPaciente) {
-	vector<cSesion> SesionesPaciente = miPaciente->get_miFicha().get_Sesiones();
+	vector<cSesion*> SesionesPaciente = miPaciente->get_miFicha().get_Sesiones();
 	int contInasistencia = 0;
 	for (int i = 0; i < SesionesPaciente.size(); i++)
 	{
-		if (SesionesPaciente[i].get_Asist() == false)
+		if (SesionesPaciente[i]->get_Asist() == false)
 		{
 			contInasistencia++;
 		}

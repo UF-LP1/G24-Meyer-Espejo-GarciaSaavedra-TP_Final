@@ -52,8 +52,8 @@ string cPaciente::to_string() {
 	return( ss.str());
 }
 	
-	
-
-
-
-
+ostream& operator<<(ostream& out, cPaciente& c)
+{
+	out << c.to_string();
+	return out;
+}

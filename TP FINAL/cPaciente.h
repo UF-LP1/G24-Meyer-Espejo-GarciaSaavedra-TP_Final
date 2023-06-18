@@ -14,6 +14,7 @@ public:
 	string get_Contacto();
 	void set_miFicha(cFicha fichaActualizada);
 	string to_string();
+	friend ostream& operator<< (ostream& out, cPaciente& c);
 
 private: 
 	string Nombre;

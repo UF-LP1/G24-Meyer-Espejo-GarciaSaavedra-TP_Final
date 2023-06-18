@@ -1,35 +1,6 @@
 #include "cFicha.h"
 
-cFicha::cFicha(string oncologo, time_t fechainicio, time_t& tratamiento, vector<cTerapia*>& tipotera, vector<cTumor>& tumores, vector<cSesion>& sesiones)
-{
-	this->Oncologo = oncologo;
-	this->FechaInicio = fechainicio;
-	this->estadoRad = 0;
-	this->espera = false;
-	this->Finalizado = false;
-	Tratamiento = tratamiento;
-	//this->Tratamiento = 0;
-	FrecSemanalTratamiento = 0;
-	this->TipoT = tipotera;
-	this->Tumores = tumores;
-	this->Sesiones = sesiones;
-}
 
-
-cFicha::cFicha(vector<cTerapia*>& tipotera, vector<cTumor>& tumores, vector<cSesion>& sesiones)//constructor por defecto por parametro
-{
-	this->Oncologo = "";
-	this->FechaInicio = 0;
-	this->estadoRad = 0;
-	this->espera = false;
-	this->Finalizado = false;
-	Tratamiento = 0;
-	//this->Tratamiento = 0;
-	FrecSemanalTratamiento = 0;
-	this->TipoT = tipotera;
-	this->Tumores = tumores;
-	this->Sesiones = sesiones;
-}
 
 cFicha::cFicha()//constructor por defecto
 {
@@ -38,9 +9,8 @@ cFicha::cFicha()//constructor por defecto
 	this->estadoRad = 0;
 	this->espera = false;
 	this->Finalizado = false;
-	Tratamiento = 0;
-	//this->Tratamiento = 0;
-	FrecSemanalTratamiento = 0;
+	this->Tratamiento = 0;
+	this-> FrecSemanalTratamiento = 0;
 }
 
 cFicha::~cFicha()
@@ -53,12 +23,12 @@ cFicha::~cFicha()
 	}
 }
 
-vector<cSesion> cFicha::get_Sesiones()
+vector<cSesion*> cFicha::get_Sesiones()
 {
 	return this-> Sesiones;
 }
 
-vector<cTumor> cFicha::get_Tumores()
+vector<cTumor*> cFicha::get_Tumores()
 {
 	return this->Tumores;
 }
@@ -67,6 +37,91 @@ void cFicha::set_Finalizado(bool termino)
 {
 	this->Finalizado = termino;
 }
+
+void cFicha::operator+(cSesion* s)
+{
+	if (s != nullptr)
+		this->Sesiones.push_back(s);
+
+}
+
+void cFicha::operator-(cSesion* s)
+{
+	if (s != nullptr)
+	{
+		for (int i = 0; Sesiones.size(); i++)
+		{
+			if (Sesiones[i] == s) //lo busca
+			{
+				Sesiones.erase(Sesiones.begin() + i);
+			}
+		}
+	}
+}
+
+void cFicha::operator+(cTumor* t)
+{
+	if (t != nullptr)
+		this->Tumores.push_back(t);
+}
+
+void cFicha::operator-(cTumor* t)
+{
+	if (t != nullptr)
+	{
+		for (int i = 0; Tumores.size(); i++)
+		{
+			if (Tumores[i] == t) //lo busca
+			{
+				Tumores.erase(Tumores.begin() + i);
+			}
+		}
+	}
+}
+
+void cFicha::operator+(cTerapia* t)
+{
+	if (t !=nullptr)
+	{
+		TipoT.push_back(t);
+	}
+}
+
+void cFicha::operator-(cTerapia* t)
+{
+	if (t != nullptr)
+	{
+		for (int i = 0; TipoT.size(); i++)
+		{
+			if (TipoT[i] == t) //lo busca
+			{
+				TipoT.erase(TipoT.begin() + i);
+			}
+		}
+	}
+}
+
+string cFicha::to_string()
+{
+	stringstream ss;
+	ss << "Oncologo a cargo" << this->Oncologo<<";Terapias";
+
+	for (int i = 0; TipoT.size(); i++)
+	{
+		ss << "-" << TipoT[i];
+	}
+
+	ss << ";Tumores";
+
+	for (int i = 0; Tumores.size(); i++)
+	{
+		ss << "-" << Tumores[i];
+	}
+
+	return ss.str();
+}
+
+
 
 time_t cFicha::get_Tratamiento()
 {
@@ -83,12 +138,12 @@ vector<cTerapia*> cFicha::get_Terapia()
 	return this-> TipoT;
 }
 
-void cFicha::set_Sesiones(vector<cSesion> sesiones)
+void cFicha::set_Sesiones(vector<cSesion*> sesiones)
 {
 	this->Sesiones = sesiones;
 }
 
-void cFicha::set_Tumores(vector<cTumor> tumores)
+void cFicha::set_Tumores(vector<cTumor*> tumores)
 {
 	this->Tumores = tumores;
 }
@@ -107,3 +162,10 @@ bool cFicha::get_Espera()
 {
 	return this->espera;
 }
+
+ostream& operator<<(ostream& out, cFicha& c)
+{
+	out << c.to_string();
+	return out;
+}
+

@@ -6,22 +6,32 @@
 
 class cFicha {
 public:
-	cFicha(string Oncologo, time_t FechaInicio, time_t& tratamiento,vector<cTerapia*>& tipotera, vector<cTumor>& tumores, vector<cSesion>& sesiones);
-	cFicha(vector<cTerapia*>& tipotera, vector<cTumor>& tumores, vector<cSesion>& sesiones);
 	cFicha();
 	~cFicha();
-	vector<cSesion> get_Sesiones();
-	vector<cTumor> get_Tumores();
+	vector<cSesion*> get_Sesiones();
+	vector<cTumor*> get_Tumores();
 	unsigned int get_EstadoRad();
 	bool get_Espera();
 	time_t get_Tratamiento();
 	vector<cTerapia*> get_Terapia();
 
 	void set_Tratamiento(time_t fechatratamiento);
-	void set_Sesiones(vector<cSesion> sesiones);
-	void set_Tumores(vector<cTumor> tumores);
+	void set_Sesiones(vector<cSesion*> sesiones);
+	void set_Tumores(vector<cTumor*> tumores);
 	void set_EstadoRad(unsigned int estadorad);
 	void set_Finalizado(bool termino);
+
+	//sobrecargas 
+	void operator+(cSesion* s); 
+	void operator- (cSesion* s);
+	void operator+(cTumor* t);
+	void operator- (cTumor* t);
+	void operator+ (cTerapia* t);
+	void operator-(cTerapia* t);
+	friend ostream& operator<<(ostream& out, cFicha& c);
+
+	string to_string();
+	
 	
 private:
 	string Oncologo;
@@ -31,8 +41,8 @@ private:
 	time_t Tratamiento;
 	int FrecSemanalTratamiento; 
 	bool Finalizado;
-	vector<cTerapia*>TipoT;
-	vector<cTumor> Tumores;
-	vector<cSesion> Sesiones;
+	vector<cTerapia*>TipoT; //se necesita imprimir
+	vector<cTumor*> Tumores; //se necesita imprimir 
+	vector<cSesion*> Sesiones;
 	
 };
