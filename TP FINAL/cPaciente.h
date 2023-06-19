@@ -5,16 +5,16 @@
 class cPaciente
 {
 public:
-	cPaciente(string nombre, time_t nacimiento, string sexo, string contacto, string tiposangre, float salud,cFicha ficha);
-	cPaciente(cFicha mificha);
-	~cPaciente();	
+	cPaciente(string nombre, time_t nacimiento, string sexo, string contacto, string tiposangre);
+	~cPaciente();
 	float get_Salud();
 	void set_Salud(float salud);
-	cFicha get_miFicha();
+	cFicha* get_miFicha();
 	string get_Contacto();
-	void set_miFicha(cFicha fichaActualizada);
+	void set_miFicha(cFicha* fichaActualizada);
 	string to_string();
 	friend ostream& operator<< (ostream& out, cPaciente& c);
+	bool operator== (cOncologo& oncologo);
 
 private: 
 	string Nombre;
@@ -23,5 +23,5 @@ private:
 	string Contacto;
 	string TipoSangre;
 	float  Salud;
-	cFicha miFicha;
+	cFicha* miFicha;
 };

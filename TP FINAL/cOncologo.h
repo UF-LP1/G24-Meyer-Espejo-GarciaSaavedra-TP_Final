@@ -16,6 +16,7 @@ public:
 	void VerificarFecha(cPaciente* paciente);
 	void Evaluacion(cPaciente* paciente);
 	void ReevaluacionTumores(cPaciente* paciente);
+	unsigned int get_NroMatricula();
 
 private:
 	string Nombre;

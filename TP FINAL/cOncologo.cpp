@@ -195,12 +195,17 @@ void cOncologo::ReevaluacionTumores(cPaciente* paciente)
 	}
 }
 
+unsigned int cOncologo::get_NroMatricula()
+{
+	return this->Nro_Matricula;
+}
+
 
 
 void cOncologo::Evaluacion(cPaciente* paciente)
 {
-	cFicha fichaaux = paciente->get_miFicha();
-	vector<cTumor> tumoraux = fichaaux.get_Tumores();
+	cFicha* fichaaux = paciente->get_miFicha();
+	vector<cTumor> tumoraux = fichaaux->get_Tumores();
 	int i = 0;
 
 	ReevaluacionTumores(paciente);

@@ -3,6 +3,7 @@
 #include"cSesion.h"
 #include "cTerapia.h"
 #include "cTumor.h"
+#include "cOncologo.h"
 
 class cFicha {
 public:
@@ -14,7 +15,7 @@ public:
 	bool get_Espera();
 	time_t get_Tratamiento();
 	vector<cTerapia*> get_Terapia();
-
+	cOncologo* get_Oncologo();
 	void set_Tratamiento(time_t fechatratamiento);
 	void set_Sesiones(vector<cSesion*> sesiones);
 	void set_Tumores(vector<cTumor*> tumores);
@@ -34,7 +35,7 @@ public:
 	
 	
 private:
-	string Oncologo;
+	cOncologo* OncologoAsignado;
 	time_t FechaInicio;//no tenemos set de esto porque se pasa cuando se crea
 	unsigned int estadoRad;
 	bool espera;
