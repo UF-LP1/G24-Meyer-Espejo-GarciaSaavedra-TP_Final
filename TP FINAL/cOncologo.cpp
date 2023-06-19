@@ -13,7 +13,7 @@ cOncologo::~cOncologo()
 
 void cOncologo::AtenderCliente(cPaciente *paciente)
 {
-	vector<cTumor> PacienteTumores = paciente->get_miFicha().get_Tumores();
+	vector<cTumor*> PacienteTumores = paciente->get_miFicha()->get_Tumores();
 	int numT=0;
 	
 	for (int i = 0; i<PacienteTumores.size(); i++)
@@ -22,13 +22,13 @@ void cOncologo::AtenderCliente(cPaciente *paciente)
 		numT = rand() % 3;
 		if (numT == 0) //pequenio
 		{
-			PacienteTumores[i].set_Tamanio(pequenio);
+			PacienteTumores[i]->set_Tamanio(pequenio);
 		}
 		else if (numT == 1) {
-			PacienteTumores[i].set_Tamanio(mediano);
+			PacienteTumores[i]->set_Tamanio(mediano);
 		}
 		else
-			PacienteTumores[i].set_Tamanio(grande);
+			PacienteTumores[i]->set_Tamanio(grande);
 
 		//caracteristicas de ubicacion
 		int opcion = rand() % 9;
@@ -62,7 +62,7 @@ void cOncologo::AtenderCliente(cPaciente *paciente)
 			ubiaux = intestino;
 			break;
 		}
-		PacienteTumores[i].set_Ubicacion(ubiaux);
+		PacienteTumores[i]->set_Ubicacion(ubiaux);
 	}
 }
 
@@ -110,7 +110,7 @@ void cOncologo::DosisXSesion(cPaciente* paciente)
 					sesionaux[r]->set_Dosis(6);
 				}
 				if (dynamic_cast<cRS*>(ptr_aux) != NULL) {
-					sesionaux[r].set_Dosis(4);
+					sesionaux[r]->set_Dosis(4);
 				}
 				paciente->get_miFicha()->set_Sesiones(sesionaux); // actualizo dosis xsesion
 				r++;
@@ -121,19 +121,108 @@ void cOncologo::DosisXSesion(cPaciente* paciente)
 	
 }
 
-time_t cOncologo::TiempoTratamiento(cPaciente* paciente)
+void cOncologo::TiempoTratamiento(cPaciente* paciente)
 {
-	//esta toda la explicacion en el DOC!!
-
+	vector<cTumor*> tumoresaux = paciente->get_miFicha()->get_Tumores();
 	time_t tiempoActual = time(nullptr);	
-	//una variable de dias agregados que este multiplicada por 60x60x24
-	time_t nuevoTiempo=tiempoActual;//es igual a tiempo actual hasta que se le sume algo
-	//tendriamos que hacer un for para ver cada tumor
+	time_t nuevoTiempo=tiempoActual;
+	int max=0;
+	int dias = 60 * 60 * 24;
+	int mes = dias * 31;
 
-	if (paciente->get_miFicha()->get_Espera() == true) {
+	if (paciente->get_miFicha()->get_Espera() == true) {//si esta en espera por radiacion y su tumor es grande, espera mas.
+		for (int i = 0; tumoresaux.size(); i++)
+			if (tumoresaux[i]->get_Tamanio() == grande)
+				nuevoTiempo + 31 * dias;
+			else
+				nuevoTiempo + 15 * dias;
 
+		paciente->get_miFicha()->set_Tratamiento(nuevoTiempo);
 	}
-	return 0;
+
+	for (int i = 0; tumoresaux.size(); i++) {
+
+		while (tumoresaux[i]->get_Tamanio() == grande) {
+			if (tumoresaux[i]->get_Ubicacion() == cabeza || tumoresaux[i]->get_Ubicacion() == cuello) {
+				max = 12 * mes;
+			}
+			else if (tumoresaux[i]->get_Ubicacion() == pulmon && max < 11 * mes) {
+				max = 11 * mes;
+			}
+			else if (tumoresaux[i]->get_Ubicacion() == utero && max < 10 * mes + 15 * dias) {
+				max = 10 * mes + 15 * dias;
+			}
+			else if (tumoresaux[i]->get_Ubicacion() == mama && max < 10 * mes) {
+				max = 10 * mes;
+			}
+			else if (tumoresaux[i]->get_Ubicacion() == tiroides && max < 9 * mes) {
+				max = 9 * mes;
+			}
+			else if (tumoresaux[i]->get_Ubicacion() == prostata && max < 8 * mes) {
+				max = 8 * mes;
+			}
+			else if (tumoresaux[i]->get_Ubicacion() == intestino && max < 6 * mes) {
+				max = 6 * mes;
+			}
+			else if (tumoresaux[i]->get_Ubicacion() == ojo && max < 4 * mes) {
+				max = 4 * mes;
+			}
+		}
+		while (tumoresaux[i]->get_Tamanio() == mediano) {
+			if (tumoresaux[i]->get_Ubicacion() == cabeza || tumoresaux[i]->get_Ubicacion() == cuello) {
+				max = 10 * mes;
+			}
+			else if (tumoresaux[i]->get_Ubicacion() == pulmon && max <9 * mes) {
+				max = 9 * mes;
+			}
+			else if (tumoresaux[i]->get_Ubicacion() == utero && max < 8 * mes + 15 * dias) {
+				max = 8 * mes + 15 * dias;
+			}
+			else if (tumoresaux[i]->get_Ubicacion() == mama && max < 8 * mes) {
+				max = 8 * mes;
+			}
+			else if (tumoresaux[i]->get_Ubicacion() == tiroides && max < 7 * mes) {
+				max = 7 * mes;
+			}
+			else if (tumoresaux[i]->get_Ubicacion() == prostata && max < 6 * mes) {
+				max = 6 * mes;
+			}
+			else if (tumoresaux[i]->get_Ubicacion() == intestino && max < 5 * mes) {
+				max = 5 * mes;
+			}
+			else if (tumoresaux[i]->get_Ubicacion() == ojo && max < 3 * mes) {
+				max = 3 * mes;
+			}
+		}
+		while (tumoresaux[i]->get_Tamanio() == pequenio) {
+			if (tumoresaux[i]->get_Ubicacion() == cabeza || tumoresaux[i]->get_Ubicacion() == cuello) {
+				max = 8 * mes;
+			}
+			else if (tumoresaux[i]->get_Ubicacion() == pulmon && max < 7 * mes) {
+				max = 7 * mes;
+			}
+			else if (tumoresaux[i]->get_Ubicacion() == utero && max < 6 * mes + 15 * dias) {
+				max = 6 * mes + 15 * dias;
+			}
+			else if (tumoresaux[i]->get_Ubicacion() == mama && max < 6 * mes) {
+				max = 6 * mes;
+			}
+			else if (tumoresaux[i]->get_Ubicacion() == tiroides && max < 5 * mes) {
+				max = 5 * mes;
+			}
+			else if (tumoresaux[i]->get_Ubicacion() == prostata && max < 5 * mes) {
+				max = 5 * mes;
+			}
+			else if (tumoresaux[i]->get_Ubicacion() == intestino && max < 4 * mes) {
+				max = 4 * mes;
+			}
+			else if (tumoresaux[i]->get_Ubicacion() == ojo && max < 2 * mes) {
+				max = 2 * mes;
+			}
+		}
+	}
+	nuevoTiempo += max;
+	paciente->get_miFicha()->set_Tratamiento(nuevoTiempo);
 }
 
 void cOncologo::VerificarFecha(cPaciente *paciente)
@@ -148,14 +237,14 @@ void cOncologo::VerificarFecha(cPaciente *paciente)
 
 void cOncologo::ReevaluacionTumores(cPaciente* paciente)
 {
-	vector<cTumor>Tumores = paciente->get_miFicha().get_Tumores();
+	vector<cTumor*>Tumores = paciente->get_miFicha()->get_Tumores();
 	for (int i = 0; Tumores.size(); i++)
 	{
 		int num = rand() % 2 + 1;//si es 1 es true, si es 2 es false
 		if (num == 1)//es true; tumor benigno
-			Tumores[i].set_benigno(true);
+			Tumores[i]->set_benigno(true);
 		else // num==2; tumor maligno
-			Tumores[i].set_benigno(false);
+			Tumores[i]->set_benigno(false);
 	}
 }
 
@@ -169,7 +258,7 @@ unsigned int cOncologo::get_NroMatricula()
 void cOncologo::Evaluacion(cPaciente* paciente)
 {
 	cFicha* fichaaux = paciente->get_miFicha();
-	vector<cTumor> tumoraux = fichaaux->get_Tumores();
+	vector<cTumor*> tumoraux = fichaaux->get_Tumores();
 	int i = 0;
 
 	ReevaluacionTumores(paciente);
@@ -178,7 +267,7 @@ void cOncologo::Evaluacion(cPaciente* paciente)
 	{
 
 		while (i < tumoraux.size()) {
-			if (tumoraux[i].get_benigno() == true) {
+			if (tumoraux[i]->get_benigno() == true) {
 				tumoraux.erase(tumoraux.begin() + i);
 			}
 			else
@@ -190,11 +279,11 @@ void cOncologo::Evaluacion(cPaciente* paciente)
 			ya que el próximo elemento ocupa su posición.Solo se incrementa i si no se elimina un elemento.*/
 
 		if (tumoraux.empty())//si el vector no tiene mas tumores osea esta vacio, cambio el estado de finalizacion a true
-			fichaaux.set_Finalizado(true);
+			fichaaux->set_Finalizado(true);
 		else
 		{
 			time_t TimeTratamientoUpdate = TiempoTratamiento(paciente);
-			fichaaux.set_Tratamiento(TimeTratamientoUpdate);//alargar el tiempo de tratamiento
+			fichaaux->set_Tratamiento(TimeTratamientoUpdate);//alargar el tiempo de tratamiento
 		}
 	}
 }
