@@ -10,9 +10,9 @@ cDosimetrista::~cDosimetrista()
 
 void cDosimetrista:: TipoTerapiaRecibir( cPaciente *MiPaciente) {
 
-	vector <cTumor>TumoresPresentes; //tenes que hacer un auxiliar donde se guarden la lista de tumores del paciente  y recorrerla para sacar de cada uno la ubicacion y hacer el los if para ver que tipo de terapia
+	vector <cTumor*>TumoresPresentes; //tenes que hacer un auxiliar donde se guarden la lista de tumores del paciente  y recorrerla para sacar de cada uno la ubicacion y hacer el los if para ver que tipo de terapia
  //esta mal tendria que ser
- 	 TumoresPresentes =  MiPaciente->get_miFicha().get_Tumores();
+ 	 TumoresPresentes =  MiPaciente->get_miFicha()->get_Tumores();
 	 
 	 cBT* auxcbt{};
 	 cRTH* auxcrth{};
@@ -27,17 +27,17 @@ void cDosimetrista:: TipoTerapiaRecibir( cPaciente *MiPaciente) {
 
 	 if (TumoresPresentes[i].get_Ubicacion() == cuello)
 	 {
-		 if (TumoresPresentes[i].get_Tamanio() == grande) {
+		 if (TumoresPresentes[i]->get_Tamanio() == grande) {
 
 
-			 MiPaciente->get_miFicha().get_Terapia().push_back(auxcbt);
+			 MiPaciente->get_miFicha()->get_Terapia().push_back(auxcbt);
 
 		 }
 		 else {
 			 MiPaciente->get_miFicha().get_Terapia().push_back(auxcrth);
 		 }
 	 }
- if (TumoresPresentes[i].get_Ubicacion() == mama)
+ if (TumoresPresentes[i]->get_Ubicacion() == mama)
  {
 	 if (TumoresPresentes[i].get_Tamanio() == grande) {
 
@@ -100,14 +100,15 @@ bool cDosimetrista::CalcularDosisMax(cPaciente* MiPaciente) {
 
 
 
-int cDosimetrista::CalcularRadiacionTotal(cPaciente* MiPaciente) {
+int cDosimetrista::RadTotalPaciente(cPaciente* MiPaciente) {
 
 	vector <cTerapia*> RadiacionTerapia;
-	RadiacionTerapia = MiPaciente->get_miFicha().get_Terapia();
-	vector <cTumor>RadiacionTumor;
-	RadiacionTumor = MiPaciente->get_miFicha().get_Tumores();
-	float radTP = 0.0;
-	float radTT = 0.0;
+	RadiacionTerapia = MiPaciente->get_miFicha()->get_Terapia();
+	vector <cTumor*>RadiacionTumor;
+	RadiacionTumor = MiPaciente->get_miFicha()->get_Tumores();
+	float radTP = 0.0; //por terapia paciente
+	float radTT = 0.0; //por terapia tumor
+
 	for (int i = 0; i < RadiacionTerapia.size(); i++) {
 		cBT* auxcBT = dynamic_cast <cBT*> (RadiacionTerapia[i]);
 		//todo es de paciente,nada por tumor
