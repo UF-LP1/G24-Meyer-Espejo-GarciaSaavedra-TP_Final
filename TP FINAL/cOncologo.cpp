@@ -11,7 +11,7 @@ cOncologo::~cOncologo()
 {}
 
 
-void cOncologo::AtenderCliente(cPaciente *paciente)//determina segun los estudios que el paciente ya tiene hechos, las características de cada tumor (puede tener uno o mas)
+void cOncologo::AtenderCliente(cPaciente *paciente)
 {
 	vector<cTumor> PacienteTumores = paciente->get_miFicha().get_Tumores();
 	int numT=0;
@@ -69,95 +69,59 @@ void cOncologo::AtenderCliente(cPaciente *paciente)//determina segun los estudio
 void cOncologo::DosisXSesion(cPaciente* paciente)
 {
 	float saludaux = paciente->get_Salud();
-	vector<cSesion> sesionaux = paciente->get_miFicha().get_Sesiones();
-	vector<cTerapia*>SusTerapias = paciente->get_miFicha().get_Terapia();
+	vector<cSesion*> sesionaux = paciente->get_miFicha()->get_Sesiones();
+	vector<cTerapia*>SusTerapias = paciente->get_miFicha()->get_Terapia();
 	cTerapia* ptr_aux = nullptr;
 	int i = 0;
 	int r = 0;
 	int num = 0;
 
-	/*for (int j = 0; SusTerapias.size(); j++)
-	{
-		ptr_aux = SusTerapias[j];
-
-		while (i < sesionaux.size() && saludaux > 0, 5) {
-
-			if (dynamic_cast<cRTH*>(ptr_aux) != NULL) {
-				sesionaux[i].set_Dosis(1);
-			}
-			else if (dynamic_cast<cBT*>(ptr_aux) != NULL) {
-				sesionaux[i].set_Dosis(6);
-			}
-			else if (dynamic_cast<cRS*>(ptr_aux) != NULL)
-				sesionaux[i].set_Dosis(2);
-
-			paciente->get_miFicha().set_Sesiones(sesionaux); //dudoso esto 
-			i++;
-		}
-
-		while (r < sesionaux.size() && saludaux < 0, 5) {
-
-			if (dynamic_cast<cRTH*>(ptr_aux) != NULL) {
-				sesionaux[r].set_Dosis(2);
-			}
-			else if (dynamic_cast<cBT*>(ptr_aux) != NULL) {
-				sesionaux[r].set_Dosis(6);
-			}
-			else if(dynamic_cast<cRS*>(ptr_aux) != NULL)
-				sesionaux[r].set_Dosis(4);
-			
-			paciente->get_miFicha().set_Sesiones(sesionaux); //dudoso esto 
-			r++;
-		}
-	}
-	*/
 
 	for (int j = 0; SusTerapias.size(); j++)
 	{
 		ptr_aux = SusTerapias[j];
 	
 
-		while (i < sesionaux.size() && saludaux > 0, 5) {
-
+		while (i < sesionaux.size() && saludaux < 0, 5) {//Salud """""mala""",
+			//menor dosis
 			if (dynamic_cast<cRTH*>(ptr_aux) != NULL) {
-				sesionaux[i].set_Dosis(1);
+				sesionaux[i]->set_Dosis(1);
 			}
 			else {
 				if (dynamic_cast<cBT*>(ptr_aux) != NULL) {
-					sesionaux[i].set_Dosis(6);
+					sesionaux[i]->set_Dosis(6);
 				}
 
 				if (dynamic_cast<cRS*>(ptr_aux) != NULL) {
-					sesionaux[i].set_Dosis(2);
+					sesionaux[i]->set_Dosis(2);
 				}
 			}
 
-			paciente->get_miFicha().set_Sesiones(sesionaux); //dudoso esto 
-			i++;
+			paciente->get_miFicha()->set_Sesiones(sesionaux); // actualizo dosis x sesion
 		}
 
-		while (r < sesionaux.size() && saludaux < 0, 5) {
+		while (r < sesionaux.size() && saludaux > 0, 5) {//salud """"buena""""
 
 			if (dynamic_cast<cRTH*>(ptr_aux) != NULL) {
-				sesionaux[r].set_Dosis(2);
+				sesionaux[r]->set_Dosis(2);
 			}
 			else {
 				if (dynamic_cast<cBT*>(ptr_aux) != NULL) {
-					sesionaux[r].set_Dosis(6);
+					sesionaux[r]->set_Dosis(6);
 				}
 				if (dynamic_cast<cRS*>(ptr_aux) != NULL) {
 					sesionaux[r].set_Dosis(4);
 				}
-				paciente->get_miFicha().set_Sesiones(sesionaux); //dudoso esto 
+				paciente->get_miFicha()->set_Sesiones(sesionaux); // actualizo dosis xsesion
 				r++;
 			}
 
 		}
 	}
-	//llama al set de dosisxsesion de sesion y le modifica la dosis por sesion. Ademas cambia con un set el vector de sesiones actualizandolo
+	
 }
 
-time_t cOncologo::TiempoTratamiento(cPaciente* paciente)//modifica el tiempo que va a estar el paciente en tratamiento, llamando al set de ficha
+time_t cOncologo::TiempoTratamiento(cPaciente* paciente)
 {
 	//esta toda la explicacion en el DOC!!
 
@@ -166,7 +130,7 @@ time_t cOncologo::TiempoTratamiento(cPaciente* paciente)//modifica el tiempo que
 	time_t nuevoTiempo=tiempoActual;//es igual a tiempo actual hasta que se le sume algo
 	//tendriamos que hacer un for para ver cada tumor
 
-	if (paciente->get_miFicha().get_Espera() == true) {
+	if (paciente->get_miFicha()->get_Espera() == true) {
 
 	}
 	return 0;
@@ -176,7 +140,7 @@ void cOncologo::VerificarFecha(cPaciente *paciente)
 {
 	//mira la fecha time de tratamiento y cuando se cumple el tiempo establecido, el oncologo debe ver al paciente denuevo
 	
-	time_t fechatratamiento = paciente->get_miFicha().get_Tratamiento();
+	time_t fechatratamiento = paciente->get_miFicha()->get_Tratamiento();
 	time_t fechahoy = time(0);
 	if (fechatratamiento > fechahoy)
 		Evaluacion(paciente);

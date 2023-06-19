@@ -14,77 +14,75 @@ void cDosimetrista:: TipoTerapiaRecibir( cPaciente *MiPaciente) {
  //esta mal tendria que ser
  	 TumoresPresentes =  MiPaciente->get_miFicha()->get_Tumores();
 	 
-	 cBT* auxcbt{};
-	 cRTH* auxcrth{};
-	 cRS* auxcrs{};
+	 cBT* auxcbt = {};
 
  for(int i=0;i<TumoresPresentes.size();i++){
 
-	 if (TumoresPresentes[i].get_Ubicacion() == ojo) {
+	 if (TumoresPresentes[i]->get_Ubicacion() == ojo) {
 
-		 MiPaciente->get_miFicha().get_Terapia().push_back(auxcbt);
+		 MiPaciente->get_miFicha()->Agregar_Terapia(cBT);
 	 }
 
-	 if (TumoresPresentes[i].get_Ubicacion() == cuello)
+	 if (TumoresPresentes[i]->get_Ubicacion() == cuello)
 	 {
 		 if (TumoresPresentes[i]->get_Tamanio() == grande) {
 
 
-			 MiPaciente->get_miFicha()->get_Terapia().push_back(auxcbt);
+			 MiPaciente->get_miFicha()->Agregar_Terapia(auxcbt);
 
 		 }
 		 else {
-			 MiPaciente->get_miFicha().get_Terapia().push_back(auxcrth);
+			 MiPaciente->get_miFicha()->Agregar_Terapia(auxcrth);
 		 }
 	 }
  if (TumoresPresentes[i]->get_Ubicacion() == mama)
  {
-	 if (TumoresPresentes[i].get_Tamanio() == grande) {
+	 if (TumoresPresentes[i]->get_Tamanio() == grande) {
 
 
-		 MiPaciente->get_miFicha().get_Terapia().push_back(auxcbt);
+		 MiPaciente->get_miFicha()->Agregar_Terapia(auxcbt);
 
 	 }
 	 else {
-		 MiPaciente->get_miFicha().get_Terapia().push_back(auxcrth);
+		 MiPaciente->get_miFicha()->Agregar_Terapia(auxcrth);
 	 }
            }
 
-    if (TumoresPresentes[i].get_Ubicacion() == utero)
+    if (TumoresPresentes[i]->get_Ubicacion() == utero)
   {
-	if (TumoresPresentes[i].get_Tamanio() == grande) {
+	if (TumoresPresentes[i]->get_Tamanio() == grande) {
 
 
-		MiPaciente->get_miFicha().get_Terapia().push_back(auxcbt);
+		MiPaciente->get_miFicha()->Agregar_Terapia(auxcbt);
 
 	}
 	else {
-		MiPaciente->get_miFicha().get_Terapia().push_back(auxcrth);
+		MiPaciente->get_miFicha()->Agregar_Terapia(auxcrth);
 	}
        }
-			if (TumoresPresentes[i].get_Ubicacion() == tiroides)
+			if (TumoresPresentes[i]->get_Ubicacion() == tiroides)
 			{
 
-				if (TumoresPresentes[i].get_Tamanio() == grande) {
+				if (TumoresPresentes[i]->get_Tamanio() == grande) {
 
 
-					MiPaciente->get_miFicha().get_Terapia().push_back(auxcrs);
+					MiPaciente->get_miFicha()->Agregar_Terapia(auxcrs);
 
 				}
 				else {
-					MiPaciente->get_miFicha().get_Terapia().push_back(auxcrth);
+					MiPaciente->get_miFicha()->Agregar_Terapia(auxcrth);
 				}
 			}
 			
-			if (TumoresPresentes[i].get_Ubicacion() == prostata)
+			if (TumoresPresentes[i]->get_Ubicacion() == prostata)
 			{
-				if (TumoresPresentes[i].get_Tamanio() == grande) {
+				if (TumoresPresentes[i]->get_Tamanio() == grande) {
 
-					MiPaciente->get_miFicha().get_Terapia().push_back(auxcrs);
+					MiPaciente->get_miFicha()->Agregar_Terapia(auxcrs);
 				}
 			}
 			else {
-				MiPaciente->get_miFicha().get_Terapia().push_back(auxcrth);
+				MiPaciente->get_miFicha()->Agregar_Terapia(auxcrth);
 			}
 	}
 
@@ -93,7 +91,7 @@ void cDosimetrista:: TipoTerapiaRecibir( cPaciente *MiPaciente) {
 
 
 bool cDosimetrista::CalcularDosisMax(cPaciente* MiPaciente) {
-	vector <cTumor>TumoresPresentes;
+	vector <cTumor*>TumoresPresentes;
 
 	return false;
 }//falta hacer
@@ -104,42 +102,24 @@ int cDosimetrista::RadTotalPaciente(cPaciente* MiPaciente) {
 
 	vector <cTerapia*> RadiacionTerapia;
 	RadiacionTerapia = MiPaciente->get_miFicha()->get_Terapia();
-	vector <cTumor*>RadiacionTumor;
-	RadiacionTumor = MiPaciente->get_miFicha()->get_Tumores();
 	float radTP = 0.0; //por terapia paciente
-	float radTT = 0.0; //por terapia tumor
-
+	int cont = 0;
 	for (int i = 0; i < RadiacionTerapia.size(); i++) {
 		cBT* auxcBT = dynamic_cast <cBT*> (RadiacionTerapia[i]);
 		//todo es de paciente,nada por tumor
 
-		if (auxcBT != NULL) {
-			radTP = (float)radTP + 180.0;//aca se calculo en paciente
-			radTT = radTT + ((float)RadiacionTumor[i].get_AcumRadiacion() * (0.6));//aca se calcula en tumor
-		}
-		cRTH* auxcRTH = dynamic_cast <cRTH*> (RadiacionTerapia[i]);
-		if (auxcRTH != NULL) {
-			radTP = radTP + 100;//aca se calcula en paciente
-			radTT = radTT + ((float)RadiacionTumor[i].get_AcumRadiacion()) * (0.3);//aca se calcula en tumor
-		}
-
-		cRS* auxcRS = dynamic_cast <cRS*> (RadiacionTerapia[i]);
-		if (auxcRS != NULL)
-		{
-			radTP = radTP + 100.0;//aca se calcula en paciente
-			radTT = radTT + ((float)RadiacionTumor[i].get_AcumRadiacion() * (0.1));//aca se calcula en tumor
-		}
+		if (auxcBT == NULL) {//seria radioterapia haz externo o sistematica
+			cont++;
+	    	//diversion!!
+		}	
 	}
-		radTP = radTP + radTT;//se calcula la total
-
-
-		if (radTP > 100.0) {//el minimo maximo es 100Gy
-			return false;
-		}
-		else {
-			return true;
-
-		}
+	if (cont == 0) {
+		radTP = 180;//solo hay terapia de braquiterapia
+	}
+	else {
+		radTP = 100;//hay por lo menos una,de haz externo o sistematica
+	}	
+	return(radTP);
 }
 
 

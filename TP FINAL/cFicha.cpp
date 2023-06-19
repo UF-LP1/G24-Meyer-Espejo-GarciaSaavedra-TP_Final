@@ -168,6 +168,18 @@ bool cFicha::get_Espera()
 {
 	return this->espera;
 }
+void  cFicha:: set_Tipo_T(vector<cTerapia*>TipoS) {
+		this->TipoT = TipoS;
+	}
+void cFicha::Agregar_Terapia(cTerapia* T) {
+	if (T != NULL) {
+		this->TipoT.push_back(T);
+	}
+}
+
+
+
+
 
 ostream& operator<<(ostream& out, cFicha& c)
 {
