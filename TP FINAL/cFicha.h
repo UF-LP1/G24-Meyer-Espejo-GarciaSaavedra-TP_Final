@@ -33,6 +33,7 @@ public:
 
 	string to_string();
 	
+
 	
 private:
 	cOncologo* OncologoAsignado;

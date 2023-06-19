@@ -19,3 +19,4 @@ void cSesion::set_Dosis(int dosis)
 {
 	this->Dosis = dosis;
 }
+

@@ -14,6 +14,7 @@ unsigned int cTerapia::get_DosisMaxP()
 	return this->DosMaxP;
 }
 
+
 unsigned int cTerapia::get_DosisMaxt()
 {
 	return this->DosMaxT;

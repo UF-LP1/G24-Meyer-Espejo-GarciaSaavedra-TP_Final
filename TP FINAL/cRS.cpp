@@ -14,3 +14,4 @@ int cRS::multiplicidadTerapia()
 	return (0.1);
 }
 
+

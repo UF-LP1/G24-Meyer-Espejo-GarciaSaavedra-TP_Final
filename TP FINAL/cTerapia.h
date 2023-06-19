@@ -11,6 +11,7 @@ public:
 	void set_DosisMaxt(unsigned int dosisT);
 	virtual int multiplicidadTerapia() = 0;
 
+
 protected:
 	unsigned int DosMaxP; //dosis maxima paciente
 	unsigned int DosMaxT; //dosis maxima tumor

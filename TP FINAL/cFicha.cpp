@@ -143,6 +143,7 @@ cOncologo* cFicha::get_Oncologo()
 	return this->OncologoAsignado;
 }
 
+
 void cFicha::set_Sesiones(vector<cSesion*> sesiones)
 {
 	this->Sesiones = sesiones;

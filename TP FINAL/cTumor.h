@@ -21,4 +21,5 @@ private:
 	eTamanio Tamanio;
 	static int AcumRadiacion;
 	bool benigno;
+
 };

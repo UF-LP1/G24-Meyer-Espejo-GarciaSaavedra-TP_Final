@@ -14,3 +14,4 @@ int cBT::multiplicidadTerapia()
 {
 	return (0.6);
 }
+

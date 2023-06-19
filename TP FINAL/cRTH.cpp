@@ -16,3 +16,4 @@ int cRTH::multiplicidadTerapia()
 	return (0.3);
 }
 
+
