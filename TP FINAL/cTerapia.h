@@ -17,3 +17,4 @@ protected:
 	unsigned int DosMaxT; //dosis maxima tumor
 
 };
+
