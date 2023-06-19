@@ -10,9 +10,9 @@ class cOncologo
 public:
 	cOncologo(string nombre, string apellido, unsigned int nro_matricula);
 	~cOncologo();
-	void AtenderCliente(cPaciente* paciente);
+	void AtenderCliente(cPaciente* paciente);//determina segun los estudios que el paciente ya tiene hechos, las características de cada tumor (puede tener uno o mas)
 	void DosisXSesion(cPaciente* paciente);
-	time_t TiempoTratamiento(cPaciente* paciente);
+	time_t TiempoTratamiento(cPaciente* paciente);//modifica el tiempo que va a estar el paciente en tratamiento
 	void VerificarFecha(cPaciente* paciente);
 	void Evaluacion(cPaciente* paciente);
 	void ReevaluacionTumores(cPaciente* paciente);

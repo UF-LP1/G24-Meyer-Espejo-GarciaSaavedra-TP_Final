@@ -21,6 +21,9 @@ public:
 	void set_Tumores(vector<cTumor*> tumores);
 	void set_EstadoRad(unsigned int estadorad);
 	void set_Finalizado(bool termino);
+	void set_Tipo_T(vector<cTerapia*>TipoS);
+	void Agregar_Terapia(cTerapia* T);
+	
 
 	//sobrecargas 
 	void operator+(cSesion* s); 
