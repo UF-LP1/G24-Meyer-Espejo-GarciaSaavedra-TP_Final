@@ -6,6 +6,7 @@ cPaciente::cPaciente(string nombre, time_t nacimiento, string sexo, string conta
 
 cPaciente::~cPaciente()
 {
+	delete[]this->miFicha;
 }
 
 float cPaciente::get_Salud()

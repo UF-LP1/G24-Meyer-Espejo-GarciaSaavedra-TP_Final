@@ -1,6 +1,7 @@
 #include "cTumor.h"
 
-
+int AcumRadiacion = 0; //inicializo el static
+//se va a ir incrementando en cada sesion
 
 cTumor::cTumor(eUbicacion ubicacion, eTamanio tamanio, int acumRadiacion, bool Benigno){
 	this->AcumRadiacion = 0; //se va a ir incrementando en cada sesion
@@ -15,6 +16,7 @@ cTumor::~cTumor()
 
 void cTumor::set_AcumRadiacion(int radiacion)
 {
+	this->AcumRadiacion = radiacion;
 }
 
 int cTumor::get_AcumRadiacion()

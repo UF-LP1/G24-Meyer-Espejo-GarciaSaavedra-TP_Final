@@ -19,6 +19,6 @@ public:
 private:
 	eUbicacion Ubicacion;
 	eTamanio Tamanio;
-	int AcumRadiacion;
+	static int AcumRadiacion;
 	bool benigno;
 };
