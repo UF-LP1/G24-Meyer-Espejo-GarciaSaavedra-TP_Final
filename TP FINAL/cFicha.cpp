@@ -4,7 +4,7 @@
 
 cFicha::cFicha()//constructor por defecto
 {
-	this->Oncologo = "";
+	this->OncologoAsignado = nullptr;
 	this->FechaInicio = 0;
 	this->estadoRad = 0;
 	this->espera = false;
@@ -53,7 +53,7 @@ void cFicha::operator-(cSesion* s)
 		{
 			if (Sesiones[i] == s) //lo busca
 			{
-				Sesiones.erase(Sesiones.begin() + i);
+				Sesiones.erase(Sesiones.begin() + i);//el principio del vector mas la posicion en la que encontro el elemento a eliminar
 			}
 		}
 	}
@@ -104,7 +104,7 @@ void cFicha::operator-(cTerapia* t)
 string cFicha::to_string()
 {
 	stringstream ss;
-	ss << "Oncologo a cargo" << this->Oncologo<<";Terapias";
+	ss << "Oncologo a cargo" << this->OncologoAsignado<<";Terapias";
 
 	for (int i = 0; TipoT.size(); i++)
 	{
@@ -175,9 +175,6 @@ void cFicha::Agregar_Terapia(cTerapia* T) {
 		this->TipoT.push_back(T);
 	}
 }
-
-
-
 
 
 ostream& operator<<(ostream& out, cFicha& c)
