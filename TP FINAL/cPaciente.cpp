@@ -1,7 +1,11 @@
 #include "cPaciente.h"
 
-cPaciente::cPaciente(string nombre, time_t nacimiento, string sexo, string contacto, string tiposangre){
-	
+cPaciente::cPaciente(string nombre, string sexo, string contacto, string tiposangre, float salud ){
+	this->Nombre = nombre;
+	this->Sexo = sexo;
+	this->Contacto = contacto;
+	this->TipoSangre = tiposangre;
+	this->Salud = salud;
 }
 
 cPaciente::~cPaciente()

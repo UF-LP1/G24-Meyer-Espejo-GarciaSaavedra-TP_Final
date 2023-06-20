@@ -11,6 +11,7 @@ cOncologo::~cOncologo()
 
 void cOncologo::AtenderPaciente(cPaciente *paciente)
 {
+
 	vector<cTumor*> PacienteTumores = paciente->get_miFicha()->get_Tumores();
 	int numT=0;
 	
@@ -61,7 +62,9 @@ void cOncologo::AtenderPaciente(cPaciente *paciente)
 			break;
 		}
 		PacienteTumores[i]->set_Ubicacion(ubiaux);
+
 	}
+	
 
 	//caracteristica de frecuenciasemanal
 	//en base a su salud

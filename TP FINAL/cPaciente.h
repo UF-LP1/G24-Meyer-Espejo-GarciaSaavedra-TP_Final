@@ -5,7 +5,7 @@
 class cPaciente
 {
 public:
-	cPaciente(string nombre, time_t nacimiento, string sexo, string contacto, string tiposangre);
+	cPaciente(string nombre, string sexo, string contacto, string tiposangre,float salud);
 	~cPaciente();
 	float get_Salud();
 	void set_Salud(float salud);
