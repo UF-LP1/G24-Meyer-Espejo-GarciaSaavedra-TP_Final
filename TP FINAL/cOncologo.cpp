@@ -9,8 +9,9 @@ cOncologo::~cOncologo()
 {}
 
 
-void cOncologo::AtenderPaciente(cPaciente *paciente)
+void cOncologo::AtenderPaciente(cPaciente* paciente)
 {
+	srand(time(NULL));
 
 	vector<cTumor*> PacienteTumores = paciente->get_miFicha()->get_Tumores();
 	int numT=0;

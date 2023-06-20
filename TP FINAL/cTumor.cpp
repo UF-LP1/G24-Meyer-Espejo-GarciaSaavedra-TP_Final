@@ -8,6 +8,10 @@ cTumor::cTumor(eUbicacion ubicacion, eTamanio tamanio, int acumRadiacion, bool B
 	this->Ubicacion = ubicacion;
 }
 
+cTumor::cTumor()
+{
+}
+
 cTumor::~cTumor()
 {
 	delete[]terapia;
