@@ -8,13 +8,13 @@
 class cDosimetrista
 {
 public:
-	cDosimetrista(string nombre, string apellido, string id);
+	cDosimetrista(string id);
 	~cDosimetrista();
 	void TipoTerapiaRecibir(cPaciente* MiPaciente);
 	string get_Nombre();
 	string get_Apellido();
 	string get_ID();
-	bool CalcularDosisMax(cPaciente* MiPaciente);
+	//bool CalcularDosisTotalTumor(cPaciente* MiPaciente);
 	int RadTotalPaciente(cPaciente* MiPaciente); //calcula la radiacion maxima posible en el paciente
 	//int RadTotalTumores(cPaciente* MiPaciente); 
 

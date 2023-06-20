@@ -1,7 +1,7 @@
 #pragma once
-#include "cTumor.h"
 #include "eUbicacion.h"
 #include "eTamanio.h"
+#include "cTerapia.h"
 
 class cTumor {
 public:
@@ -15,11 +15,12 @@ public:
 	void set_Tamanio(eTamanio tamanio);
 	bool get_benigno();
 	void set_benigno(bool Sano);
+	cTerapia* get_terapia();
 
 private:
 	eUbicacion Ubicacion;
 	eTamanio Tamanio;
-	static int AcumRadiacion;
+	int AcumRadiacion;
 	bool benigno;
-
+	cTerapia* terapia;
 };

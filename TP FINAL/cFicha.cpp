@@ -118,6 +118,8 @@ string cFicha::to_string()
 		ss << "-" << Tumores[i];
 	}
 
+	ss << "Frecuencia semanal es de " << this->FrecSemanalTratamiento;
+
 	return ss.str();
 }
 
@@ -176,6 +178,63 @@ void cFicha::Agregar_Terapia(cTerapia* T) {
 		this->TipoT.push_back(T);
 	}
 }
+
+void cFicha::set_FrecSemanal(int frec)
+{
+	this->FrecSemanalTratamiento = frec;
+}
+
+void cFicha::set_RadiacionMaxP(int r)
+{
+	this->RadiacionMaxPaciente = r;
+}
+
+void cFicha::set_espera(bool e)
+{
+	this->espera = e;
+}
+
+int cFicha::get_RadMaxPaciente()
+{
+	return this->RadiacionMaxPaciente;
+}
+
+void cFicha::CalcRadPaciente()
+{
+		//Radiacion_paciente = Tumores_RTPHazExterno * 0.3 + Tumores_Braquiterapia * 0.6+Tumores_Sistemico * 0.1
+		int RadPaciente = 0;
+		cTerapia* ptr_aux = nullptr;
+		for (int i = 0; Tumores.size(); i++)
+		{
+			ptr_aux = Tumores[i]->get_terapia();
+
+			if (dynamic_cast<cBT*>(ptr_aux) != NULL)
+			{
+				RadPaciente = RadPaciente + (Tumores[i]->get_AcumRadiacion() * 0.6);
+			}
+			else if (dynamic_cast<cRTH*>(ptr_aux) != NULL)
+			{
+				RadPaciente = RadPaciente + (Tumores[i]->get_AcumRadiacion() * 0.3);
+			}
+			else if (dynamic_cast<cRS*>(ptr_aux) != NULL)
+			{
+				RadPaciente = RadPaciente + (Tumores[i]->get_AcumRadiacion() * 0.1);
+			}
+
+		}
+
+		this->RadiacionPaciente = RadPaciente; //actualizando
+	
+}
+
+
+
+int cFicha::get_RadPaciente()
+{
+	return this->RadiacionPaciente;
+}
+
+
 
 
 ostream& operator<<(ostream& out, cFicha& c)

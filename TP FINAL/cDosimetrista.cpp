@@ -1,8 +1,6 @@
 
 #include "cDosimetrista.h"
-cDosimetrista::cDosimetrista(string nombre, string apellido, string id) {
-	this->Nombre = nombre;
-	this->Apellido = apellido;
+cDosimetrista::cDosimetrista( string id) {
 	this->ID = id;
 }
 cDosimetrista::~cDosimetrista()
@@ -90,11 +88,11 @@ void cDosimetrista:: TipoTerapiaRecibir( cPaciente *MiPaciente) {
 
 
 
-bool cDosimetrista::CalcularDosisMax(cPaciente* MiPaciente) {
-	vector <cTumor*>TumoresPresentes;
-
-	return false;
-}//falta hacer
+//bool cDosimetrista::CalcularDosisTotalTumor(cPaciente* MiPaciente) {
+//	vector <cTumor*>TumoresPresentes;
+//
+//	return false;
+//}
 
 
 
@@ -119,6 +117,7 @@ int cDosimetrista::RadTotalPaciente(cPaciente* MiPaciente) {
 	else {
 		radTP = 100;//hay por lo menos una,de haz externo o sistematica
 	}	
+	MiPaciente->get_miFicha()->set_RadiacionMaxP(radTP);
 	return(radTP);
 }
 

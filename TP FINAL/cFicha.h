@@ -23,7 +23,13 @@ public:
 	void set_Finalizado(bool termino);
 	void set_Tipo_T(vector<cTerapia*>TipoS);
 	void Agregar_Terapia(cTerapia* T);
-	
+	void set_FrecSemanal(int frec);
+	void set_RadiacionMaxP(int r);
+	void set_espera(bool e);
+	int get_RadMaxPaciente();
+	void CalcRadPaciente(); //incluido el set y la cuenta dada en la consigna
+	int get_RadPaciente();
+
 
 	//sobrecargas 
 	void operator+(cSesion* s); 
@@ -49,5 +55,7 @@ private:
 	vector<cTerapia*>TipoT; //se necesita imprimir
 	vector<cTumor*> Tumores; //se necesita imprimir 
 	vector<cSesion*> Sesiones;
+	int RadiacionMaxPaciente; //esta es el limite; la calcula el dosimetrista en el metodo RadTotalPaciente
+	int RadiacionPaciente;
 	
 };

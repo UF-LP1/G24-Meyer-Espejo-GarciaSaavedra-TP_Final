@@ -1,17 +1,15 @@
 #include "cOncologo.h"
 
-cOncologo::cOncologo(string nombre, string apellido, unsigned int nro_matricula)
+cOncologo::cOncologo(unsigned int nro_matricula)
 {
-	this->Apellido = apellido;
 	this->Nro_Matricula = nro_matricula;
-	this->Nombre = nombre;
 }
 
 cOncologo::~cOncologo()
 {}
 
 
-void cOncologo::AtenderCliente(cPaciente *paciente)
+void cOncologo::AtenderPaciente(cPaciente *paciente)
 {
 	vector<cTumor*> PacienteTumores = paciente->get_miFicha()->get_Tumores();
 	int numT=0;
@@ -64,6 +62,21 @@ void cOncologo::AtenderCliente(cPaciente *paciente)
 		}
 		PacienteTumores[i]->set_Ubicacion(ubiaux);
 	}
+
+	//caracteristica de frecuenciasemanal
+	//en base a su salud
+	unsigned int frecuencia;
+	if (paciente->get_Salud() < 0.30) {
+		frecuencia = 3;
+	}
+	else if (paciente->get_Salud() < 0.60) {
+		frecuencia = 2;
+	}
+	else {
+		frecuencia = 1;
+	}
+
+	paciente->get_miFicha()->set_FrecSemanal(frecuencia); //actualizo en la ficha
 }
 
 void cOncologo::DosisXSesion(cPaciente* paciente)
@@ -74,8 +87,6 @@ void cOncologo::DosisXSesion(cPaciente* paciente)
 	cTerapia* ptr_aux = nullptr;
 	int i = 0;
 	int r = 0;
-	int num = 0;
-
 
 	for (int j = 0; SusTerapias.size(); j++)
 	{
@@ -121,21 +132,21 @@ void cOncologo::DosisXSesion(cPaciente* paciente)
 	
 }
 
-void cOncologo::TiempoTratamiento(cPaciente* paciente)
+time_t cOncologo::TiempoTratamiento(cPaciente* paciente)
 {
 	vector<cTumor*> tumoresaux = paciente->get_miFicha()->get_Tumores();
 	time_t tiempoActual = time(nullptr);	
 	time_t nuevoTiempo=tiempoActual;
 	int max=0;
-	int dias = 60 * 60 * 24;
+	int dias =86400; //SEG en un dia
 	int mes = dias * 31;
 
-	if (paciente->get_miFicha()->get_Espera() == true) {//si esta en espera por radiacion y su tumor es grande, espera mas.
+	if (paciente->get_miFicha()->get_Espera() == true) {//si esta en espera por radiacion .
 		for (int i = 0; tumoresaux.size(); i++)
-			if (tumoresaux[i]->get_Tamanio() == grande)
+			if (tumoresaux[i]->get_Tamanio() == grande)//y su tumor es grande, espera mas
 				nuevoTiempo + 31 * dias;
-			else
-				nuevoTiempo + 15 * dias;
+			else //tumor mediano o pequenio
+				nuevoTiempo + 15 * dias; 
 
 		paciente->get_miFicha()->set_Tratamiento(nuevoTiempo);
 	}
@@ -223,6 +234,7 @@ void cOncologo::TiempoTratamiento(cPaciente* paciente)
 	}
 	nuevoTiempo += max;
 	paciente->get_miFicha()->set_Tratamiento(nuevoTiempo);
+	return nuevoTiempo;
 }
 
 void cOncologo::VerificarFecha(cPaciente *paciente)
@@ -253,6 +265,51 @@ unsigned int cOncologo::get_NroMatricula()
 	return this->Nro_Matricula;
 }
 
+bool cOncologo::VerificarSobredosis(cPaciente* paciente) 
+{
+	int cont = 0;
+	if (paciente->get_miFicha()->get_RadPaciente() > paciente->get_miFicha()->get_RadMaxPaciente())//se esta pasando de sobredosis
+	{
+		throw exceptionSobredosisP();
+		//mandarlo a espera hasta que mejore su salud
+		paciente->get_miFicha()->set_espera(true);
+		cont++; //estaria con sobredosis
+	}
+	
+
+	//tumores
+	vector<cTumor*>listatumores = paciente->get_miFicha()->get_Tumores();
+	cTerapia* ptr_aux = nullptr;
+	
+	for (int i = 0; listatumores.size(); i++) //recorro los tumores
+	{
+		ptr_aux = listatumores[i]->get_terapia();
+
+		if (dynamic_cast<cBT*>(ptr_aux) != NULL)
+		{
+			//radiacion max por tumor en branquiterapia es de 150
+			if (listatumores[i]->get_AcumRadiacion() > 150) {//Va a ver sobredosis en ese tumor
+				cont++;
+				paciente->get_miFicha()->set_espera(true);
+				throw exSobredosisTumor();
+			}
+		}
+		if (dynamic_cast<cRS*>(ptr_aux) != NULL|| dynamic_cast<cRTH*>(ptr_aux) != NULL)
+		{
+			//radiacion max por tumor es de 60
+			if (listatumores[i]->get_AcumRadiacion() > 60) {//Va a ver sobredosis en ese tumor
+				cont++;
+				paciente->get_miFicha()->set_espera(true);
+				throw exSobredosisTumor();
+
+			}
+		}
+	}
+
+	if (cont != 0)
+		return true; //va a ver sobredosis
+}
+
 
 
 void cOncologo::Evaluacion(cPaciente* paciente)
@@ -267,21 +324,19 @@ void cOncologo::Evaluacion(cPaciente* paciente)
 	{
 
 		while (i < tumoraux.size()) {
-			if (tumoraux[i]->get_benigno() == true) {
+			if (tumoraux[i]->get_benigno() == true) { //si el tumor esta sano; lo saco de la lista de tumores
 				tumoraux.erase(tumoraux.begin() + i);
 			}
 			else
 				i++;
-
 		}
 
-		/*Si se elimina un elemento, no se incrementa i en ese caso,
-			ya que el próximo elemento ocupa su posición.Solo se incrementa i si no se elimina un elemento.*/
-
 		if (tumoraux.empty())//si el vector no tiene mas tumores osea esta vacio, cambio el estado de finalizacion a true
+			//se considera que termino el tratamiento
 			fichaaux->set_Finalizado(true);
 		else
 		{
+			paciente->get_miFicha()->set_espera(false); //cumplio ya el tiempo de espera solicitado (esta dentro del calculo de TiempoTratamiento)
 			time_t TimeTratamientoUpdate = TiempoTratamiento(paciente);
 			fichaaux->set_Tratamiento(TimeTratamientoUpdate);//alargar el tiempo de tratamiento
 		}

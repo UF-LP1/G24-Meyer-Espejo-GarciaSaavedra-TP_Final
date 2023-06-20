@@ -6,3 +6,4 @@ using namespace std;
 #include<ctime>
 #include <sstream>
 #include <ostream>
+#include<exception>

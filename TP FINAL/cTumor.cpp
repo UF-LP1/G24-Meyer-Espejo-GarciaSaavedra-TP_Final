@@ -1,7 +1,5 @@
 #include "cTumor.h"
 
-int AcumRadiacion = 0; //inicializo el static
-//se va a ir incrementando en cada sesion
 
 cTumor::cTumor(eUbicacion ubicacion, eTamanio tamanio, int acumRadiacion, bool Benigno){
 	this->AcumRadiacion = 0; //se va a ir incrementando en cada sesion
@@ -12,6 +10,7 @@ cTumor::cTumor(eUbicacion ubicacion, eTamanio tamanio, int acumRadiacion, bool B
 
 cTumor::~cTumor()
 {
+	delete[]terapia;
 }
 
 void cTumor::set_AcumRadiacion(int radiacion)
@@ -52,4 +51,9 @@ bool cTumor::get_benigno()
 void cTumor::set_benigno(bool Sano)
 {
 	this->benigno = Sano;
+}
+
+cTerapia* cTumor::get_terapia()
+{
+	return this->terapia;
 }
