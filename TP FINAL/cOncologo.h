@@ -20,6 +20,7 @@ public:
 	string get_NroMatricula();
 	bool VerificarSobredosis(cPaciente* paciente);
 	void Indicador_Tumores(cPaciente* paciente);
+
 private:
 	string Nombre;
 	string Apellido;

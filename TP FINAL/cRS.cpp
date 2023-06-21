@@ -12,7 +12,7 @@ cRS::~cRS()
 {
 }
 
-int cRS::multiplicidadTerapia()
+float cRS::multiplicidadTerapia()
 {
 	return (0.1);
 }

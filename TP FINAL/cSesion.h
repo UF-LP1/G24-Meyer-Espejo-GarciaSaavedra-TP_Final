@@ -3,12 +3,13 @@
 
 class cSesion {
 public:
-	cSesion(bool asistencia, float dosis);
+	cSesion(bool asistencia, int dosis);
 	~cSesion();
 	bool get_Asist();
-	void set_Dosis(int dosis);
+	void set_Dosis(float dosis);
+	int get_Dosis();
 
 private:
 	bool Asistencia;
-	float Dosis;
+	int Dosis;
 };

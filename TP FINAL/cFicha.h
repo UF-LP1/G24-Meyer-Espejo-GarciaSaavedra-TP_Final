@@ -20,7 +20,9 @@ public:
 	void set_Tratamiento(time_t fechatratamiento);
 	void set_Sesiones(vector<cSesion*> sesiones);
 	void set_Tumores(vector<cTumor*> tumores);
+
 	void set_EstadoRad(unsigned int estadorad);
+
 	void set_Finalizado(bool termino);
     void set_FrecSemanal(int frec);
 	void set_RadiacionMaxP(int r);
@@ -56,5 +58,4 @@ private:
 	vector<cSesion*> Sesiones;
 	int RadiacionMaxPaciente; //esta es el limite; la calcula el dosimetrista en el metodo RadTotalPaciente
 	int RadiacionPaciente;
-	
 };

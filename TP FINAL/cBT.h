@@ -8,5 +8,5 @@ public:
 	cBT(eTamanio TAmanio,eUbicacion UBicacion);
 	cBT();
 	~cBT();
-	int multiplicidadTerapia();
+	float multiplicidadTerapia();
 };

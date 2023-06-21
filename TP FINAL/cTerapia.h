@@ -10,7 +10,7 @@ public:
 	unsigned int get_DosisMaxt();
 	void set_DosisMaxP(unsigned int dosisP);
 	void set_DosisMaxt(unsigned int dosisT);
-	virtual int multiplicidadTerapia() = 0;
+	virtual float multiplicidadTerapia() = 0;
 
 
 protected:

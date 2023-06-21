@@ -11,6 +11,8 @@ cFicha::cFicha()//constructor por defecto
 	this->Finalizado = false;
 	this->Tratamiento = 0;
 	this-> FrecSemanalTratamiento = 0;
+	this->RadiacionMaxPaciente = 0;
+	this->RadiacionPaciente = 0;
 }
 
 cFicha::~cFicha()
@@ -190,15 +192,15 @@ void cFicha::CalcRadPaciente()
 
 			if (dynamic_cast<cBT*>(ptr_aux) != NULL)
 			{
-				RadPaciente = RadPaciente + (Tumores[i]->get_AcumRadiacion() * 0.6);
+				RadPaciente = RadPaciente + ((float)Tumores[i]->get_AcumRadiacion() * 0.6);
 			}
 			else if (dynamic_cast<cRTH*>(ptr_aux) != NULL)
 			{
-				RadPaciente = RadPaciente + (Tumores[i]->get_AcumRadiacion() * 0.3);
+				RadPaciente = RadPaciente + ((float)Tumores[i]->get_AcumRadiacion() * 0.3);
 			}
 			else if (dynamic_cast<cRS*>(ptr_aux) != NULL)
 			{
-				RadPaciente = RadPaciente + (Tumores[i]->get_AcumRadiacion() * 0.1);
+				RadPaciente = RadPaciente + ((float)Tumores[i]->get_AcumRadiacion() * 0.1);
 			}
 
 		}

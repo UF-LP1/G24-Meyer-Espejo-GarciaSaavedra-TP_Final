@@ -14,7 +14,7 @@ cBT::~cBT()
 {
 }
 
-int cBT::multiplicidadTerapia()
+float cBT::multiplicidadTerapia()
 {
 	return (0.6);
 }

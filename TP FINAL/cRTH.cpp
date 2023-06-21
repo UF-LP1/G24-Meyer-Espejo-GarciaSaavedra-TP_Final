@@ -13,7 +13,7 @@ cRTH::cRTH()
 {
 }
 
-int cRTH::multiplicidadTerapia()
+float cRTH::multiplicidadTerapia()
 {
 	return (0.3);
 }

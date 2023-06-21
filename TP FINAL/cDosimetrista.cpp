@@ -6,53 +6,38 @@ cDosimetrista::cDosimetrista() {
 cDosimetrista::~cDosimetrista()
 {}
 
-void cDosimetrista:: TipoTerapiaRecibir( cPaciente *MiPaciente) {
+void cDosimetrista::TipoTerapiaRecibir(cPaciente* MiPaciente) {
 
 	vector <cTumor*>TumoresPresentes; //tenes que hacer un auxiliar donde se guarden la lista de tumores del paciente  y recorrerla para sacar de cada uno la ubicacion y hacer el los if para ver que tipo de terapia
- //esta mal tendria que ser
- 	 TumoresPresentes =  MiPaciente->get_miFicha()->get_Tumores();
-	 
-	 for (int i = 0; i < TumoresPresentes.size(); i++) {
-		 eUbicacion Ubi = TumoresPresentes[i]->get_Ubicacion();
-		 eTamanio Size = TumoresPresentes[i]->get_Tamanio();
-		 if (Ubi == ojo) {
-			 cTerapia* diagnostico = new cBT();
-		 }
-		 if (Ubi == mama || Ubi == cuello || Ubi == utero) {
-			 if (Size == grande) {
-				 cTerapia* diagnostico = new cBT();
-			 }
-			 else
-			 {
-				 cTerapia* diagnostico = new cRTH();
-			 }
-		 }
-		 if (Ubi == tiroides || Ubi == prostata) {
-			 if (Size == grande) {
-				 cTerapia* diagnostico = new cRS();
-			 }
-			 else {
-				 cTerapia* diagnostico = new cRTH();
-			 }
+	//esta mal tendria que ser
+	TumoresPresentes = MiPaciente->get_miFicha()->get_Tumores();
 
-		         }
-	     }
- 
-	
-       
-		
- 
+	for (int i = 0; i < TumoresPresentes.size(); i++) {
+		eUbicacion Ubi = TumoresPresentes[i]->get_Ubicacion();
+		eTamanio Size = TumoresPresentes[i]->get_Tamanio();
+		if (Ubi == ojo) {
+			cTerapia* diagnostico = new cBT();
+		}
+		if (Ubi == mama || Ubi == cuello || Ubi == utero) {
+			if (Size == grande) {
+				cTerapia* diagnostico = new cBT();
+			}
+			else
+			{
+				cTerapia* diagnostico = new cRTH();
+			}
+		}
+		if (Ubi == tiroides || Ubi == prostata) {
+			if (Size == grande) {
+				cTerapia* diagnostico = new cRS();
+			}
+			else {
+				cTerapia* diagnostico = new cRTH();
+			}
 
- 
-
+		}
+	}
 }
-
-
-
-
-
-
-
 
 //bool cDosimetrista::CalcularDosisTotalTumor(cPaciente* MiPaciente) {
 //	vector <cTumor*>TumoresPresentes;

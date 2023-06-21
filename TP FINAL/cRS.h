@@ -7,6 +7,6 @@ public:
 	cRS(eTamanio TAmanio, eUbicacion UBicacion);
 	cRS();
 	~cRS();
-	int multiplicidadTerapia(); 
+	float multiplicidadTerapia(); 
 
 };

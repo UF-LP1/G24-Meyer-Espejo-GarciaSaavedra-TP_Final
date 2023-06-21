@@ -8,6 +8,6 @@ public:
 	cRTH(eTamanio TAmanio, eUbicacion UBicacion);
 	cRTH();
 	~cRTH();
-	int multiplicidadTerapia();
+	float multiplicidadTerapia();
 
 };

@@ -11,7 +11,7 @@ cOncologo::~cOncologo()
 
 void cOncologo::AtenderPaciente(cPaciente* paciente)
 {
-	srand(time(NULL));
+	srand((unsigned int)time(NULL));//casteo para evitar advertencia, srand quiere de tipo unsigned int, time devuelve de tipo time_t
 	Indicador_Tumores(paciente);
 	vector<cTumor*> PacienteTumores = paciente->get_miFicha()->get_Tumores();
 	int numT=0;
@@ -29,9 +29,6 @@ void cOncologo::AtenderPaciente(cPaciente* paciente)
 		}
 		else
 			PacienteTumores[i]->set_Tamanio(grande);
-
-
-
 	}
 	
 
@@ -58,53 +55,64 @@ void cOncologo::DosisXSesion(cPaciente* paciente)
 	float saludaux = paciente->get_Salud();
 	vector<cSesion*> sesionaux = paciente->get_miFicha()->get_Sesiones();
 	vector<cTerapia*>SusTerapias = paciente->get_miFicha()->get_Terapia();
+	vector<cTumor*> tumoraux = paciente->get_miFicha()->get_Tumores();
 	cTerapia* ptr_aux = nullptr;
 	int i = 0;
 	int r = 0;
+	int acumRadxSesionRTH = 0;
+	int acumRadxSesionBT = 0;
+	int acumRadxSesionRS = 0;
 
 	for (int j = 0; SusTerapias.size(); j++)
 	{
 		ptr_aux = SusTerapias[j];
-	
 
-		while (i < sesionaux.size() && saludaux < 0, 5) {//Salud """""mala""",
+		while (i < sesionaux.size() && saludaux < 0.5) {//Salud """""mala""",
 			//menor dosis
 			if (dynamic_cast<cRTH*>(ptr_aux) != NULL) {
 				sesionaux[i]->set_Dosis(1);
+				acumRadxSesionRTH += sesionaux[i]->get_Dosis();
 			}
 			else {
 				if (dynamic_cast<cBT*>(ptr_aux) != NULL) {
 					sesionaux[i]->set_Dosis(6);
+					acumRadxSesionBT += sesionaux[i]->get_Dosis();
 				}
 
 				if (dynamic_cast<cRS*>(ptr_aux) != NULL) {
 					sesionaux[i]->set_Dosis(2);
+					acumRadxSesionRS += sesionaux[i]->get_Dosis();
 				}
 			}
-
-			paciente->get_miFicha()->set_Sesiones(sesionaux); // actualizo dosis x sesion
 		}
 
-		while (r < sesionaux.size() && saludaux > 0, 5) {//salud """"buena""""
+		while (r < sesionaux.size() && saludaux > 0.5) {//salud """"buena""""
 
 			if (dynamic_cast<cRTH*>(ptr_aux) != NULL) {
 				sesionaux[r]->set_Dosis(2);
+				acumRadxSesionRTH += sesionaux[i]->get_Dosis();
 			}
 			else {
 				if (dynamic_cast<cBT*>(ptr_aux) != NULL) {
 					sesionaux[r]->set_Dosis(6);
+					acumRadxSesionBT += sesionaux[i]->get_Dosis();
 				}
 				if (dynamic_cast<cRS*>(ptr_aux) != NULL) {
 					sesionaux[r]->set_Dosis(4);
+					acumRadxSesionRS += sesionaux[i]->get_Dosis();
 				}
-				paciente->get_miFicha()->set_Sesiones(sesionaux); // actualizo dosis xsesion
 				r++;
 			}
 
 		}
+		tumoraux[j]->set_AcumRadiacion(acumRadxSesionBT);
+		tumoraux[j]->set_AcumRadiacion(acumRadxSesionRTH);
+		tumoraux[j]->set_AcumRadiacion(acumRadxSesionRS);
 	}
-	
+	paciente->get_miFicha()->set_Sesiones(sesionaux);
+	paciente->get_miFicha()->set_Tumores(tumoraux);
 }
+
 
 time_t cOncologo::TiempoTratamiento(cPaciente* paciente)
 {
@@ -118,9 +126,9 @@ time_t cOncologo::TiempoTratamiento(cPaciente* paciente)
 	if (paciente->get_miFicha()->get_Espera() == true) {//si esta en espera por radiacion .
 		for (int i = 0; tumoresaux.size(); i++)
 			if (tumoresaux[i]->get_Tamanio() == grande)//y su tumor es grande, espera mas
-				nuevoTiempo + 31 * dias;
+				(nuevoTiempo + 31 * dias);
 			else //tumor mediano o pequenio
-				nuevoTiempo + 15 * dias; 
+				(nuevoTiempo + 15 * dias); 
 
 		paciente->get_miFicha()->set_Tratamiento(nuevoTiempo);
 	}
@@ -282,6 +290,8 @@ bool cOncologo::VerificarSobredosis(cPaciente* paciente)
 
 	if (cont != 0)
 		return true; //va a ver sobredosis
+	else
+		return false;
 }
 
 
@@ -319,22 +329,19 @@ void cOncologo::Evaluacion(cPaciente* paciente)
 
 void cOncologo:: Indicador_Tumores(cPaciente* paciente) {
 
-	srand(time(NULL));
+	srand((unsigned int)time(NULL));
 	int ntumores = rand() % 3 + 1;
 	vector<cTumor*>aux;
 	eUbicacion Ubi;
-	int num;
+	//int num=0;
 	for (int i = 0; i < ntumores; i++) {
 	Ubi =eUbicacion(rand() % 8);
 	cTumor* nuevo = new cTumor(Ubi);
 	aux.push_back(nuevo);
 
-
 	}
 	paciente->get_miFicha()->set_Tumores(aux);
 
-
-
-
-
 }
+
+
