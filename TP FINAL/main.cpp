@@ -1,6 +1,7 @@
 #include "Header.h"
 #include "cOncologo.h"
 #include "cPaciente.h"
+#include "cDosimetrista.h"
 
 int main() {
 	string nombre;
@@ -25,19 +26,11 @@ int main() {
 
 	paciente1->set_miFicha(fichapaciente1); //le setteo la ficha al paciente
 
-	//crear tumores que tenga el paciente
-	cTumor* tumor1 = new cTumor();
-	cTumor* tumor2 = new cTumor();
-	cTumor* tumor3 = new cTumor();
-
-	vector<cTumor*>TumoresPaciente;
-	TumoresPaciente.push_back(tumor1);
-	TumoresPaciente.push_back(tumor2);
-	TumoresPaciente.push_back(tumor3);
-
-	paciente1->get_miFicha()->set_Tumores(TumoresPaciente); //se los agrego a su ficha la lista de tumores del paciente
 	
-	cOncologo* oncologo1 = new cOncologo(2345);
+
+	
+	
+	cOncologo* oncologo1 = new cOncologo("2345");
 
 	oncologo1->AtenderPaciente(paciente1); //actualiza los tumores;y sus caraceristicas en la ficha; en base a estudios
 
@@ -49,16 +42,9 @@ int main() {
 
 	oncologo1->VerificarFecha(paciente1); //desp lo verifico pero primero tengo que hacer atendercliente
 
+	
+	cDosimetrista* Dosimetrista1=new cDosimetrista();
 
-
-
-
-
-
-
-
-
-
-
+	Dosimetrista1->TipoTerapiaRecibir(paciente1);
 	return 0;
 }

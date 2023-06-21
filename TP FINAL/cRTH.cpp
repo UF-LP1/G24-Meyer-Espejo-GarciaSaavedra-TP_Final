@@ -1,14 +1,16 @@
 #include "cRTH.h"
 
-cRTH::cRTH(int DosMaxP,int DosMaxT):cTerapia()
-{
-	this->DosMaxP = 100;
-	this->DosMaxT = 60;
+cRTH::cRTH(eTamanio TAmanio, eUbicacion UBicacion) {
+
 }
 
 cRTH::~cRTH()
 {
 	
+}
+
+cRTH::cRTH()
+{
 }
 
 int cRTH::multiplicidadTerapia()

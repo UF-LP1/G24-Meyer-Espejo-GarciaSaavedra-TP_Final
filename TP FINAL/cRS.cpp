@@ -1,8 +1,11 @@
 #include "cRS.h"
 
-cRS::cRS(int DosMaxP, int DosMaxT):cTerapia(){
-	this->DosMaxP = 100;
-	this->DosMaxT = 60;
+cRS::cRS(eTamanio TAmanio, eUbicacion UBicacion) {
+
+}
+
+cRS::cRS()
+{
 }
 
 cRS::~cRS()

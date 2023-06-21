@@ -4,7 +4,7 @@
 
 cFicha::cFicha()//constructor por defecto
 {
-	this->OncologoAsignado = nullptr;
+	
 	this->FechaInicio = 0;
 	this->estadoRad = 0;
 	this->espera = false;
@@ -15,7 +15,19 @@ cFicha::cFicha()//constructor por defecto
 
 cFicha::~cFicha()
 {
-	for (cTerapia* aux : this->TipoT) {
+	for (cTerapia* aux : this->Terapias) {
+		if (aux != nullptr)
+		{
+			delete aux;
+		}
+	}
+	for (cTumor* aux : this->Tumores) {
+		if (aux != nullptr)
+		{
+			delete aux;
+		}
+	}
+	for (cSesion* aux : this->Sesiones) {
 		if (aux != nullptr)
 		{
 			delete aux;
@@ -79,39 +91,16 @@ void cFicha::operator-(cTumor* t)
 	}
 }
 
-void cFicha::operator+(cTerapia* t)
-{
-	if (t !=nullptr)
-	{
-		TipoT.push_back(t);
-	}
-}
 
-void cFicha::operator-(cTerapia* t)
-{
-	if (t != nullptr)
-	{
-		for (int i = 0; TipoT.size(); i++)
-		{
-			if (TipoT[i] == t) //lo busca
-			{
-				TipoT.erase(TipoT.begin() + i);
-			}
-		}
-	}
-}
+
+
 
 string cFicha::to_string()
 {
 	stringstream ss;
-	ss << "Oncologo a cargo" << this->OncologoAsignado<<";Terapias";
+	ss << "Oncologo a cargo" << this->OncologoAsignadoID;
 
-	for (int i = 0; TipoT.size(); i++)
-	{
-		ss << "-" << TipoT[i];
-	}
-
-	ss << ";Tumores";
+		ss << ";Tumores";
 
 	for (int i = 0; Tumores.size(); i++)
 	{
@@ -135,14 +124,11 @@ void cFicha::set_Tratamiento(time_t fechatratamiento)
 	this->Tratamiento = fechatratamiento;
 }
 
-vector<cTerapia*> cFicha::get_Terapia()
-{
-	return this-> TipoT;
-}
 
-cOncologo* cFicha::get_Oncologo()
+
+string cFicha::get_Oncologo()
 {
-	return this->OncologoAsignado;
+	return this->OncologoAsignadoID;
 }
 
 
@@ -170,14 +156,8 @@ bool cFicha::get_Espera()
 {
 	return this->espera;
 }
-void  cFicha:: set_Tipo_T(vector<cTerapia*>TipoS) {
-		this->TipoT = TipoS;
-	}
-void cFicha::Agregar_Terapia(cTerapia* T) {
-	if (T != NULL) {
-		this->TipoT.push_back(T);
-	}
-}
+
+
 
 void cFicha::set_FrecSemanal(int frec)
 {
@@ -234,6 +214,24 @@ int cFicha::get_RadPaciente()
 	return this->RadiacionPaciente;
 }
 
+void cFicha::actualizar_Terapia()
+{
+	vector<cTerapia*>Auxiliar;
+	cTerapia* aux = NULL;
+
+	for (int i = 0; Tumores.size(); i++) {
+		
+		aux = Tumores[i]->get_terapia();
+		Auxiliar.push_back(aux);
+}
+	this->Terapias = Auxiliar;
+}
+
+vector<cTerapia*> cFicha::get_Terapia()
+{
+	return this->Terapias; 
+}
+
 
 
 
@@ -242,4 +240,8 @@ ostream& operator<<(ostream& out, cFicha& c)
 	out << c.to_string();
 	return out;
 }
+void cFicha:: set_oncologo(string o) {
 
+
+	this->OncologoAsignadoID = o;
+}

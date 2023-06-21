@@ -1,15 +1,15 @@
 #pragma once
 #include "Header.h"
-#include "cPaciente.h"
 #include"exception.h"
 
 #include "cRS.h"
 #include "cBT.h"
 #include "cRTH.h"
+#include "cPaciente.h"
 class cOncologo
 {
 public:
-	cOncologo(unsigned int nro_matricula);
+	cOncologo(string nro_matricula);
 	~cOncologo();
 	void AtenderPaciente(cPaciente* paciente);//determina segun los estudios que el paciente ya tiene hechos, las características de cada tumor y frec semanal
 	void DosisXSesion(cPaciente* paciente);
@@ -17,11 +17,12 @@ public:
 	void VerificarFecha(cPaciente* paciente);
 	void Evaluacion(cPaciente* paciente);
 	void ReevaluacionTumores(cPaciente* paciente);
-	unsigned int get_NroMatricula();
+	string get_NroMatricula();
 	bool VerificarSobredosis(cPaciente* paciente);
+	void Indicador_Tumores(cPaciente* paciente);
 private:
 	string Nombre;
 	string Apellido;
-	unsigned int Nro_Matricula;
+	string Nro_Matricula;
 };
 

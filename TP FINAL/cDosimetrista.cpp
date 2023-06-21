@@ -1,7 +1,7 @@
 
 #include "cDosimetrista.h"
-cDosimetrista::cDosimetrista( string id) {
-	this->ID = id;
+cDosimetrista::cDosimetrista() {
+	
 }
 cDosimetrista::~cDosimetrista()
 {}
@@ -12,79 +12,45 @@ void cDosimetrista:: TipoTerapiaRecibir( cPaciente *MiPaciente) {
  //esta mal tendria que ser
  	 TumoresPresentes =  MiPaciente->get_miFicha()->get_Tumores();
 	 
-	 cBT* auxcbt = {};
-
- for(int i=0;i<TumoresPresentes.size();i++){
-
-	 if (TumoresPresentes[i]->get_Ubicacion() == ojo) {
-
-		 MiPaciente->get_miFicha()->Agregar_Terapia(cBT);
-	 }
-
-	 if (TumoresPresentes[i]->get_Ubicacion() == cuello)
-	 {
-		 if (TumoresPresentes[i]->get_Tamanio() == grande) {
-
-
-			 MiPaciente->get_miFicha()->Agregar_Terapia(auxcbt);
-
+	 for (int i = 0; i < TumoresPresentes.size(); i++) {
+		 eUbicacion Ubi = TumoresPresentes[i]->get_Ubicacion();
+		 eTamanio Size = TumoresPresentes[i]->get_Tamanio();
+		 if (Ubi == ojo) {
+			 cTerapia* diagnostico = new cBT();
 		 }
-		 else {
-			 MiPaciente->get_miFicha()->Agregar_Terapia(auxcrth);
+		 if (Ubi == mama || Ubi == cuello || Ubi == utero) {
+			 if (Size == grande) {
+				 cTerapia* diagnostico = new cBT();
+			 }
+			 else
+			 {
+				 cTerapia* diagnostico = new cRTH();
+			 }
 		 }
-	 }
- if (TumoresPresentes[i]->get_Ubicacion() == mama)
- {
-	 if (TumoresPresentes[i]->get_Tamanio() == grande) {
+		 if (Ubi == tiroides || Ubi == prostata) {
+			 if (Size == grande) {
+				 cTerapia* diagnostico = new cRS();
+			 }
+			 else {
+				 cTerapia* diagnostico = new cRTH();
+			 }
 
+		         }
+	     }
+ 
+	
+       
+		
+ 
 
-		 MiPaciente->get_miFicha()->Agregar_Terapia(auxcbt);
-
-	 }
-	 else {
-		 MiPaciente->get_miFicha()->Agregar_Terapia(auxcrth);
-	 }
-           }
-
-    if (TumoresPresentes[i]->get_Ubicacion() == utero)
-  {
-	if (TumoresPresentes[i]->get_Tamanio() == grande) {
-
-
-		MiPaciente->get_miFicha()->Agregar_Terapia(auxcbt);
-
-	}
-	else {
-		MiPaciente->get_miFicha()->Agregar_Terapia(auxcrth);
-	}
-       }
-			if (TumoresPresentes[i]->get_Ubicacion() == tiroides)
-			{
-
-				if (TumoresPresentes[i]->get_Tamanio() == grande) {
-
-
-					MiPaciente->get_miFicha()->Agregar_Terapia(auxcrs);
-
-				}
-				else {
-					MiPaciente->get_miFicha()->Agregar_Terapia(auxcrth);
-				}
-			}
-			
-			if (TumoresPresentes[i]->get_Ubicacion() == prostata)
-			{
-				if (TumoresPresentes[i]->get_Tamanio() == grande) {
-
-					MiPaciente->get_miFicha()->Agregar_Terapia(auxcrs);
-				}
-			}
-			else {
-				MiPaciente->get_miFicha()->Agregar_Terapia(auxcrth);
-			}
-	}
+ 
 
 }
+
+
+
+
+
 
 
 

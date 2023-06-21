@@ -1,9 +1,13 @@
 #include "cBT.h"
 
-cBT::cBT():cTerapia()
+
+
+cBT::cBT(eTamanio TAmanio, eUbicacion UBicacion)
 {
-	this->DosMaxP = 180;
-	this->DosMaxT = 150;
+}
+
+cBT::cBT()
+{
 }
 
 cBT::~cBT()

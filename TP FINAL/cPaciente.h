@@ -14,7 +14,7 @@ public:
 	void set_miFicha(cFicha* fichaActualizada);
 	string to_string();
 	friend ostream& operator<< (ostream& out, cPaciente& c);
-	bool operator== (cOncologo& oncologo);
+	bool operator== (string oncologo);
 
 private: 
 	string Nombre;

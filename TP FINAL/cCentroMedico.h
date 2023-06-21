@@ -8,7 +8,7 @@ public:
 	~cCentroMedico();
 	void AsistenciaPaciente(cPaciente *miPaciente);
 	string to_string();
-	void Imprimir();
+	
 
 
 

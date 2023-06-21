@@ -1,6 +1,6 @@
 #include "cOncologo.h"
 
-cOncologo::cOncologo(unsigned int nro_matricula)
+cOncologo::cOncologo(string nro_matricula)
 {
 	this->Nro_Matricula = nro_matricula;
 }
@@ -12,7 +12,7 @@ cOncologo::~cOncologo()
 void cOncologo::AtenderPaciente(cPaciente* paciente)
 {
 	srand(time(NULL));
-
+	Indicador_Tumores(paciente);
 	vector<cTumor*> PacienteTumores = paciente->get_miFicha()->get_Tumores();
 	int numT=0;
 	
@@ -30,39 +30,7 @@ void cOncologo::AtenderPaciente(cPaciente* paciente)
 		else
 			PacienteTumores[i]->set_Tamanio(grande);
 
-		//caracteristicas de ubicacion
-		int opcion = rand() % 9;
-		eUbicacion ubiaux;
-		switch (opcion) {
-		case 0:
-			ubiaux = cabeza;
-			break;
-		case 1:
-			ubiaux = pulmon;
-			break;
-		case 2:
-			ubiaux = cuello;
-			break;
-		case 3:
-			ubiaux = mama;
-			break;
-		case 4:
-			ubiaux = utero;
-			break;
-		case 5:
-			ubiaux = ojo;
-			break;
-		case 6:
-			ubiaux = tiroides;
-			break;
-		case 7:
-			ubiaux = prostata;
-			break;
-		default:
-			ubiaux = intestino;
-			break;
-		}
-		PacienteTumores[i]->set_Ubicacion(ubiaux);
+
 
 	}
 	
@@ -81,6 +49,8 @@ void cOncologo::AtenderPaciente(cPaciente* paciente)
 	}
 
 	paciente->get_miFicha()->set_FrecSemanal(frecuencia); //actualizo en la ficha
+	string num = this->Nro_Matricula;
+	paciente->get_miFicha()->set_oncologo(num);//asigno oncolog al paciente
 }
 
 void cOncologo::DosisXSesion(cPaciente* paciente)
@@ -264,7 +234,7 @@ void cOncologo::ReevaluacionTumores(cPaciente* paciente)
 	}
 }
 
-unsigned int cOncologo::get_NroMatricula()
+string cOncologo::get_NroMatricula()
 {
 	return this->Nro_Matricula;
 }
@@ -345,4 +315,26 @@ void cOncologo::Evaluacion(cPaciente* paciente)
 			fichaaux->set_Tratamiento(TimeTratamientoUpdate);//alargar el tiempo de tratamiento
 		}
 	}
+}
+
+void cOncologo:: Indicador_Tumores(cPaciente* paciente) {
+
+	srand(time(NULL));
+	int ntumores = rand() % 3 + 1;
+	vector<cTumor*>aux;
+	eUbicacion Ubi;
+	int num;
+	for (int i = 0; i < ntumores; i++) {
+	Ubi =eUbicacion(rand() % 8);
+	cTumor* nuevo = new cTumor(Ubi);
+	aux.push_back(nuevo);
+
+
+	}
+	paciente->get_miFicha()->set_Tumores(aux);
+
+
+
+
+
 }

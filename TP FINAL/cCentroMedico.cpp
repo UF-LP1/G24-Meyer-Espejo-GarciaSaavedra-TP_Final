@@ -9,7 +9,7 @@ cCentroMedico::cCentroMedico(string nombre, string direccion, string telefono) {
 cCentroMedico::~cCentroMedico(){}
 
 void cCentroMedico::AsistenciaPaciente(cPaciente *miPaciente) {
-	vector<cSesion*> SesionesPaciente = miPaciente->get_miFicha().get_Sesiones();
+	vector<cSesion*> SesionesPaciente = miPaciente->get_miFicha()->get_Sesiones();
 	int contInasistencia = 0;
 	for (int i = 0; i < SesionesPaciente.size(); i++)
 	{
@@ -27,7 +27,7 @@ void cCentroMedico::AsistenciaPaciente(cPaciente *miPaciente) {
 		if (aux == 2) // considero que no va a seguir con el tratamiento
 		{
 			//le doy por finalizado el tratamiento
-			miPaciente->get_miFicha().set_Finalizado(true);
+			miPaciente->get_miFicha()->set_Finalizado(true);
 		}
 	}
 
@@ -43,8 +43,4 @@ ostream& operator<<(ostream& OUT, cCentroMedico& centroM) {
 	OUT << centroM.to_string() << endl;
 	return OUT;
 }
-void cCentroMedico::Imprimir()
-{
-	cCentroMedico centro("zzzz", "sarmiento 1810", "3434344t65234");
-	cout << centro << endl;
-}
+

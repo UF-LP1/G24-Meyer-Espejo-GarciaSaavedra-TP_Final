@@ -5,7 +5,8 @@
 class cRTH :public cTerapia {
 	
 public:
-	cRTH(int DosMaxP, int DosMaxT);
+	cRTH(eTamanio TAmanio, eUbicacion UBicacion);
+	cRTH();
 	~cRTH();
 	int multiplicidadTerapia();
 

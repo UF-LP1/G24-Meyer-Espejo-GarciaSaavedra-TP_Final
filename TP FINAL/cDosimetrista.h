@@ -8,7 +8,7 @@
 class cDosimetrista
 {
 public:
-	cDosimetrista(string id);
+	cDosimetrista();
 	~cDosimetrista();
 	void TipoTerapiaRecibir(cPaciente* MiPaciente);
 	string get_Nombre();

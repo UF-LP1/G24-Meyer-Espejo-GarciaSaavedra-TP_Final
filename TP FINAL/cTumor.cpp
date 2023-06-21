@@ -1,16 +1,19 @@
 #include "cTumor.h"
 
 
-cTumor::cTumor(eUbicacion ubicacion, eTamanio tamanio, int acumRadiacion, bool Benigno){
-	this->AcumRadiacion = 0; //se va a ir incrementando en cada sesion
-	this->benigno = Benigno;
-	this->Tamanio = tamanio;
+ cTumor ::cTumor(eUbicacion ubicacion) {
 	this->Ubicacion = ubicacion;
+
+
+
+
+
 }
 
-cTumor::cTumor()
-{
-}
+
+
+
+
 
 cTumor::~cTumor()
 {
@@ -60,4 +63,13 @@ void cTumor::set_benigno(bool Sano)
 cTerapia* cTumor::get_terapia()
 {
 	return this->terapia;
+}
+void  cTumor::set_Terapia(cTerapia* TipoTs) {
+	this->terapia = TipoTs;
+}
+string cTumor:: to_string() {
+	stringstream ss;
+	
+	ss << "Ubicacion" << this->Ubicacion << ",Tamanio" << this->Tamanio << ",Terapia" << this->terapia << ",Acumulacion de radiacion" << this->AcumRadiacion;
+	return(ss.str());
 }

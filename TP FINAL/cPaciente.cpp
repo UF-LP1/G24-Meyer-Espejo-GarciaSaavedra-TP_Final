@@ -43,10 +43,10 @@ string cPaciente::to_string() {
 	return( ss.str());
 }
 
-bool cPaciente::operator==(cOncologo& oncologo)
+bool cPaciente::operator==(string oncologo)
 {
-	bool a = this->miFicha->get_Oncologo()->get_NroMatricula() == oncologo.get_NroMatricula();
-	return a;
+	
+	return (this->miFicha->get_Oncologo()==oncologo);
 }
 	
 ostream& operator<<(ostream& out, cPaciente& c)

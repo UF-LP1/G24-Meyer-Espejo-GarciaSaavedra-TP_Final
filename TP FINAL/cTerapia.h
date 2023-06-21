@@ -1,6 +1,7 @@
 #pragma once
 #include "Header.h"
-
+#include"eUbicacion.h"
+#include"eTamanio.h"
 class cTerapia {
 public:
 	cTerapia();

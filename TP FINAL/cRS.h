@@ -4,7 +4,8 @@
 
 class cRS :public cTerapia {
 public: 
-	cRS(int DosMaxP, int DosMaxT);
+	cRS(eTamanio TAmanio, eUbicacion UBicacion);
+	cRS();
 	~cRS();
 	int multiplicidadTerapia(); 
 
