@@ -3,7 +3,8 @@
 
 
 cBT::cBT(eTamanio TAmanio, eUbicacion UBicacion)
-{
+{ 
+	
 }
 
 cBT::cBT()
