@@ -56,7 +56,6 @@ void cFicha::operator+(cSesion* s)
 {
 	if (s != nullptr)
 		this->Sesiones.push_back(s);
-
 }
 
 void cFicha::operator-(cSesion* s)
@@ -94,27 +93,22 @@ void cFicha::operator-(cTumor* t)
 }
 
 
-
-
-
 string cFicha::to_string()
 {
 	stringstream ss;
 	ss << "Oncologo a cargo" << this->OncologoAsignadoID;
 
-		ss << ";Tumores";
+		ss << "\nTumores";
 
 	for (int i = 0; Tumores.size(); i++)
 	{
 		ss << "-" << Tumores[i];
 	}
 
-	ss << "Frecuencia semanal es de " << this->FrecSemanalTratamiento;
+	ss << "\nFrecuencia semanal es de " << this->FrecSemanalTratamiento;
 
 	return ss.str();
 }
-
-
 
 time_t cFicha::get_Tratamiento()
 {
@@ -125,8 +119,6 @@ void cFicha::set_Tratamiento(time_t fechatratamiento)
 {
 	this->Tratamiento = fechatratamiento;
 }
-
-
 
 string cFicha::get_Oncologo()
 {
@@ -158,8 +150,6 @@ bool cFicha::get_Espera()
 {
 	return this->espera;
 }
-
-
 
 void cFicha::set_FrecSemanal(int frec)
 {
@@ -235,11 +225,10 @@ vector<cTerapia*> cFicha::get_Terapia()
 }
 
 
-
-
 ostream& operator<<(ostream& out, cFicha& c)
 {
 	out << c.to_string();
+	//out<<"cualquier cosa";
 	return out;
 }
 void cFicha:: set_oncologo(string o) {

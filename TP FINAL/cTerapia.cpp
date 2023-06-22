@@ -2,13 +2,13 @@
 
 cTerapia::cTerapia()
 {
-	this->DosMaxP = 0;
-	this->DosMaxT = 0;
+	/*this->DosMaxP = 0;
+	this->DosMaxT = 0;*/
 }
 cTerapia::~cTerapia()
 {
 }
-
+/*
 unsigned int cTerapia::get_DosisMaxP()
 {
 	return this->DosMaxP;
@@ -29,3 +29,4 @@ void cTerapia::set_DosisMaxt(unsigned int dosisT)
 {
 	this->DosMaxT = dosisT;
 }
+*/

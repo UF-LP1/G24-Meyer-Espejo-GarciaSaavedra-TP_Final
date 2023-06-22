@@ -1,18 +1,11 @@
 #include "cTumor.h"
 
-
  cTumor ::cTumor(eUbicacion ubicacion) {
 	this->Ubicacion = ubicacion;
-
-
-
-
-
-}
-
-
-
-
+	this->AcumRadiacion = 0;
+	this->benigno = false;
+	this->Tamanio = pequenio;
+ }
 
 
 cTumor::~cTumor()

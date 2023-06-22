@@ -14,8 +14,8 @@ public:
 
 
 protected:
-	unsigned int DosMaxP; //dosis maxima paciente
+	/*unsigned int DosMaxP; //dosis maxima paciente
 	unsigned int DosMaxT; //dosis maxima tumor
-
+	*/
 };
 

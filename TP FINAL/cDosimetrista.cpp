@@ -1,8 +1,6 @@
-
 #include "cDosimetrista.h"
-cDosimetrista::cDosimetrista() {
-	
-}
+cDosimetrista::cDosimetrista() {}
+
 cDosimetrista::~cDosimetrista()
 {}
 
@@ -12,31 +10,38 @@ void cDosimetrista::TipoTerapiaRecibir(cPaciente* MiPaciente) {
 	//esta mal tendria que ser
 	TumoresPresentes = MiPaciente->get_miFicha()->get_Tumores();
 
+	cTerapia* diagnosticoBT = new cBT;
+	cTerapia* diagnosticoRS = new cRS;
+	cTerapia* diagnosticoRTH = new cRTH;
+
 	for (int i = 0; i < TumoresPresentes.size(); i++) {
 		eUbicacion Ubi = TumoresPresentes[i]->get_Ubicacion();
 		eTamanio Size = TumoresPresentes[i]->get_Tamanio();
 		if (Ubi == ojo) {
-			cTerapia* diagnostico = new cBT();
+			TumoresPresentes[i]->set_Terapia(diagnosticoBT);
 		}
 		if (Ubi == mama || Ubi == cuello || Ubi == utero) {
 			if (Size == grande) {
-				cTerapia* diagnostico = new cBT();
+				TumoresPresentes[i]->set_Terapia(diagnosticoBT);
 			}
 			else
 			{
-				cTerapia* diagnostico = new cRTH();
+				TumoresPresentes[i]->set_Terapia(diagnosticoRTH);
 			}
 		}
 		if (Ubi == tiroides || Ubi == prostata) {
 			if (Size == grande) {
-				cTerapia* diagnostico = new cRS();
+			
+				TumoresPresentes[i]->set_Terapia(diagnosticoRS);
 			}
 			else {
-				cTerapia* diagnostico = new cRTH();
+				TumoresPresentes[i]->set_Terapia(diagnosticoRTH);
 			}
-
 		}
 	}
+	delete diagnosticoBT;
+	delete diagnosticoRS;
+	delete diagnosticoRTH;
 }
 
 //bool cDosimetrista::CalcularDosisTotalTumor(cPaciente* MiPaciente) {
@@ -44,7 +49,6 @@ void cDosimetrista::TipoTerapiaRecibir(cPaciente* MiPaciente) {
 //
 //	return false;
 //}
-
 
 
 int cDosimetrista::RadTotalPaciente(cPaciente* MiPaciente) {

@@ -67,7 +67,7 @@ void cOncologo::DosisXSesion(cPaciente* paciente)
 	{
 		ptr_aux = SusTerapias[j];
 
-		while (i < sesionaux.size() && saludaux < 0.5) {//Salud """""mala""",
+		while (i < sesionaux.size() && saludaux < 0.5) { //Salud "mala"
 			//menor dosis
 			if (dynamic_cast<cRTH*>(ptr_aux) != NULL) {
 				sesionaux[i]->set_Dosis(1);
@@ -247,6 +247,7 @@ string cOncologo::get_NroMatricula()
 	return this->Nro_Matricula;
 }
 
+
 bool cOncologo::VerificarSobredosis(cPaciente* paciente) 
 {
 	int cont = 0;
@@ -343,5 +344,3 @@ void cOncologo:: Indicador_Tumores(cPaciente* paciente) {
 	paciente->get_miFicha()->set_Tumores(aux);
 
 }
-
-
