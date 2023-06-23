@@ -2,34 +2,19 @@
 
 cTerapia::cTerapia()
 {
-	/*this->DosMaxP = 0;
-	this->DosMaxT = 0;*/
+
 }
 cTerapia::~cTerapia()
 {
 }
-
-unsigned int cTerapia::get_DosisMaxP()
+void cTerapia::set_frecuencia(int frecue)
 {
-	return this->DosMaxP;
+	this->frecuencia_semanal = frecue;
 }
-
-
-unsigned int cTerapia::get_DosisMaxt()
+int cTerapia::get_frecuencia()
 {
-	return this->DosMaxT;
+	return frecuencia_semanal;
 }
-
-void cTerapia::set_DosisMaxP(unsigned int dosisP)
-{
-	this->DosMaxP = dosisP;
-}
-
-void cTerapia::set_DosisMaxt(unsigned int dosisT)
-{
-	this->DosMaxT = dosisT;
-}
-
 eTratamiento cTerapia::get_expecificoTratamiento()
 {
 	return this->tratamiento;
