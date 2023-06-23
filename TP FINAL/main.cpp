@@ -23,13 +23,15 @@ int main() {
 	cOncologo* oncologo2 = new cOncologo("0023");
 	cDosimetrista* Dosimetrista1 = new cDosimetrista("345"); 
 
+	oncologo1->AtenderPaciente(paciente2); //actualiza los tumores;y sus caraceristicas en la ficha; en base a estudios
+
 
 	cout << *paciente1;
 	cout << *paciente2;
 
 
 
-	//oncologo1->AtenderPaciente(paciente2); //actualiza los tumores;y sus caraceristicas en la ficha; en base a estudios
+	
 
 
 	//para probar ese metodo imprimo en pantalla y de paso uso la sobrecarga<<

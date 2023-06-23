@@ -157,7 +157,7 @@ vector<cPaciente*> cCentroMedico::a5DeSobredosis()
 
 ostream& operator<<(ostream& OUT, cCentroMedico& centroM) {
 	OUT << centroM.to_string() << endl;
-	return 0UT;
+	return OUT;
 
 }
 

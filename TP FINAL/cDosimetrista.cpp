@@ -6,8 +6,7 @@ cDosimetrista::~cDosimetrista()
 
 void cDosimetrista::TipoTerapiaRecibir(cPaciente* MiPaciente) {
 
-	vector <cTumor*>TumoresPresentes; //tenes que hacer un auxiliar donde se guarden la lista de tumores del paciente  y recorrerla para sacar de cada uno la ubicacion y hacer el los if para ver que tipo de terapia
-	//esta mal tendria que ser
+	vector <cTumor*>TumoresPresentes; 
 	TumoresPresentes = MiPaciente->get_miFicha()->get_Tumores();
 
 	cTerapia* diagnosticoBT = new cBT;
