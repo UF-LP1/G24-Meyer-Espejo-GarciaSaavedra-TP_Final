@@ -1,10 +1,11 @@
 #include "cRS.h"
 
-cRS::cRS(eTamanio TAmanio, eUbicacion UBicacion) {
+cRS::cRS(eTamanio TAmanio, eUbicacion UBicacion):DosMaxP(100), DosMaxT(60)
+{
 
 }
 
-cRS::cRS()
+cRS::cRS():DosMaxP(100), DosMaxT(60)
 {
 }
 

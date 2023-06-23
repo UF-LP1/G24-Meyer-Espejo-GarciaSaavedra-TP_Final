@@ -2,12 +2,11 @@
 
 
 
-cBT::cBT(eTamanio TAmanio, eUbicacion UBicacion)
+cBT::cBT(eTamanio TAmanio, eUbicacion UBicacion) :DosMaxP(180),DosMaxT(150)
 { 
-	
 }
 
-cBT::cBT()
+cBT::cBT():DosMaxP(180), DosMaxT(150)
 {
 }
 

@@ -2,7 +2,8 @@
 
 cTerapia::cTerapia()
 {
-
+	this->frecuencia_semanal = 0;
+	this->tratamiento = branquiterapia;
 }
 cTerapia::~cTerapia()
 {
