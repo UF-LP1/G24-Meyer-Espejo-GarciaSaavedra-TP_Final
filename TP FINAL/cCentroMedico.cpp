@@ -72,13 +72,7 @@ void cCentroMedico::buscar(cPaciente* paciente)
 
 void cCentroMedico::operator+(cPaciente* paciente)
 {
-	try {
-		buscar(paciente);
 		this->Pacientes.push_back(paciente);
-	}
-	catch (exPacienteNoEncontrado& e) {
-		cout << e.what() << endl;
-	}
 }
 
 

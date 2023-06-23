@@ -23,6 +23,10 @@ int main() {
 	cOncologo* oncologo2 = new cOncologo("0023");
 	cDosimetrista* Dosimetrista1 = new cDosimetrista("345"); 
 
+	oncologo1->Indicador_Tumores(paciente2); //funciona
+	
+	
+
 	oncologo1->AtenderPaciente(paciente2); //actualiza los tumores;y sus caraceristicas en la ficha; en base a estudios
 
 

@@ -4,6 +4,7 @@ int cPaciente::CantidadPacientes = 0;
 
 cPaciente::cPaciente(string nombre, string sexo, string contacto, string tiposangre, float salud ){
 	cFicha* nuevaficha = new cFicha("");
+	this->miFicha = nuevaficha;
 	this->Nombre = nombre;
 	this->Sexo = sexo;
 	this->Contacto = contacto;
@@ -30,6 +31,7 @@ void cPaciente::set_Salud(float salud)
 cFicha* cPaciente::get_miFicha()
 {
 	return this->miFicha;
+
 }
 
 string cPaciente::get_Contacto()

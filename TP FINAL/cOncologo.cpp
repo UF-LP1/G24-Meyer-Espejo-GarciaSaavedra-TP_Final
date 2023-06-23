@@ -336,7 +336,6 @@ void cOncologo:: Indicador_Tumores(cPaciente* paciente) {
 	int ntumores = rand() % 3 + 1;
 	vector<cTumor*>aux;
 	eUbicacion Ubi;
-	//int num=0;
 	for (int i = 0; i < ntumores; i++) {
 	Ubi =eUbicacion(rand() % 8);
 	cTumor* nuevo = new cTumor(Ubi);
