@@ -30,7 +30,7 @@ int main() {
 	oncologo1->AtenderPaciente(paciente2); //actualiza los tumores;y sus caraceristicas en la ficha; en base a estudios
 
 
-	cout << *paciente1;
+	//cout << *paciente1;
 	cout << *paciente2;
 
 
