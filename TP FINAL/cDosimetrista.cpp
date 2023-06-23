@@ -1,5 +1,5 @@
 #include "cDosimetrista.h"
-cDosimetrista::cDosimetrista() {}
+cDosimetrista::cDosimetrista(string id):ID(id){}
 
 cDosimetrista::~cDosimetrista()
 {}
@@ -44,13 +44,6 @@ void cDosimetrista::TipoTerapiaRecibir(cPaciente* MiPaciente) {
 	delete diagnosticoRTH;
 }
 
-//bool cDosimetrista::CalcularDosisTotalTumor(cPaciente* MiPaciente) {
-//	vector <cTumor*>TumoresPresentes;
-//
-//	return false;
-//}
-
-
 int cDosimetrista::RadTotalPaciente(cPaciente* MiPaciente) {
 
 	vector <cTerapia*> RadiacionTerapia;
@@ -75,7 +68,6 @@ int cDosimetrista::RadTotalPaciente(cPaciente* MiPaciente) {
 	MiPaciente->get_miFicha()->set_RadiacionMaxP(radTP);
 	return(radTP);
 }
-
 
 string cDosimetrista::get_Nombre() {
 	return this->Nombre;

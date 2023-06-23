@@ -1,16 +1,19 @@
 #include "cPaciente.h"
 
+int cPaciente::CantidadPacientes = 0;
+
 cPaciente::cPaciente(string nombre, string sexo, string contacto, string tiposangre, float salud ){
 	this->Nombre = nombre;
 	this->Sexo = sexo;
 	this->Contacto = contacto;
 	this->TipoSangre = tiposangre;
 	this->Salud = salud;
+	CantidadPacientes++;
 }
 
 cPaciente::~cPaciente()
 {
-	delete[]this->miFicha;
+	delete this->miFicha;
 }
 
 float cPaciente::get_Salud()

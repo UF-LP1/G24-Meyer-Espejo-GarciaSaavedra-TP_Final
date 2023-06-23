@@ -42,7 +42,7 @@ int main() {
 
 
 	oncologo1->VerificarFecha(paciente2); //desp lo verifico pero primero tengo que hacer atendercliente
-	cDosimetrista* Dosimetrista1 = new cDosimetrista();
+	cDosimetrista* Dosimetrista1 = new cDosimetrista("1234");
 
 	Dosimetrista1->TipoTerapiaRecibir(paciente2);
 

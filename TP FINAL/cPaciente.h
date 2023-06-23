@@ -24,4 +24,5 @@ private:
 	string TipoSangre;
 	float  Salud;
 	cFicha* miFicha;
+	static int CantidadPacientes;
 };

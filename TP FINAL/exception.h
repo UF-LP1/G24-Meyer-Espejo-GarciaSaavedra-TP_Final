@@ -11,6 +11,6 @@ public:
 class exSobredosisTumor :public exception {
 public:
 	const char* what() const throw() {
-		return "La dosis maxima del tumor sera alcanzada,recomienda mejorar la salud del paciente";
+		return "La dosis maxima del tumor sera alcanzada, recomienda mejorar la salud del paciente";
 	}
 };

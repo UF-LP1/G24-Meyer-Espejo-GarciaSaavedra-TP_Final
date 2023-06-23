@@ -8,7 +8,7 @@
 class cDosimetrista
 {
 public:
-	cDosimetrista();
+	cDosimetrista(string id);
 	~cDosimetrista();
 	void TipoTerapiaRecibir(cPaciente* MiPaciente);
 	string get_Nombre();
@@ -21,7 +21,7 @@ public:
 private:
 	string Nombre; //registro de los pacientes en el centro
 	string Apellido;
-	string ID;
+	const string ID;
 };
 
 

@@ -56,7 +56,7 @@ vector<cPaciente*> cCentroMedico::buscarXTumor(eUbicacion ubi)
 	vector<cPaciente*>encontrados;
 	for (int i = 0; i < Pacientes.size(); i++) //recorro pacientes
 	{
-		int tam = Pacientes[i]->get_miFicha()->get_Tumores().size();
+		int tam = (int)Pacientes[i]->get_miFicha()->get_Tumores().size();
 		for (int j = 0; j < tam; j++) //recorro su lista de tumores
 		{
 			vector<cTumor*>Tumores = Pacientes[i]->get_miFicha()->get_Tumores();

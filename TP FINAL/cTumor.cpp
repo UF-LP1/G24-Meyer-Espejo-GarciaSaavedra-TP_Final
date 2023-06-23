@@ -5,12 +5,13 @@
 	this->AcumRadiacion = 0;
 	this->benigno = false;
 	this->Tamanio = pequenio;
+	this->terapia = nullptr;
  }
 
 
 cTumor::~cTumor()
 {
-	delete[]terapia;
+	delete this->terapia;
 }
 
 void cTumor::set_AcumRadiacion(int radiacion)
