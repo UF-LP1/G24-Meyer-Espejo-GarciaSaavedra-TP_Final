@@ -10,4 +10,6 @@ public:
 	~cRTH();
 	float multiplicidadTerapia();
 
+	const unsigned int DosMaxP; //dosis maxima paciente
+	const unsigned int DosMaxT; //dosis maxima tumor
 };
