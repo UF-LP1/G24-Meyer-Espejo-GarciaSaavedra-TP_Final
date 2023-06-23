@@ -6,7 +6,7 @@ cCentroMedico::cCentroMedico(string nombre, string direccion, string telefono) {
 	this->Telefono = telefono;
 }
 
-cCentroMedico::~cCentroMedico(){
+cCentroMedico::~cCentroMedico() {
 	for (cPaciente* aux : this->Pacientes) {
 		if (aux != NULL)
 		{
@@ -15,7 +15,7 @@ cCentroMedico::~cCentroMedico(){
 	}
 }
 
-void cCentroMedico::AsistenciaPaciente(cPaciente *miPaciente) {
+void cCentroMedico::AsistenciaPaciente(cPaciente* miPaciente) {
 	vector<cSesion*> SesionesPaciente = miPaciente->get_miFicha()->get_Sesiones();
 	int contInasistencia = 0;
 	for (int i = 0; i < SesionesPaciente.size(); i++)
@@ -51,24 +51,55 @@ vector<cPaciente*> cCentroMedico::get_Pacientes()
 	return this->Pacientes;
 }
 
+void cCentroMedico::buscar(cPaciente* paciente)
+{
+	bool encontrado = false;
+
+	for (int i = 0; i < Pacientes.size(); i++)
+	{
+		if (Pacientes[i] == paciente)
+		{
+			encontrado = true;
+		}
+
+	}
+	if (encontrado == false)
+	{
+		throw exPacienteNoEncontrado();
+	}
+
+}
+
+void cCentroMedico::operator+(cPaciente* paciente)
+{
+	try {
+		buscar(paciente);
+		this->Pacientes.push_back(paciente);
+	}
+	catch (exPacienteNoEncontrado& e) {
+		cout << e.what() << endl;
+	}
+}
+
+
 vector<cPaciente*> cCentroMedico::buscarXTumor(eUbicacion ubi)
 {
 	vector<cPaciente*>encontrados;
 	for (int i = 0; i < Pacientes.size(); i++) //recorro pacientes
 	{
-		int tam = (int)Pacientes[i]->get_miFicha()->get_Tumores().size();
+		int tam = Pacientes[i]->get_miFicha()->get_Tumores().size();
 		for (int j = 0; j < tam; j++) //recorro su lista de tumores
 		{
 			vector<cTumor*>Tumores = Pacientes[i]->get_miFicha()->get_Tumores();
 			eUbicacion suUbicacion = Tumores[i]->get_Ubicacion();
-			if (suUbicacion == ubi )
+			if (suUbicacion == ubi)
 			{
 				encontrados.push_back(Pacientes[i]);
 			}
 		}
 	}
 	return encontrados;
-	
+
 }
 
 vector<cPaciente*> cCentroMedico::buscarXTratamiento(eTratamiento tratamiento)
@@ -81,10 +112,10 @@ vector<cPaciente*> cCentroMedico::buscarXTratamiento(eTratamiento tratamiento)
 		{
 			vector<cTumor*>Tumores = Pacientes[i]->get_miFicha()->get_Tumores();
 			eTratamiento suTratamiento = Tumores[i]->get_terapia()->get_expecificoTratamiento();
-				if (suTratamiento == tratamiento)
-				{
-					encontrados.push_back(Pacientes[i]);
-				}
+			if (suTratamiento == tratamiento)
+			{
+				encontrados.push_back(Pacientes[i]);
+			}
 		}
 	}
 	return encontrados;
@@ -94,7 +125,7 @@ vector<cPaciente*> cCentroMedico::buscarXTratamiento(eTratamiento tratamiento)
 vector<cPaciente*> cCentroMedico::a5DeSobredosis()
 {
 	vector<cPaciente*>encontrados;
-	
+
 	float acum = 0;
 	for (int i = 0; i < Pacientes.size(); i++) //recorro a los pacientes
 	{
@@ -109,10 +140,10 @@ vector<cPaciente*> cCentroMedico::a5DeSobredosis()
 			}
 			else if (dynamic_cast<cBT*>(tratamiento) != NULL) {
 				acum = (float)tumores[j]->get_AcumRadiacion() * 100 / 150; //150 dosis max en tumores para cBT
-				}
+			}
 			else if (dynamic_cast<cRS*>(tratamiento) != NULL) {
 				acum = (float)tumores[j]->get_AcumRadiacion() * 100 / 60; //60 dosis max en tumores para cRS
-				}
+			}
 
 			if (acum > 95) //esta por alcanzar ese 5%
 			{
@@ -126,6 +157,7 @@ vector<cPaciente*> cCentroMedico::a5DeSobredosis()
 
 ostream& operator<<(ostream& OUT, cCentroMedico& centroM) {
 	OUT << centroM.to_string() << endl;
-	return OUT;
+	return 0UT;
+
 }
 
