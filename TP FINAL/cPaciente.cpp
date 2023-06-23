@@ -3,6 +3,7 @@
 int cPaciente::CantidadPacientes = 0;
 
 cPaciente::cPaciente(string nombre, string sexo, string contacto, string tiposangre, float salud ){
+	cFicha* nuevaficha = new cFicha("");
 	this->Nombre = nombre;
 	this->Sexo = sexo;
 	this->Contacto = contacto;
@@ -42,7 +43,7 @@ void cPaciente::set_miFicha(cFicha* fichaActualizada)
 }
 string cPaciente::to_string() {
 	stringstream ss;
-	ss << "Nombre del paciente:" << this->Nombre << ",Naciemiento:" << this->Nacimiento << ",Sexo:" << this->Sexo << ",Tipo de Sangre:" << this->TipoSangre << "Porcentaje de salud" << (this->Salud) * 100 << "%"<<endl;
+	ss << "Nombre del paciente:" << this->Nombre <<",Sexo:" << this->Sexo << ",Tipo de Sangre:" << this->TipoSangre << "Porcentaje de salud" << (this->Salud) * 100 << "%"<<endl;
 	return( ss.str());
 }
 

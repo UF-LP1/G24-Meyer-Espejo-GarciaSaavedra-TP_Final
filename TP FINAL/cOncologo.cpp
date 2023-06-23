@@ -11,8 +11,6 @@ cOncologo::~cOncologo()
 
 void cOncologo::AtenderPaciente(cPaciente* paciente)
 {
-	//le asigno este oncologo que esta trabajando
-	paciente->get_miFicha()->
 
 	srand((unsigned int)time(NULL));//casteo para evitar advertencia, srand quiere de tipo unsigned int, time devuelve de tipo time_t
 	Indicador_Tumores(paciente);
@@ -51,6 +49,7 @@ void cOncologo::AtenderPaciente(cPaciente* paciente)
 	paciente->get_miFicha()->set_FrecSemanal(frecuencia); //actualizo en la ficha
 	string num = this->Nro_Matricula;
 	paciente->get_miFicha()->set_oncologo(num);//asigno oncolog al paciente
+
 }
 
 void cOncologo::DosisXSesion(cPaciente* paciente)

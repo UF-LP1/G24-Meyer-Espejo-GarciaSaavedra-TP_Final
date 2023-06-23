@@ -134,10 +134,6 @@ void cFicha::set_Tumores(vector<cTumor*> tumores)
 	this->Tumores = tumores;
 }
 
-void cFicha::set_IdOncologo(string Id)
-{
-	this->OncologoAsignadoID = Id;
-}
 
 void cFicha::set_EstadoRad(unsigned int estadorad)
 {

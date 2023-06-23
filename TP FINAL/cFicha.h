@@ -20,7 +20,7 @@ public:
 	void set_Tratamiento(time_t fechatratamiento);
 	void set_Sesiones(vector<cSesion*> sesiones);
 	void set_Tumores(vector<cTumor*> tumores);
-	void set_IdOncologo(string Id);
+	
 
 	void set_EstadoRad(unsigned int estadorad);
 

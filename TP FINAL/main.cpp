@@ -8,11 +8,7 @@
 int main() {
 	cPaciente* paciente1 = new cPaciente("marti", "F", "876", "A+", 0.1);
 	cPaciente* paciente2 = new cPaciente("saul", "M", "1234", "0-", 0.7);
-	cFicha* fichapaciente1 = new cFicha();
-	cFicha* fichapaciente2 = new cFicha();
 
-	paciente2->set_miFicha(fichapaciente2); //le setteo la ficha al paciente
-	paciente1->set_miFicha(fichapaciente1);
 
 
 	//creo el centro medico
@@ -32,26 +28,25 @@ int main() {
 	cout << *paciente2;
 
 
-	oncologo1->AtenderPaciente(paciente2); //actualiza los tumores;y sus caraceristicas en la ficha; en base a estudios
+
+	//oncologo1->AtenderPaciente(paciente2); //actualiza los tumores;y sus caraceristicas en la ficha; en base a estudios
 
 
 	//para probar ese metodo imprimo en pantalla y de paso uso la sobrecarga<<
-	if (fichapaciente1 != nullptr) {
-		cout << "hola";
-		cout << *fichapaciente1 << endl; //sobrecarga q llama al to-string - - - - - - - -
-	}
+	//if (fichapaciente1 != nullptr) {
+	//	cout << "hola";
+	//	cout << *fichapaciente1 << endl; //sobrecarga q llama al to-string - - - - - - - -
+	//}
 
 	//!!!!!!!!!!!!!!Problema con la memoria, creo que variables de TERAPIA
 
 
-	oncologo1->VerificarFecha(paciente2); //desp lo verifico pero primero tengo que hacer atendercliente
+	//oncologo1->VerificarFecha(paciente2); //desp lo verifico pero primero tengo que hacer atendercliente
 
-	Dosimetrista1->TipoTerapiaRecibir(paciente2);
+	//Dosimetrista1->TipoTerapiaRecibir(paciente2);
 
 	delete[]paciente1;
 	delete[]paciente2;
-	delete[]fichapaciente1;
-	delete[]fichapaciente2;
 	delete[]Dosimetrista1;
 	delete[]oncologo1;
 	delete[]oncologo2;
