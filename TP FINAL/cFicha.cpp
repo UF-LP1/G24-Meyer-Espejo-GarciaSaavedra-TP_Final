@@ -2,7 +2,7 @@
 
 
 
-cFicha::cFicha()//constructor por defecto
+cFicha::cFicha(string oncologodni)
 {
 	
 	this->FechaInicio = 0;
@@ -10,9 +10,9 @@ cFicha::cFicha()//constructor por defecto
 	this->espera = false;
 	this->Finalizado = false;
 	this->Tratamiento = 0;
-	this-> FrecSemanalTratamiento = 0;
 	this->RadiacionMaxPaciente = 0;
 	this->RadiacionPaciente = 0;
+	this->OncologoAsignadoID = oncologodni;
 }
 
 cFicha::~cFicha()
@@ -105,8 +105,6 @@ string cFicha::to_string()
 		ss << "-" << Tumores[i];
 	}
 
-	ss << "\nFrecuencia semanal es de " << this->FrecSemanalTratamiento;
-
 	return ss.str();
 }
 
@@ -136,6 +134,11 @@ void cFicha::set_Tumores(vector<cTumor*> tumores)
 	this->Tumores = tumores;
 }
 
+void cFicha::set_IdOncologo(string Id)
+{
+	this->OncologoAsignadoID = Id;
+}
+
 void cFicha::set_EstadoRad(unsigned int estadorad)
 {
 	this->estadoRad = estadoRad;
@@ -151,10 +154,6 @@ bool cFicha::get_Espera()
 	return this->espera;
 }
 
-void cFicha::set_FrecSemanal(int frec)
-{
-	this->FrecSemanalTratamiento = frec;
-}
 
 void cFicha::set_RadiacionMaxP(int r)
 {
@@ -222,6 +221,12 @@ void cFicha::actualizar_Terapia()
 vector<cTerapia*> cFicha::get_Terapia()
 {
 	return this->Terapias; 
+}
+
+void cFicha::set_FrecSemanal(int f)
+{
+	this->FrecTratamiento = f;
+
 }
 
 

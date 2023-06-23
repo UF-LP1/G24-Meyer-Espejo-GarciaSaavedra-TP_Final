@@ -11,6 +11,9 @@ cOncologo::~cOncologo()
 
 void cOncologo::AtenderPaciente(cPaciente* paciente)
 {
+	//le asigno este oncologo que esta trabajando
+	paciente->get_miFicha()->
+
 	srand((unsigned int)time(NULL));//casteo para evitar advertencia, srand quiere de tipo unsigned int, time devuelve de tipo time_t
 	Indicador_Tumores(paciente);
 	vector<cTumor*> PacienteTumores = paciente->get_miFicha()->get_Tumores();

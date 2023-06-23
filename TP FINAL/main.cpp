@@ -25,7 +25,7 @@ int main() {
 
 	cOncologo* oncologo1 = new cOncologo("2345");
 	cOncologo* oncologo2 = new cOncologo("0023");
-	cDosimetrista* Dosimetrista1 = new cDosimetrista(); //CUIDADO CAMBIO EL CONSTRUCTOR
+	cDosimetrista* Dosimetrista1 = new cDosimetrista("345"); 
 
 
 	cout << *paciente1;
@@ -45,7 +45,6 @@ int main() {
 
 
 	oncologo1->VerificarFecha(paciente2); //desp lo verifico pero primero tengo que hacer atendercliente
-	cDosimetrista* Dosimetrista1 = new cDosimetrista();
 
 	Dosimetrista1->TipoTerapiaRecibir(paciente2);
 
@@ -55,6 +54,7 @@ int main() {
 	delete[]fichapaciente2;
 	delete[]Dosimetrista1;
 	delete[]oncologo1;
+	delete[]oncologo2;
 
 	return 0;
 }

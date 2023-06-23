@@ -9,7 +9,7 @@
 
 class cFicha {
 public:
-	cFicha();
+	cFicha(string oncologodni);
 	~cFicha();
 	vector<cSesion*> get_Sesiones();
 	vector<cTumor*> get_Tumores();
@@ -20,11 +20,11 @@ public:
 	void set_Tratamiento(time_t fechatratamiento);
 	void set_Sesiones(vector<cSesion*> sesiones);
 	void set_Tumores(vector<cTumor*> tumores);
+	void set_IdOncologo(string Id);
 
 	void set_EstadoRad(unsigned int estadorad);
 
 	void set_Finalizado(bool termino);
-    void set_FrecSemanal(int frec);
 	void set_RadiacionMaxP(int r);
 	void set_espera(bool e);
 	void set_oncologo(string o);
@@ -33,6 +33,7 @@ public:
 	int get_RadPaciente();
 	void actualizar_Terapia();
 	vector<cTerapia*> get_Terapia();
+	void set_FrecSemanal(int f);
 
 	//sobrecargas 
 	void operator+(cSesion* s); 
@@ -52,8 +53,8 @@ private:
 	bool espera;
 	vector<cTerapia*>Terapias;
 	time_t Tratamiento;
-	int FrecSemanalTratamiento; 
 	bool Finalizado;
+	int FrecTratamiento;
 	vector<cTumor*> Tumores; //se necesita imprimir 
 	vector<cSesion*> Sesiones;
 	int RadiacionMaxPaciente; //esta es el limite; la calcula el dosimetrista en el metodo RadTotalPaciente
