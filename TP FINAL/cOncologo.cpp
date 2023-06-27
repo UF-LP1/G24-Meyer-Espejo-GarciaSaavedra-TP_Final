@@ -49,7 +49,7 @@ void cOncologo::AtenderPaciente(cPaciente* paciente)
 	paciente->get_miFicha()->set_FrecSemanal(frecuencia); //actualizo en la ficha
 	string num = this->Nro_Matricula;
 	paciente->get_miFicha()->set_oncologo(num);//asigno oncolog al paciente
-
+	Calcular_Sesiones(paciente, frecuencia);
 }
 
 void cOncologo::DosisXSesion(cPaciente* paciente)
@@ -65,7 +65,7 @@ void cOncologo::DosisXSesion(cPaciente* paciente)
 	int acumRadxSesionBT = 0;
 	int acumRadxSesionRS = 0;
 
-	for (int j = 0; SusTerapias.size(); j++)
+	for (int j = 0; j < SusTerapias.size(); j++)
 	{
 		ptr_aux = SusTerapias[j];
 
@@ -344,4 +344,18 @@ void cOncologo:: Indicador_Tumores(cPaciente* paciente) {
 	}
 	paciente->get_miFicha()->set_Tumores(aux);
 
+}
+
+void cOncologo::Calcular_Sesiones(cPaciente* paciente, unsigned int frecuencia)
+{
+	time_t auxtiempo = TiempoTratamiento(paciente);
+	int semanas = (int)auxtiempo / 604800;
+	vector<cSesion*> sesionesaux;
+
+	int sesiones = semanas * frecuencia;
+	for (int i = 0; i < sesiones; i++) {
+		cSesion* aux = new cSesion();
+		sesionesaux.push_back(aux);
+	}
+	paciente->get_miFicha()->set_Sesiones(sesionesaux);
 }

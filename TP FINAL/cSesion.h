@@ -4,6 +4,7 @@
 class cSesion {
 public:
 	cSesion(bool asistencia, int dosis);
+	cSesion();
 	~cSesion();
 	bool get_Asist();
 	void set_Dosis(float dosis);

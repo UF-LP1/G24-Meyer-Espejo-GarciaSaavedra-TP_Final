@@ -6,6 +6,11 @@ cSesion::cSesion(bool asistencia,int dosis)
 	this->Dosis = dosis;
 }
 
+cSesion::cSesion()
+{
+	this->Dosis = 0;
+}
+
 cSesion::~cSesion()
 {
 }
