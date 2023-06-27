@@ -17,6 +17,8 @@ public:
 	int RadTotalPaciente(cPaciente* MiPaciente); //calcula la radiacion maxima posible en el paciente
 	//int RadTotalTumores(cPaciente* MiPaciente); 
 
+
+
 private:
 	string Nombre; //registro de los pacientes en el centro
 	string Apellido;

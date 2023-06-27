@@ -36,6 +36,9 @@ int main() {
 	
 
 
+
+
+
 	//cout << *paciente1;
 	cout << *paciente2;
 
