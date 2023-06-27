@@ -23,11 +23,13 @@ int main() {
 	cOncologo* oncologo2 = new cOncologo("0023");
 	cDosimetrista* Dosimetrista1 = new cDosimetrista("345"); 
 
-	oncologo1->Indicador_Tumores(paciente2); //funciona
-	
-	
-
 	oncologo1->AtenderPaciente(paciente2); //actualiza los tumores;y sus caraceristicas en la ficha; en base a estudios
+	
+	//ver q funcionen
+	oncologo1->DosisXSesion(paciente2);
+	oncologo1->VerificarSobredosis(paciente2);
+	oncologo1->VerificarFecha(paciente2);
+
 
 
 	//cout << *paciente1;
@@ -35,27 +37,12 @@ int main() {
 
 
 
-	
 
-
-	//para probar ese metodo imprimo en pantalla y de paso uso la sobrecarga<<
-	//if (fichapaciente1 != nullptr) {
-	//	cout << "hola";
-	//	cout << *fichapaciente1 << endl; //sobrecarga q llama al to-string - - - - - - - -
-	//}
-
-	//!!!!!!!!!!!!!!Problema con la memoria, creo que variables de TERAPIA
-
-
-	//oncologo1->VerificarFecha(paciente2); //desp lo verifico pero primero tengo que hacer atendercliente
-
-	//Dosimetrista1->TipoTerapiaRecibir(paciente2);
-
-	delete[]paciente1;
-	delete[]paciente2;
-	delete[]Dosimetrista1;
-	delete[]oncologo1;
-	delete[]oncologo2;
+	delete paciente1;
+	delete paciente2;
+	delete Dosimetrista1;
+	delete oncologo1;
+	delete oncologo2;
 
 	return 0;
 }
