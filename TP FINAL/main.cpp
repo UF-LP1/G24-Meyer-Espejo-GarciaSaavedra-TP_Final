@@ -25,18 +25,14 @@ int main() {
 
 	oncologo1->AtenderPaciente(paciente2); //actualiza los tumores;y sus caraceristicas en la ficha; en base a estudios
 	
+
+
 	//ver q funcionen
-	oncologo1->DosisXSesion(paciente2);
 	dosimetrista1->TipoTerapiaRecibir(paciente2);
+	oncologo1->DosisXSesion(paciente2);
 	dosimetrista1->RadTotalPaciente(paciente2);
 	oncologo1->VerificarSobredosis(paciente2); //tiene que estar dentro de un bloque de try catch
 	oncologo1->VerificarFecha(paciente2);
-
-
-	
-
-
-
 
 
 	//cout << *paciente1;

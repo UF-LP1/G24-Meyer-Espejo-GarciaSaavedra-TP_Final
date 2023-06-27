@@ -31,7 +31,6 @@ void cPaciente::set_Salud(float salud)
 cFicha* cPaciente::get_miFicha()
 {
 	return this->miFicha;
-
 }
 
 string cPaciente::get_Contacto()

@@ -8,7 +8,6 @@
 	this->terapia = nullptr;
  }
 
-
 cTumor::~cTumor()
 {
 	delete this->terapia;
@@ -26,7 +25,7 @@ int cTumor::get_AcumRadiacion()
 
 eUbicacion cTumor::get_Ubicacion()
 {
-	return eUbicacion();
+	return this->Ubicacion;
 }
 
 void cTumor::set_Ubicacion(eUbicacion ubicacion)
@@ -36,7 +35,7 @@ void cTumor::set_Ubicacion(eUbicacion ubicacion)
 
 eTamanio cTumor::get_Tamanio()
 {
-	return eTamanio();
+	return this->Tamanio;
 }
 
 void cTumor::set_Tamanio(eTamanio tamanio)

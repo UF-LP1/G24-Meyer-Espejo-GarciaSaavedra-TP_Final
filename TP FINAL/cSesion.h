@@ -3,7 +3,6 @@
 
 class cSesion {
 public:
-	cSesion(bool asistencia, int dosis);
 	cSesion();
 	~cSesion();
 	bool get_Asist();

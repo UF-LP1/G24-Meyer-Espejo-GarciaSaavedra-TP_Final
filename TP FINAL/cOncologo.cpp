@@ -119,8 +119,7 @@ void cOncologo::DosisXSesion(cPaciente* paciente)
 time_t cOncologo::TiempoTratamiento(cPaciente* paciente)
 {
 	vector<cTumor*> tumoresaux = paciente->get_miFicha()->get_Tumores();
-	time_t tiempoActual = time(nullptr);	
-	time_t nuevoTiempo=tiempoActual;
+	time_t nuevoTiempo=0;
 	int max=0;
 	int dias =86400; //SEG en un dia
 	int mes = dias * 31;
@@ -134,87 +133,107 @@ time_t cOncologo::TiempoTratamiento(cPaciente* paciente)
 
 		paciente->get_miFicha()->set_Tratamiento(nuevoTiempo);
 	}
-
-	for (int i = 0; tumoresaux.size(); i++) {
-
+	int i = 0;
+	while(i<tumoresaux.size()) {
+	
 		while (tumoresaux[i]->get_Tamanio() == grande) {
-			if (tumoresaux[i]->get_Ubicacion() == cabeza || tumoresaux[i]->get_Ubicacion() == cuello) {
+			eUbicacion ubi = tumoresaux[i]->get_Ubicacion();
+			if (ubi == cabeza || ubi == cuello) {
 				max = 12 * mes;
 			}
-			else if (tumoresaux[i]->get_Ubicacion() == pulmon && max < 11 * mes) {
+			else if (ubi == pulmon && max < 11 * mes) {
 				max = 11 * mes;
 			}
-			else if (tumoresaux[i]->get_Ubicacion() == utero && max < 10 * mes + 15 * dias) {
+			else if (ubi == utero && max < 10 * mes + 15 * dias) {
 				max = 10 * mes + 15 * dias;
 			}
-			else if (tumoresaux[i]->get_Ubicacion() == mama && max < 10 * mes) {
+			else if (ubi == mama && max < 10 * mes) {
 				max = 10 * mes;
 			}
-			else if (tumoresaux[i]->get_Ubicacion() == tiroides && max < 9 * mes) {
+			else if (ubi == tiroides && max < 9 * mes) {
 				max = 9 * mes;
 			}
-			else if (tumoresaux[i]->get_Ubicacion() == prostata && max < 8 * mes) {
+			else if (ubi == prostata && max < 8 * mes) {
 				max = 8 * mes;
 			}
-			else if (tumoresaux[i]->get_Ubicacion() == intestino && max < 6 * mes) {
+			else if (ubi == intestino && max < 6 * mes) {
 				max = 6 * mes;
 			}
-			else if (tumoresaux[i]->get_Ubicacion() == ojo && max < 4 * mes) {
+			else if (ubi == ojo && max < 4 * mes) {
 				max = 4 * mes;
 			}
+			i++;
+			if (i == tumoresaux.size())
+				break;
 		}
+		if (i == tumoresaux.size())
+			break;
 		while (tumoresaux[i]->get_Tamanio() == mediano) {
-			if (tumoresaux[i]->get_Ubicacion() == cabeza || tumoresaux[i]->get_Ubicacion() == cuello) {
+			eUbicacion ubi = tumoresaux[i]->get_Ubicacion();
+			if (ubi == cabeza || ubi == cuello) {
 				max = 10 * mes;
 			}
-			else if (tumoresaux[i]->get_Ubicacion() == pulmon && max <9 * mes) {
+			else if (ubi == pulmon && max <9 * mes) {
 				max = 9 * mes;
 			}
-			else if (tumoresaux[i]->get_Ubicacion() == utero && max < 8 * mes + 15 * dias) {
+			else if (ubi == utero && max < 8 * mes + 15 * dias) {
 				max = 8 * mes + 15 * dias;
 			}
-			else if (tumoresaux[i]->get_Ubicacion() == mama && max < 8 * mes) {
+			else if (ubi == mama && max < 8 * mes) {
 				max = 8 * mes;
 			}
-			else if (tumoresaux[i]->get_Ubicacion() == tiroides && max < 7 * mes) {
+			else if (ubi == tiroides && max < 7 * mes) {
 				max = 7 * mes;
 			}
-			else if (tumoresaux[i]->get_Ubicacion() == prostata && max < 6 * mes) {
+			else if (ubi == prostata && max < 6 * mes) {
 				max = 6 * mes;
 			}
-			else if (tumoresaux[i]->get_Ubicacion() == intestino && max < 5 * mes) {
+			else if (ubi == intestino && max < 5 * mes) {
 				max = 5 * mes;
 			}
-			else if (tumoresaux[i]->get_Ubicacion() == ojo && max < 3 * mes) {
+			else if (ubi == ojo && max < 3 * mes) {
 				max = 3 * mes;
 			}
+			i++;
+			if (i == tumoresaux.size())
+				break;
 		}
+		if (i == tumoresaux.size())
+			break;
+
 		while (tumoresaux[i]->get_Tamanio() == pequenio) {
-			if (tumoresaux[i]->get_Ubicacion() == cabeza || tumoresaux[i]->get_Ubicacion() == cuello) {
+			eUbicacion ubi = tumoresaux[i]->get_Ubicacion();
+			if (ubi == cabeza || ubi == cuello) {
 				max = 8 * mes;
 			}
-			else if (tumoresaux[i]->get_Ubicacion() == pulmon && max < 7 * mes) {
+			else if (ubi == pulmon && max < 7 * mes) {
 				max = 7 * mes;
 			}
-			else if (tumoresaux[i]->get_Ubicacion() == utero && max < 6 * mes + 15 * dias) {
+			else if (ubi == utero && max < 6 * mes + 15 * dias) {
 				max = 6 * mes + 15 * dias;
 			}
-			else if (tumoresaux[i]->get_Ubicacion() == mama && max < 6 * mes) {
+			else if (ubi == mama && max < 6 * mes) {
 				max = 6 * mes;
 			}
-			else if (tumoresaux[i]->get_Ubicacion() == tiroides && max < 5 * mes) {
+			else if (ubi == tiroides && max < 5 * mes) {
 				max = 5 * mes;
 			}
-			else if (tumoresaux[i]->get_Ubicacion() == prostata && max < 5 * mes) {
+			else if (ubi == prostata && max < 5 * mes) {
 				max = 5 * mes;
+				break;
 			}
-			else if (tumoresaux[i]->get_Ubicacion() == intestino && max < 4 * mes) {
+			else if (ubi == intestino && max < 4 * mes) {
 				max = 4 * mes;
 			}
-			else if (tumoresaux[i]->get_Ubicacion() == ojo && max < 2 * mes) {
+			else if (ubi == ojo && max < 2 * mes) {
 				max = 2 * mes;
 			}
+			i++;
+			if (i == tumoresaux.size())
+				break;
 		}
+		if (i == tumoresaux.size())
+			break;
 	}
 	nuevoTiempo += max;
 	paciente->get_miFicha()->set_Tratamiento(nuevoTiempo);
