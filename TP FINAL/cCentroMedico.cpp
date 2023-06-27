@@ -30,8 +30,8 @@ void cCentroMedico::AsistenciaPaciente(cPaciente* miPaciente) {
 	{
 		//comunicarme con el paciente y ver si continua con el tratamiento
 		miPaciente->get_Contacto();
-		int aux = rand() % 2;
-		if (aux == 2) // considero que no va a seguir con el tratamiento
+		int aux = rand() % 2 +1;
+		if (aux == 1) // considero que no va a seguir con el tratamiento
 		{
 			//le doy por finalizado el tratamiento
 			miPaciente->get_miFicha()->set_Finalizado(true);
@@ -76,7 +76,7 @@ void cCentroMedico::operator+(cPaciente* paciente)
 }
 
 
-vector<cPaciente*> cCentroMedico::buscarXTumor(eUbicacion ubi)
+vector<cPaciente*> cCentroMedico::buscarXTumoryTerapia(eUbicacion ubi, eTratamiento tratamiento)
 {
 	vector<cPaciente*>encontrados;
 	for (int i = 0; i < Pacientes.size(); i++) //recorro pacientes
@@ -86,9 +86,15 @@ vector<cPaciente*> cCentroMedico::buscarXTumor(eUbicacion ubi)
 		{
 			vector<cTumor*>Tumores = Pacientes[i]->get_miFicha()->get_Tumores();
 			eUbicacion suUbicacion = Tumores[i]->get_Ubicacion();
-			if (suUbicacion == ubi)
+			if (suUbicacion == utero)
 			{
-				encontrados.push_back(Pacientes[i]);
+				eTratamiento suTratamiento = Tumores[i]->get_terapia()->get_expecificoTratamiento();
+
+				if (suTratamiento == tratamiento)
+				{
+					encontrados.push_back(Pacientes[i]);
+				}
+
 			}
 		}
 	}
@@ -96,25 +102,7 @@ vector<cPaciente*> cCentroMedico::buscarXTumor(eUbicacion ubi)
 
 }
 
-vector<cPaciente*> cCentroMedico::buscarXTratamiento(eTratamiento tratamiento)
-{
-	vector<cPaciente*>encontrados;
-	for (int i = 0; i < Pacientes.size(); i++) //recorro pacientes
-	{
-		int tam = Pacientes[i]->get_miFicha()->get_Tumores().size();
-		for (int j = 0; j < tam; j++) //recorro su lista de tumores
-		{
-			vector<cTumor*>Tumores = Pacientes[i]->get_miFicha()->get_Tumores();
-			eTratamiento suTratamiento = Tumores[i]->get_terapia()->get_expecificoTratamiento();
-			if (suTratamiento == tratamiento)
-			{
-				encontrados.push_back(Pacientes[i]);
-			}
-		}
-	}
-	return encontrados;
 
-}
 
 vector<cPaciente*> cCentroMedico::a5DeSobredosis()
 {

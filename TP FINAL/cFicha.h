@@ -20,6 +20,8 @@ public:
 	void set_Tratamiento(time_t fechatratamiento);
 	void set_Sesiones(vector<cSesion*> sesiones);
 	void set_Tumores(vector<cTumor*> tumores);
+	void set_Terapia(vector<cTerapia*>terapias);
+
 	
 
 	void set_EstadoRad(unsigned int estadorad);

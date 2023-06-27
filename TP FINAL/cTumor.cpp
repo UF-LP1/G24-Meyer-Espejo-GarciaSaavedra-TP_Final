@@ -66,3 +66,8 @@ string cTumor:: to_string() {
 	ss << "Ubicacion" << this->Ubicacion << ",Tamanio" << this->Tamanio << ",Terapia" << this->terapia << ",Acumulacion de radiacion" << this->AcumRadiacion;
 	return(ss.str());
 }
+
+eTratamiento cTumor::get_expecificoTerapia()
+{
+	return this->tratamiento;
+}

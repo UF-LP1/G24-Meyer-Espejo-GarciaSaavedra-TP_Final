@@ -8,7 +8,7 @@ void cDosimetrista::TipoTerapiaRecibir(cPaciente* MiPaciente) {
 
 	vector <cTumor*>TumoresPresentes; 
 	TumoresPresentes = MiPaciente->get_miFicha()->get_Tumores();
-
+	vector<cTerapia*>terapiaaux;
 	cTerapia* diagnosticoBT = new cBT;
 	cTerapia* diagnosticoRS = new cRS;
 	cTerapia* diagnosticoRTH = new cRTH;
@@ -18,26 +18,32 @@ void cDosimetrista::TipoTerapiaRecibir(cPaciente* MiPaciente) {
 		eTamanio Size = TumoresPresentes[i]->get_Tamanio();
 		if (Ubi == ojo) {
 			TumoresPresentes[i]->set_Terapia(diagnosticoBT);
+			terapiaaux.push_back(diagnosticoBT);
 		}
 		if (Ubi == mama || Ubi == cuello || Ubi == utero) {
 			if (Size == grande) {
 				TumoresPresentes[i]->set_Terapia(diagnosticoBT);
+				terapiaaux.push_back(diagnosticoBT);
 			}
 			else
 			{
 				TumoresPresentes[i]->set_Terapia(diagnosticoRTH);
+				terapiaaux.push_back(diagnosticoRTH);
 			}
 		}
 		if (Ubi == tiroides || Ubi == prostata) {
 			if (Size == grande) {
 			
 				TumoresPresentes[i]->set_Terapia(diagnosticoRS);
+				terapiaaux.push_back(diagnosticoRS);
 			}
 			else {
 				TumoresPresentes[i]->set_Terapia(diagnosticoRTH);
+				terapiaaux.push_back(diagnosticoRTH);
 			}
 		}
 	}
+	MiPaciente->get_miFicha()->set_Terapia(terapiaaux);
 	delete diagnosticoBT;
 	delete diagnosticoRS;
 	delete diagnosticoRTH;
@@ -49,13 +55,13 @@ int cDosimetrista::RadTotalPaciente(cPaciente* MiPaciente) {
 	RadiacionTerapia = MiPaciente->get_miFicha()->get_Terapia();
 	float radTP = 0.0; //por terapia paciente
 	int cont = 0;
+	cTerapia* ptr_aux = nullptr;
 	for (int i = 0; i < RadiacionTerapia.size(); i++) {
-		cBT* auxcBT = dynamic_cast <cBT*> (RadiacionTerapia[i]);
-		//todo es de paciente,nada por tumor
 
-		if (auxcBT == NULL) {//seria radioterapia haz externo o sistematica
+		ptr_aux = RadiacionTerapia[i];
+
+		if (dynamic_cast<cRS*>(ptr_aux)!=NULL || dynamic_cast<cRTH*>(ptr_aux) != NULL) {//seria radioterapia haz externo o sistematica
 			cont++;
-	    	//diversion!!
 		}	
 	}
 	if (cont == 0) {

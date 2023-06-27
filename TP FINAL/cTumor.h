@@ -18,10 +18,14 @@ public:
     void set_Terapia(cTerapia* TipoTs);
 	cTerapia* get_terapia();
 	string to_string();
+	eTratamiento get_expecificoTerapia();
+
 private:
 	eUbicacion Ubicacion;
 	eTamanio Tamanio;
 	int AcumRadiacion;
 	bool benigno;
 	cTerapia* terapia;
+	eTratamiento tratamiento;
+
 };

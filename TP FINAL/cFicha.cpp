@@ -134,6 +134,11 @@ void cFicha::set_Tumores(vector<cTumor*> tumores)
 	this->Tumores = tumores;
 }
 
+void cFicha::set_Terapia(vector<cTerapia*> terapias)
+{
+	this->Terapias = terapias;
+}
+
 
 void cFicha::set_EstadoRad(unsigned int estadorad)
 {

@@ -20,8 +20,7 @@ public:
 
 
 	//pedidos expecificos en consigna
-	vector<cPaciente*> buscarXTumor(eUbicacion ubi);
-	vector<cPaciente*> buscarXTratamiento(eTratamiento tratamiento);
+	vector<cPaciente*> buscarXTumoryTerapia(eUbicacion ubi, eTratamiento tratamiento);
 	vector<cPaciente*> a5DeSobredosis();
 
 

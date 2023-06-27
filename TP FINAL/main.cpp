@@ -23,16 +23,35 @@ int main() {
 	cOncologo* oncologo2 = new cOncologo("0023");
 	cDosimetrista* dosimetrista1 = new cDosimetrista("345"); 
 
+	//corregidos
 	oncologo1->AtenderPaciente(paciente2); //actualiza los tumores;y sus caraceristicas en la ficha; en base a estudios
+	dosimetrista1->TipoTerapiaRecibir(paciente2);
+	CentroMedico->AsistenciaPaciente(paciente2);
 	
 
 
+
+	oncologo1->DosisXSesion(paciente2); //mirarlo en grupo no le gusta el dynamic cast
+	dosimetrista1->RadTotalPaciente(paciente2); //mirarlo en grupo no le gusta el dynamic cast
+
+	//no puedo corroborar el try catch porque necesito los metodos que tienen problema en try catch
+	try {
+		oncologo1->VerificarSobredosis(paciente2);
+	}
+	catch (exception& e)
+	{
+		cout << e.what();
+
+	}
+	
+	CentroMedico->a5DeSobredosis(); //error salta de leer memoria que no existe
+	oncologo1->VerificarFecha(paciente2); //no lo ppuede verificar porque no entro en el if para llamar a Evaluar
+
 	//ver q funcionen
-	dosimetrista1->TipoTerapiaRecibir(paciente2);
-	oncologo1->DosisXSesion(paciente2);
-	dosimetrista1->RadTotalPaciente(paciente2);
-	oncologo1->VerificarSobredosis(paciente2); //tiene que estar dentro de un bloque de try catch
-	oncologo1->VerificarFecha(paciente2);
+	CentroMedico->buscarXTumoryTerapia(utero, branquiterapia);
+	
+	
+
 
 
 	//cout << *paciente1;
