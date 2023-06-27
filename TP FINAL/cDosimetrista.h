@@ -14,7 +14,6 @@ public:
 	string get_Nombre();
 	string get_Apellido();
 	string get_ID();
-	//bool CalcularDosisTotalTumor(cPaciente* MiPaciente);
 	int RadTotalPaciente(cPaciente* MiPaciente); //calcula la radiacion maxima posible en el paciente
 	//int RadTotalTumores(cPaciente* MiPaciente); 
 

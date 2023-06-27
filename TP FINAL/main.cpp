@@ -21,15 +21,19 @@ int main() {
 
 	cOncologo* oncologo1 = new cOncologo("2345");
 	cOncologo* oncologo2 = new cOncologo("0023");
-	cDosimetrista* Dosimetrista1 = new cDosimetrista("345"); 
+	cDosimetrista* dosimetrista1 = new cDosimetrista("345"); 
 
 	oncologo1->AtenderPaciente(paciente2); //actualiza los tumores;y sus caraceristicas en la ficha; en base a estudios
 	
 	//ver q funcionen
 	oncologo1->DosisXSesion(paciente2);
-	oncologo1->VerificarSobredosis(paciente2);
+	dosimetrista1->TipoTerapiaRecibir(paciente2);
+	dosimetrista1->RadTotalPaciente(paciente2);
+	oncologo1->VerificarSobredosis(paciente2); //tiene que estar dentro de un bloque de try catch
 	oncologo1->VerificarFecha(paciente2);
 
+
+	
 
 
 	//cout << *paciente1;
@@ -40,7 +44,7 @@ int main() {
 
 	delete paciente1;
 	delete paciente2;
-	delete Dosimetrista1;
+	delete dosimetrista1;
 	delete oncologo1;
 	delete oncologo2;
 
