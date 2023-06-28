@@ -1,8 +1,9 @@
 #include "cTerapia.h"
 
-cTerapia::cTerapia()
+
+cTerapia::cTerapia(eTratamiento tratamiento, eTamanio tamanio):tratamiento(tratamiento)
 {
-	this->tratamiento = branquiterapia;
+	this->dosisxSesion = 0;
 }
 cTerapia::~cTerapia()
 {
@@ -11,4 +12,9 @@ cTerapia::~cTerapia()
 eTratamiento cTerapia::get_expecificoTratamiento()
 {
 	return this->tratamiento;
+}
+
+void cTerapia::set_dosisxSesion(float dosis)
+{
+	this->dosisxSesion = dosis;
 }

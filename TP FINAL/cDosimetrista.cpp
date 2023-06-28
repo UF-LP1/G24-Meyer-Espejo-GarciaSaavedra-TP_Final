@@ -4,9 +4,54 @@ cDosimetrista::cDosimetrista(string id):ID(id){}
 cDosimetrista::~cDosimetrista()
 {}
 
-void cDosimetrista::TipoTerapiaRecibir(cPaciente* MiPaciente) {
+void cDosimetrista::TipoTerapiaRecibir(cPaciente* MiPaciente) { //termino mañana
 
-	vector <cTumor*> TumoresPresentes; 
+	vector <cTumor*> TumoresPresentes;
+	TumoresPresentes = MiPaciente->get_miFicha()->get_Tumores();
+
+	for (int i = 0; i < TumoresPresentes.size(); i++) {
+		cTerapia* terapia= new cRS(mediano);
+		eUbicacion Ubi = TumoresPresentes[i]->get_Ubicacion();
+		eTamanio Size = TumoresPresentes[i]->get_Tamanio();
+
+		if (Ubi == ojo) {
+			delete terapia;
+			terapia = new cBT(TumoresPresentes[i]->get_Tamanio());
+		}
+		else if (Ubi == mama || Ubi == cuello || Ubi == utero) {
+			if (Size == grande) {
+				delete terapia;
+				terapia = new cBT(grande);
+			}
+			else {
+				delete terapia;
+				terapia = new cRS(TumoresPresentes[i]->get_Tamanio()); //ya que puede ser mediano o chico
+
+			}
+		}
+		else if (Ubi == tiroides || Ubi == prostata || Ubi == pulmon) {
+			if (Size == grande) {
+				
+			}
+			else {
+
+			}
+		}
+
+	}
+
+	//SOLO EN ESE UTLIZO SISTEMATICA
+
+	/*if (Ubi == tiroides || Ubi == prostata || Ubi == pulmon) {
+		if (Size == grande) {
+
+			TumoresPresentes[i]->set_Terapia(diagnosticoRS);
+			terapiaaux.push_back(diagnosticoRS);*/
+
+
+
+
+	/*vector <cTumor*> TumoresPresentes; 
 	TumoresPresentes = MiPaciente->get_miFicha()->get_Tumores();
 	vector<cTerapia*> terapiaaux;
 	cTerapia* diagnosticoBT = new cBT;
@@ -47,7 +92,7 @@ void cDosimetrista::TipoTerapiaRecibir(cPaciente* MiPaciente) {
 	MiPaciente->get_miFicha()->set_Terapia(terapiaaux);
 	delete diagnosticoBT;
 	delete diagnosticoRS;
-	delete diagnosticoRTH;
+	delete diagnosticoRTH;*/
 }
 
 int cDosimetrista::RadTotalPaciente(cPaciente* MiPaciente) {
