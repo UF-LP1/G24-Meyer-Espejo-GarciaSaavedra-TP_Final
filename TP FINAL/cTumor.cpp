@@ -57,9 +57,11 @@ cTerapia* cTumor::get_terapia()
 {
 	return this->terapia;
 }
+
 void  cTumor::set_Terapia(cTerapia* TipoTs) {
 	this->terapia = TipoTs;
 }
+
 string cTumor:: to_string() {
 	stringstream ss;
 	

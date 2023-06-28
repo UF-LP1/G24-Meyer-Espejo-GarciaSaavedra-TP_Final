@@ -56,7 +56,7 @@ void cOncologo::DosisXSesion(cPaciente* paciente)
 {
 	float saludaux = paciente->get_Salud();
 	vector<cSesion*> sesionaux = paciente->get_miFicha()->get_Sesiones();
-	vector<cTerapia*>SusTerapias = paciente->get_miFicha()->get_Terapia();
+	vector<cTerapia*> SusTerapias = paciente->get_miFicha()->get_Terapias();
 	vector<cTumor*> tumoraux = paciente->get_miFicha()->get_Tumores();
 	cTerapia* ptr_aux = nullptr;
 	int i = 0;
@@ -71,17 +71,17 @@ void cOncologo::DosisXSesion(cPaciente* paciente)
 
 		while (i < sesionaux.size() && saludaux < 0.5) { //Salud "mala"
 			//menor dosis
-			if (dynamic_cast<cRTH*>(ptr_aux) != NULL) {
+			if (dynamic_cast<cRTH*>(tumoraux[j]->get_terapia()) != NULL) {
 				sesionaux[i]->set_Dosis(1);
 				acumRadxSesionRTH += sesionaux[i]->get_Dosis();
 			}
 			else {
-				if (dynamic_cast<cBT*>(ptr_aux) != NULL) {
+				if (dynamic_cast<cBT*>(tumoraux[j]->get_terapia()) != NULL) {
 					sesionaux[i]->set_Dosis(6);
 					acumRadxSesionBT += sesionaux[i]->get_Dosis();
 				}
 
-				if (dynamic_cast<cRS*>(ptr_aux) != NULL) {
+				if (dynamic_cast<cRS*>(tumoraux[j]->get_terapia()) != NULL) {
 					sesionaux[i]->set_Dosis(2);
 					acumRadxSesionRS += sesionaux[i]->get_Dosis();
 				}
@@ -90,22 +90,21 @@ void cOncologo::DosisXSesion(cPaciente* paciente)
 
 		while (r < sesionaux.size() && saludaux > 0.5) {//salud """"buena""""
 
-			if (dynamic_cast<cRTH*>(ptr_aux) != NULL) {
+			if (dynamic_cast<cRTH*>(tumoraux[j]->get_terapia()) != NULL) {
 				sesionaux[r]->set_Dosis(2);
 				acumRadxSesionRTH += sesionaux[i]->get_Dosis();
 			}
 			else {
-				if (dynamic_cast<cBT*>(ptr_aux) != NULL) {
+				if (dynamic_cast<cBT*>(tumoraux[j]->get_terapia()) != NULL) {
 					sesionaux[r]->set_Dosis(6);
 					acumRadxSesionBT += sesionaux[i]->get_Dosis();
 				}
-				if (dynamic_cast<cRS*>(ptr_aux) != NULL) {
+				if (dynamic_cast<cRS*>(tumoraux[j]->get_terapia()) != NULL) {
 					sesionaux[r]->set_Dosis(4);
 					acumRadxSesionRS += sesionaux[i]->get_Dosis();
 				}
 				r++;
 			}
-
 		}
 		tumoraux[j]->set_AcumRadiacion(acumRadxSesionBT);
 		tumoraux[j]->set_AcumRadiacion(acumRadxSesionRTH);
@@ -245,8 +244,10 @@ void cOncologo::VerificarFecha(cPaciente *paciente)
 	//mira la fecha time de tratamiento y cuando se cumple el tiempo establecido, el oncologo debe ver al paciente denuevo
 	
 	time_t fechatratamiento = paciente->get_miFicha()->get_Tratamiento();
-	time_t fechahoy = time(0);
-	if (fechatratamiento > fechahoy)
+
+	time_t fechahoy = time(0);//ponemos una fecha intermedia para que a veces entre y otras no
+	time_t tiempo_transcurrido = fechahoy - paciente->get_miFicha()->get_FechaInicio();
+	if (fechatratamiento > tiempo_transcurrido)//hay una diferencia entre la fecha del contructor de ficha y la fecha hoy de este metodo en teoria
 		Evaluacion(paciente);
 }
 

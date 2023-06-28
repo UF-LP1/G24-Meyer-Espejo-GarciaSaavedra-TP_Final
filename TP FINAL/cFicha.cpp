@@ -5,7 +5,7 @@
 cFicha::cFicha(string oncologodni)
 {
 	
-	this->FechaInicio = 0;
+	this->FechaInicio = time(0);
 	this->estadoRad = 0;
 	this->espera = false;
 	this->Finalizado = false;
@@ -219,7 +219,7 @@ void cFicha::actualizar_Terapia()
 	this->Terapias = Auxiliar;
 }
 
-vector<cTerapia*> cFicha::get_Terapia()
+vector<cTerapia*> cFicha::get_Terapias()
 {
 	return this->Terapias; 
 }
@@ -228,6 +228,11 @@ void cFicha::set_FrecSemanal(int f)
 {
 	this->FrecTratamiento = f;
 
+}
+
+time_t cFicha::get_FechaInicio()
+{
+	return this->FechaInicio;
 }
 
 

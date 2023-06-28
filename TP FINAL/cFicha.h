@@ -23,7 +23,6 @@ public:
 	void set_Terapia(vector<cTerapia*>terapias);
 
 	
-
 	void set_EstadoRad(unsigned int estadorad);
 
 	void set_Finalizado(bool termino);
@@ -34,8 +33,9 @@ public:
 	void CalcRadPaciente(); //incluido el set y la cuenta dada en la consigna
 	int get_RadPaciente();
 	void actualizar_Terapia();
-	vector<cTerapia*> get_Terapia();
+	vector<cTerapia*> get_Terapias();
 	void set_FrecSemanal(int f);
+	time_t	get_FechaInicio();
 
 	//sobrecargas 
 	void operator+(cSesion* s); 
@@ -53,7 +53,7 @@ private:
 	time_t FechaInicio;//no tenemos set de esto porque se pasa cuando se crea
 	unsigned int estadoRad;
 	bool espera;
-	vector<cTerapia*>Terapias;
+	vector<cTerapia*> Terapias;
 	time_t Tratamiento;
 	bool Finalizado;
 	int FrecTratamiento;

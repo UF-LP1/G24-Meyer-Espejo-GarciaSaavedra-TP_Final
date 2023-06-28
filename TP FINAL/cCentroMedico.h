@@ -18,11 +18,9 @@ public:
 	void buscar(cPaciente* paciente);
 	void operator+(cPaciente* paciente);
 
-
 	//pedidos expecificos en consigna
 	vector<cPaciente*> buscarXTumoryTerapia(eUbicacion ubi, eTratamiento tratamiento);
 	vector<cPaciente*> a5DeSobredosis();
-
 
 private:
 	string Nombre;

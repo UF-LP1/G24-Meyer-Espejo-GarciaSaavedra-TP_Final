@@ -7,7 +7,7 @@
 
 int main() {
 	cPaciente* paciente1 = new cPaciente("marti", "F", "876", "A+", 0.1);
-	cPaciente* paciente2 = new cPaciente("saul", "M", "1234", "0-", 0.7);
+	cPaciente* paciente2 = new cPaciente("saul", "M", "1234", "0-", 0.1);
 
 
 
@@ -27,12 +27,10 @@ int main() {
 	oncologo1->AtenderPaciente(paciente2); //actualiza los tumores;y sus caraceristicas en la ficha; en base a estudios
 	dosimetrista1->TipoTerapiaRecibir(paciente2);
 	CentroMedico->AsistenciaPaciente(paciente2);
-	
-
 
 
 	oncologo1->DosisXSesion(paciente2); //mirarlo en grupo no le gusta el dynamic cast
-	dosimetrista1->RadTotalPaciente(paciente2); //mirarlo en grupo no le gusta el dynamic cast
+	//dosimetrista1->RadTotalPaciente(paciente2); //mirarlo en grupo no le gusta el dynamic cast
 
 	//no puedo corroborar el try catch porque necesito los metodos que tienen problema en try catch
 	try {
@@ -41,24 +39,17 @@ int main() {
 	catch (exception& e)
 	{
 		cout << e.what();
-
 	}
 	
-	CentroMedico->a5DeSobredosis(); //error salta de leer memoria que no existe
+	//CentroMedico->a5DeSobredosis(); //error salta de leer memoria que no existe
 	oncologo1->VerificarFecha(paciente2); //no lo ppuede verificar porque no entro en el if para llamar a Evaluar
 
 	//ver q funcionen
+	//CentroMedico->buscarXTumor(utero, branquiterapia);
 	CentroMedico->buscarXTumoryTerapia(utero, branquiterapia);
 	
-	
-
-
-
 	//cout << *paciente1;
 	cout << *paciente2;
-
-
-
 
 	delete paciente1;
 	delete paciente2;

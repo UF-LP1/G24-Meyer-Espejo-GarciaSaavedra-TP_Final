@@ -6,13 +6,13 @@ cDosimetrista::~cDosimetrista()
 
 void cDosimetrista::TipoTerapiaRecibir(cPaciente* MiPaciente) {
 
-	vector <cTumor*>TumoresPresentes; 
+	vector <cTumor*> TumoresPresentes; 
 	TumoresPresentes = MiPaciente->get_miFicha()->get_Tumores();
-	vector<cTerapia*>terapiaaux;
+	vector<cTerapia*> terapiaaux;
 	cTerapia* diagnosticoBT = new cBT;
 	cTerapia* diagnosticoRS = new cRS;
 	cTerapia* diagnosticoRTH = new cRTH;
-
+	
 	for (int i = 0; i < TumoresPresentes.size(); i++) {
 		eUbicacion Ubi = TumoresPresentes[i]->get_Ubicacion();
 		eTamanio Size = TumoresPresentes[i]->get_Tamanio();
@@ -31,7 +31,7 @@ void cDosimetrista::TipoTerapiaRecibir(cPaciente* MiPaciente) {
 				terapiaaux.push_back(diagnosticoRTH);
 			}
 		}
-		if (Ubi == tiroides || Ubi == prostata) {
+		if (Ubi == tiroides || Ubi == prostata ||Ubi == pulmon) {
 			if (Size == grande) {
 			
 				TumoresPresentes[i]->set_Terapia(diagnosticoRS);
@@ -43,6 +43,7 @@ void cDosimetrista::TipoTerapiaRecibir(cPaciente* MiPaciente) {
 			}
 		}
 	}
+
 	MiPaciente->get_miFicha()->set_Terapia(terapiaaux);
 	delete diagnosticoBT;
 	delete diagnosticoRS;
@@ -52,7 +53,7 @@ void cDosimetrista::TipoTerapiaRecibir(cPaciente* MiPaciente) {
 int cDosimetrista::RadTotalPaciente(cPaciente* MiPaciente) {
 
 	vector <cTerapia*> RadiacionTerapia;
-	RadiacionTerapia = MiPaciente->get_miFicha()->get_Terapia();
+	RadiacionTerapia = MiPaciente->get_miFicha()->get_Terapias();
 	float radTP = 0.0; //por terapia paciente
 	int cont = 0;
 	cTerapia* ptr_aux = nullptr;

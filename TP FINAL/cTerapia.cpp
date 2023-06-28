@@ -2,7 +2,7 @@
 
 cTerapia::cTerapia()
 {
-	
+	this->tratamiento = branquiterapia;
 }
 cTerapia::~cTerapia()
 {
