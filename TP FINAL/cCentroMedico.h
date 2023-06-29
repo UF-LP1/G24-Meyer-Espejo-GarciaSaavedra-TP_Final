@@ -15,7 +15,6 @@ public:
 	void AsistenciaPaciente(cPaciente* miPaciente);
 	string to_string();
 	vector<cPaciente*> get_Pacientes();
-	int buscar(cPaciente* paciente);
 	void operator+(cPaciente* paciente);
 	void operator-(cPaciente* paciente);
 

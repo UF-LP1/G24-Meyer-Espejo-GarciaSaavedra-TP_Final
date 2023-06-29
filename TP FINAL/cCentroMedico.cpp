@@ -51,47 +51,17 @@ vector<cPaciente*> cCentroMedico::get_Pacientes()
 	return this->Pacientes;
 }
 
-int cCentroMedico::buscar(cPaciente* paciente)
-{
-	
-	int pos = -1;
-	for (int i = 0; i < Pacientes.size(); i++)
-	{
-		if (Pacientes[i] == paciente)
-		{
-			pos = i; //guardo donde lo encontre
-			return pos;
-		}
-		
-	}
-	if (pos==-1) //no lo encontro
-	{
-		throw exPacienteNoEncontrado();
-
-		return -1;
-	}
-
-	
-
-}
-
 void cCentroMedico::operator+(cPaciente* paciente)
 {
 		this->Pacientes.push_back(paciente);
 }
 
 void cCentroMedico::operator-(cPaciente* paciente)
-{
-	int num = buscar(paciente);
-	
+{	
 	for (int i = 0; i < Pacientes.size(); i++)
 	{
-		if (i == num)//quiero eliminar al paciente que se encontraba en esa posicion
-		{
-			Pacientes.erase(Pacientes.begin() + i);
-		}
+		Pacientes.erase(Pacientes.begin() + i);
 	}
-
 }
 
 vector<cPaciente*> cCentroMedico::buscarXTumoryTerapia(eUbicacion ubi, eTratamiento tratamiento)
@@ -111,7 +81,7 @@ vector<cPaciente*> cCentroMedico::buscarXTumoryTerapia(eUbicacion ubi, eTratamie
 
 				if (suTratamiento == tratamiento)
 				{
-					encontrados.push_back(encontrados[i]);
+					encontrados.push_back(Pacientes[i]);
 				}
 
 			}

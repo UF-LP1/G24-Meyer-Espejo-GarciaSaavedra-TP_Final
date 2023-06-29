@@ -20,8 +20,8 @@ int main() {
 	//agrego a estos pacientes con la sobrecarga +
 	*CentroMedico + paciente1;
 	*CentroMedico + paciente2;
-	*CentroMedico + paciente3;
-	*CentroMedico + paciente4;
+	//*CentroMedico + paciente3;
+	//*CentroMedico + paciente4;
 
 	cOncologo* oncologo1 = new cOncologo("2345");
 	cOncologo* oncologo2 = new cOncologo("0023");
@@ -83,45 +83,30 @@ int main() {
 	catch (exSobredosis5porciento& e) {
 		cout << e.what() << endl;
 		}
+	
 
-	/*try {
-		cout << "La lista de Pacientes que estan con las indicaciones de ubicacion utero y tratamiento branquiterapia" << endl;
+	try {
+		cout << "La lista de Pacientes que estan con las indicaciones de ubicacion tiroides y tratamiento haz externo" << endl;
 		vector<cPaciente*>Pacientesexpecificos;
 
-		Pacientesexpecificos=CentroMedico->buscarXTumoryTerapia(cuello, branquiterapia);
+		Pacientesexpecificos=CentroMedico->buscarXTumoryTerapia(tiroides, hazExterno);
 
 		for (int i = 0; i < Pacientesexpecificos.size(); i++)
 		{
 			cout << Pacientesexpecificos[i]->get_Nombre() << endl;
 		}
 
-	}*/
-	/*catch(exNohayNingunCaso&e){
+	}
+	catch(exNohayNingunCaso&e){
 		cout << e.what() << endl;
-	}*/
+	}
 	
-
-	cPaciente* paciente5 = new cPaciente("cata", "F", "9875", "0-", 0.9); //no lo agrego al centro asi veo si salta el error
-	try {
-		CentroMedico->buscar(paciente5);
-
-	}
-	catch (exPacienteNoEncontrado& e)
-	{
-		cout << e.what() << endl;
-
-	}
-
 	*CentroMedico - paciente1;
 	*CentroMedico - paciente2;
 	*CentroMedico - paciente3;
 	*CentroMedico - paciente4;
 
-	delete paciente1;
-	delete paciente2;
-	delete paciente3;
-	delete paciente4;
-	delete paciente5;
+
 	delete dosimetrista1;
 	delete oncologo1;
 	delete oncologo2;
