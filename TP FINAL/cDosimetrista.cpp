@@ -8,7 +8,7 @@ void cDosimetrista::TipoTerapiaRecibir(cPaciente* MiPaciente) { //termino mañana
 
 	vector <cTumor*> TumoresPresentes;
 	TumoresPresentes = MiPaciente->get_miFicha()->get_Tumores();
-
+	vector<cTerapia*>Tratamientos;
 	for (int i = 0; i < TumoresPresentes.size(); i++) {
 		cTerapia* terapia= new cRS(mediano);
 		eUbicacion Ubi = TumoresPresentes[i]->get_Ubicacion();
@@ -40,62 +40,10 @@ void cDosimetrista::TipoTerapiaRecibir(cPaciente* MiPaciente) { //termino mañana
 		}
 
 		TumoresPresentes[i]->set_Terapia(terapia);
-		
+		Tratamientos.push_back(terapia);
 	}
-
-	//SOLO EN ESE UTLIZO SISTEMATICA
-
-	/*if (Ubi == tiroides || Ubi == prostata || Ubi == pulmon) {
-		if (Size == grande) {
-
-			TumoresPresentes[i]->set_Terapia(diagnosticoRS);
-			terapiaaux.push_back(diagnosticoRS);*/
-
-
-
-
-	/*vector <cTumor*> TumoresPresentes; 
-	TumoresPresentes = MiPaciente->get_miFicha()->get_Tumores();
-	vector<cTerapia*> terapiaaux;
-	cTerapia* diagnosticoBT = new cBT;
-	cTerapia* diagnosticoRS = new cRS;
-	cTerapia* diagnosticoRTH = new cRTH;
+	MiPaciente->get_miFicha()->set_Terapia(Tratamientos);
 	
-	for (int i = 0; i < TumoresPresentes.size(); i++) {
-		eUbicacion Ubi = TumoresPresentes[i]->get_Ubicacion();
-		eTamanio Size = TumoresPresentes[i]->get_Tamanio();
-		if (Ubi == ojo) {
-			TumoresPresentes[i]->set_Terapia(diagnosticoBT);
-			terapiaaux.push_back(diagnosticoBT);
-		}
-		if (Ubi == mama || Ubi == cuello || Ubi == utero) {
-			if (Size == grande) {
-				TumoresPresentes[i]->set_Terapia(diagnosticoBT);
-				terapiaaux.push_back(diagnosticoBT);
-			}
-			else
-			{
-				TumoresPresentes[i]->set_Terapia(diagnosticoRTH);
-				terapiaaux.push_back(diagnosticoRTH);
-			}
-		}
-		if (Ubi == tiroides || Ubi == prostata ||Ubi == pulmon) {
-			if (Size == grande) {
-			
-				TumoresPresentes[i]->set_Terapia(diagnosticoRS);
-				terapiaaux.push_back(diagnosticoRS);
-			}
-			else {
-				TumoresPresentes[i]->set_Terapia(diagnosticoRTH);
-				terapiaaux.push_back(diagnosticoRTH);
-			}
-		}
-	}
-
-	MiPaciente->get_miFicha()->set_Terapia(terapiaaux);
-	delete diagnosticoBT;
-	delete diagnosticoRS;
-	delete diagnosticoRTH;*/
 }
 
 int cDosimetrista::RadTotalPaciente(cPaciente* MiPaciente) {
@@ -121,6 +69,11 @@ int cDosimetrista::RadTotalPaciente(cPaciente* MiPaciente) {
 	}	
 	MiPaciente->get_miFicha()->set_RadiacionMaxP(radTP);
 	return(radTP);
+}
+
+int cDosimetrista::RadTotalTumores(cPaciente* MiPaciente)
+{
+	return 0;
 }
 
 string cDosimetrista::get_Nombre() {

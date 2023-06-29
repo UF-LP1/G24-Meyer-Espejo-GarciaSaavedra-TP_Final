@@ -14,7 +14,7 @@ public:
 	void set_dosisxSesion(float dosis);
 
 protected:
-	const eTratamiento tratamiento;
+	 eTratamiento tratamiento;
 	float dosisxSesion; 
 };
 

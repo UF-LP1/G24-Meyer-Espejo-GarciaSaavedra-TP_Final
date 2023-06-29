@@ -60,5 +60,5 @@ private:
 	vector<cTumor*> Tumores; //se necesita imprimir 
 	vector<cSesion*> Sesiones;
 	int RadiacionMaxPaciente; //esta es el limite; la calcula el dosimetrista en el metodo RadTotalPaciente
-	int RadiacionPaciente;
+	int RadiacionPaciente;//se calcula en el metodo,calcradpaciente
 };

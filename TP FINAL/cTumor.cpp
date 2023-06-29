@@ -69,7 +69,3 @@ string cTumor:: to_string() {
 	return(ss.str());
 }
 
-eTratamiento cTumor::get_expecificoTerapia()
-{
-	return this->tratamiento;
-}

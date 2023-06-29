@@ -55,7 +55,7 @@ void cOncologo::AtenderPaciente(cPaciente* paciente)
 void cOncologo::DosisXSesion(cPaciente* paciente)
 {
 	vector<cTumor*> tumoraux = paciente->get_miFicha()->get_Tumores();
-	vector<cSesion*> sesionaux = paciente->get_miFicha()->get_Sesiones();
+	
 
 	float dosisSesion;
 	for (int i = 0; i < tumoraux.size(); i++)
@@ -64,71 +64,9 @@ void cOncologo::DosisXSesion(cPaciente* paciente)
 		//actualizo en la terapia y en sesiones
 		tumoraux[i]->get_terapia()->set_dosisxSesion(dosisSesion);
 
-		for (int j = 0; j < sesionaux.size(); j++)
-		{
-			sesionaux[i]->set_Dosis(dosisSesion);
-		}
-			
+		
 	}
 
-	//float saludaux = paciente->get_Salud();
-	//vector<cSesion*> sesionaux = paciente->get_miFicha()->get_Sesiones();
-	//vector<cTerapia*> SusTerapias = paciente->get_miFicha()->get_Terapias();
-	//vector<cTumor*> tumoraux = paciente->get_miFicha()->get_Tumores();
-	//cTerapia* ptr_aux = nullptr;
-	//int i = 0;
-	//int r = 0;
-	//int acumRadxSesionRTH = 0;
-	//int acumRadxSesionBT = 0;
-	//int acumRadxSesionRS = 0;
-
-	//for (int j = 0; j < SusTerapias.size(); j++)
-	//{
-	//	ptr_aux = SusTerapias[j];
-
-	//	while (i < sesionaux.size() && saludaux < 0.5) { //Salud "mala"
-	//		//menor dosis
-	//		if (dynamic_cast<cRTH*>(tumoraux[j]->get_terapia()) != NULL) {
-	//			sesionaux[i]->set_Dosis(1);
-	//			acumRadxSesionRTH += sesionaux[i]->get_Dosis();
-	//		}
-	//		else {
-	//			if (dynamic_cast<cBT*>(tumoraux[j]->get_terapia()) != NULL) {
-	//				sesionaux[i]->set_Dosis(6);
-	//				acumRadxSesionBT += sesionaux[i]->get_Dosis();
-	//			}
-
-	//			if (dynamic_cast<cRS*>(tumoraux[j]->get_terapia()) != NULL) {
-	//				sesionaux[i]->set_Dosis(2);
-	//				acumRadxSesionRS += sesionaux[i]->get_Dosis();
-	//			}
-	//		}
-	//	}
-
-	//	while (r < sesionaux.size() && saludaux > 0.5) {//salud """"buena""""
-
-	//		if (dynamic_cast<cRTH*>(tumoraux[j]->get_terapia()) != NULL) {
-	//			sesionaux[r]->set_Dosis(2);
-	//			acumRadxSesionRTH += sesionaux[i]->get_Dosis();
-	//		}
-	//		else {
-	//			if (dynamic_cast<cBT*>(tumoraux[j]->get_terapia()) != NULL) {
-	//				sesionaux[r]->set_Dosis(6);
-	//				acumRadxSesionBT += sesionaux[i]->get_Dosis();
-	//			}
-	//			if (dynamic_cast<cRS*>(tumoraux[j]->get_terapia()) != NULL) {
-	//				sesionaux[r]->set_Dosis(4);
-	//				acumRadxSesionRS += sesionaux[i]->get_Dosis();
-	//			}
-	//			r++;
-	//		}
-	//	}
-	//	tumoraux[j]->set_AcumRadiacion(acumRadxSesionBT);
-	//	tumoraux[j]->set_AcumRadiacion(acumRadxSesionRTH);
-	//	tumoraux[j]->set_AcumRadiacion(acumRadxSesionRS);
-	//}
-	//paciente->get_miFicha()->set_Sesiones(sesionaux);
-	//paciente->get_miFicha()->set_Tumores(tumoraux);
 }
 
 

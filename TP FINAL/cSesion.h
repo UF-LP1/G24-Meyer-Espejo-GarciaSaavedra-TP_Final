@@ -6,10 +6,9 @@ public:
 	cSesion();
 	~cSesion();
 	bool get_Asist();
-	void set_Dosis(float dosis);
-	int get_Dosis();
+	
 
 private:
 	bool Asistencia;
-	int Dosis;
+
 };
