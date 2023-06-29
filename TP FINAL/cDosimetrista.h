@@ -14,7 +14,7 @@ public:
 	string get_Apellido();
 	string get_ID();
 	int RadTotalPaciente(cPaciente* MiPaciente); //calcula la radiacion maxima posible en el paciente
-	float RadTotalTumores(cPaciente* MiPaciente); 
+	
 	
 
 

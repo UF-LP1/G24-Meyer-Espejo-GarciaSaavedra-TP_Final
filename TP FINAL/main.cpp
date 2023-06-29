@@ -31,7 +31,6 @@ int main() {
 	oncologo1->Evaluacion(paciente2);
 	//CentroMedico->AsistenciaPaciente(paciente2);
  //  dosimetrista1->RadTotalPaciente(paciente2);
-   //dosimetrista1->RadTotalTumores(paciente2);
 	oncologo1->VerifySesion(paciente2);
 	CentroMedico->buscarXTumoryTerapia(utero, branquiterapia);
 
