@@ -12,6 +12,7 @@ public:
 	eTratamiento get_expecificoTratamiento();
 	virtual float SetteoDox(eTamanio tamanio)=0; //random calcula cual seria su dosis en base al tamaño y la terapia
 	void set_dosisxSesion(float dosis);
+	float get_dosisxSesion();
 
 protected:
 	 eTratamiento tratamiento;

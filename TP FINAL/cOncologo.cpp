@@ -64,7 +64,6 @@ void cOncologo::DosisXSesion(cPaciente* paciente)
 		//actualizo en la terapia y en sesiones
 		tumoraux[i]->get_terapia()->set_dosisxSesion(dosisSesion);
 
-		
 	}
 
 }
@@ -194,17 +193,6 @@ time_t cOncologo::TiempoTratamiento(cPaciente* paciente)
 	return nuevoTiempo;
 }
 
-//void cOncologo::VerificarFecha(cPaciente *paciente)
-//{
-//	//mira la fecha time de tratamiento y cuando se cumple el tiempo establecido, el oncologo debe ver al paciente denuevo
-//	
-//	time_t fechatratamiento = paciente->get_miFicha()->get_Tratamiento();
-//
-//	time_t fechahoy = time(0);//ponemos una fecha intermedia para que a veces entre y otras no
-//	time_t tiempo_transcurrido = fechahoy - paciente->get_miFicha()->get_FechaInicio();
-//	if (fechatratamiento > tiempo_transcurrido)//hay una diferencia entre la fecha del contructor de ficha y la fecha hoy de este metodo en teoria
-//		Evaluacion(paciente);
-//}
 
 void cOncologo::ReevaluacionTumores(cPaciente* paciente)
 {
@@ -342,11 +330,22 @@ void  cOncologo::VerifySesion(cPaciente* paciente) {
 		Evaluacion(paciente);
 	}
 
+}
+
+void cOncologo::UpdateAcumRadiacion(cPaciente* paciente)
+{
+	DosisXSesion(paciente);
+	vector<cSesion*>sesiones = paciente->get_miFicha()->get_Sesiones();
+	vector<cTumor*>tumores = paciente->get_miFicha()->get_Tumores();
+	int acum = 0;
+	for (int j = 0; j < tumores.size(); j++)
+	{
+		
+		for (int i = 0; i < sesiones.size(); i++)
+		{
+			acum = acum + tumores[j]->get_terapia()->get_dosisxSesion();
+		}
+		tumores[j]->set_AcumRadiacion(acum);
+	}
 	
-
-
-
-
-
-
 }

@@ -2,9 +2,8 @@
 #include "Header.h"
 #include "cPaciente.h"
 
-#include "cRS.h"
-#include "cBT.h"
-#include "cRTH.h"
+#include "cTerapia.h"
+
 class cDosimetrista
 {
 public:
@@ -16,6 +15,7 @@ public:
 	string get_ID();
 	int RadTotalPaciente(cPaciente* MiPaciente); //calcula la radiacion maxima posible en el paciente
 	float RadTotalTumores(cPaciente* MiPaciente); 
+	
 
 
 

@@ -18,3 +18,8 @@ void cTerapia::set_dosisxSesion(float dosis)
 {
 	this->dosisxSesion = dosis;
 }
+
+float cTerapia::get_dosisxSesion()
+{
+	return this->dosisxSesion;
+}

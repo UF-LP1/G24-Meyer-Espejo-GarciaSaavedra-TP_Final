@@ -7,8 +7,8 @@ class cTumor {
 public:
 	cTumor(eUbicacion ubicacion);
 	~cTumor();
-	void set_AcumRadiacion(int radiacion);
-	int get_AcumRadiacion();
+	void set_AcumRadiacion(float radiacion);
+	float get_AcumRadiacion();
 	eUbicacion get_Ubicacion();
 	void set_Ubicacion(eUbicacion ubicacion);
 	eTamanio get_Tamanio();
@@ -23,7 +23,7 @@ public:
 private:
 	eUbicacion Ubicacion;
 	eTamanio Tamanio;
-	int AcumRadiacion;
+	float AcumRadiacion;
 	bool benigno;
 	cTerapia* terapia;
 	

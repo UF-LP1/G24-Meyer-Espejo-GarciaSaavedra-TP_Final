@@ -93,3 +93,5 @@ float cDosimetrista::RadTotalTumores(cPaciente* MiPaciente)
 	}
 	return (acumulacion);
 }
+
+

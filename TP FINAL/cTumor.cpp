@@ -13,12 +13,12 @@ cTumor::~cTumor()
 	delete this->terapia;
 }
 
-void cTumor::set_AcumRadiacion(int radiacion)
+void cTumor::set_AcumRadiacion(float radiacion)
 {
 	this->AcumRadiacion = radiacion;
 }
 
-int cTumor::get_AcumRadiacion()
+float cTumor::get_AcumRadiacion()
 {
 	return this->AcumRadiacion;
 }
@@ -45,7 +45,7 @@ void cTumor::set_Tamanio(eTamanio tamanio)
 
 bool cTumor::get_benigno()
 {
-	return false;
+	return this->benigno;
 }
 
 void cTumor::set_benigno(bool Sano)
