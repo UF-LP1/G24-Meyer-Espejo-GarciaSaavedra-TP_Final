@@ -26,18 +26,21 @@ void cDosimetrista::TipoTerapiaRecibir(cPaciente* MiPaciente) { //termino mañana
 			else {
 				delete terapia;
 				terapia = new cRS(TumoresPresentes[i]->get_Tamanio()); //ya que puede ser mediano o chico
-
 			}
 		}
 		else if (Ubi == tiroides || Ubi == prostata || Ubi == pulmon) {
 			if (Size == grande) {
-				
+				delete terapia;
+				terapia = new cRS(grande);
 			}
 			else {
-
+				delete terapia;
+				terapia = new cRTH(TumoresPresentes[i]->get_Tamanio());
 			}
 		}
 
+		TumoresPresentes[i]->set_Terapia(terapia);
+		
 	}
 
 	//SOLO EN ESE UTLIZO SISTEMATICA
