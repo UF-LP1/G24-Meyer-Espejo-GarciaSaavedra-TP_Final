@@ -18,7 +18,6 @@ float cBT::SetteoDox(eTamanio tamanio)
 {
 	//dosis normal por sesión varía de 6 a 8 Gy
 
-	srand(time(NULL));
 	float dosis = 0;
 	//random valor max 6
 	//random min 5

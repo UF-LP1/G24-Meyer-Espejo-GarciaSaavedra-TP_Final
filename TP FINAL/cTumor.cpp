@@ -72,7 +72,6 @@ string cTumor:: to_string() {
 
 void cTumor::calculoRadiacion()
 {
-	srand(time(NULL));
 	float numero = rand() % 600 + 10;
 	numero = numero / 10;
 	int num = rand() % 3+1;

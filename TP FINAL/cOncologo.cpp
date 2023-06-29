@@ -12,7 +12,6 @@ cOncologo::~cOncologo()
 void cOncologo::AtenderPaciente(cPaciente* paciente)
 {
 
-	srand((unsigned int)time(NULL));//casteo para evitar advertencia, srand quiere de tipo unsigned int, time devuelve de tipo time_t
 	Indicador_Tumores(paciente);
 	vector<cTumor*> PacienteTumores = paciente->get_miFicha()->get_Tumores();
 	int numT=0;
@@ -250,7 +249,7 @@ void cOncologo::Evaluacion(cPaciente* paciente)
 
 void cOncologo:: Indicador_Tumores(cPaciente* paciente) {
 
-	srand((unsigned int)time(NULL));
+
 	int ntumores = rand() % 3 + 1;
 	vector<cTumor*>aux;
 	eUbicacion Ubi;

@@ -84,21 +84,21 @@ int main() {
 		cout << e.what() << endl;
 		}
 
-	try {
+	/*try {
 		cout << "La lista de Pacientes que estan con las indicaciones de ubicacion utero y tratamiento branquiterapia" << endl;
 		vector<cPaciente*>Pacientesexpecificos;
 
-		Pacientesexpecificos=CentroMedico->buscarXTumoryTerapia(utero, branquiterapia);
+		Pacientesexpecificos=CentroMedico->buscarXTumoryTerapia(cuello, branquiterapia);
 
 		for (int i = 0; i < Pacientesexpecificos.size(); i++)
 		{
 			cout << Pacientesexpecificos[i]->get_Nombre() << endl;
 		}
 
-	}
-	catch(exNohayNingunCaso&e){
+	}*/
+	/*catch(exNohayNingunCaso&e){
 		cout << e.what() << endl;
-	}
+	}*/
 	
 
 	cPaciente* paciente5 = new cPaciente("cata", "F", "9875", "0-", 0.9); //no lo agrego al centro asi veo si salta el error
