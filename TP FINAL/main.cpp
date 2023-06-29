@@ -28,12 +28,12 @@ int main() {
 	oncologo1->AtenderPaciente(paciente2);
 	dosimetrista1->TipoTerapiaRecibir(paciente2);
 	oncologo1->DosisXSesion(paciente2);
-	oncologo1->ReevaluacionTumores(paciente2);
-	oncologo1->TiempoTratamiento(paciente2);
+	oncologo1->Evaluacion(paciente2);
 	//CentroMedico->AsistenciaPaciente(paciente2);
  //  dosimetrista1->RadTotalPaciente(paciente2);
    //dosimetrista1->RadTotalTumores(paciente2);
-
+	oncologo1->VerifySesion(paciente2);
+	CentroMedico->buscarXTumoryTerapia(utero, branquiterapia);
 
 
 
@@ -53,7 +53,7 @@ int main() {
 
 	//ver q funcionen
 	//CentroMedico->buscarXTumor(utero, branquiterapia);
-	CentroMedico->buscarXTumoryTerapia(utero, branquiterapia);
+	
 
 	//cout << *paciente1;
 	cout << *paciente2;
