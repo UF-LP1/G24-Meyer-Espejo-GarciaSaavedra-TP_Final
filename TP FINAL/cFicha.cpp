@@ -62,7 +62,7 @@ void cFicha::operator-(cSesion* s)
 {
 	if (s != nullptr)
 	{
-		for (int i = 0; Sesiones.size(); i++)
+		for (int i = 0; i < Sesiones.size(); i++)
 		{
 			if (Sesiones[i] == s) //lo busca
 			{
@@ -82,7 +82,7 @@ void cFicha::operator-(cTumor* t)
 {
 	if (t != nullptr)
 	{
-		for (int i = 0; Tumores.size(); i++)
+		for (int i = 0; i < Tumores.size(); i++)
 		{
 			if (Tumores[i] == t) //lo busca
 			{
@@ -175,7 +175,7 @@ void cFicha::CalcRadPaciente()
 		//Radiacion_paciente = Tumores_RTPHazExterno * 0.3 + Tumores_Braquiterapia * 0.6+Tumores_Sistemico * 0.1
 		int RadPaciente = 0;
 		cTerapia* ptr_aux = nullptr;
-		for (int i = 0; Tumores.size(); i++)
+		for (int i = 0; i < Tumores.size(); i++)
 		{
 			ptr_aux = Tumores[i]->get_terapia();
 
@@ -208,7 +208,7 @@ void cFicha::actualizar_Terapia()
 	vector<cTerapia*>Auxiliar;
 	cTerapia* aux = NULL;
 
-	for (int i = 0; Tumores.size(); i++) {
+	for (int i = 0; i < Tumores.size(); i++) {
 		
 		aux = Tumores[i]->get_terapia();
 		Auxiliar.push_back(aux);

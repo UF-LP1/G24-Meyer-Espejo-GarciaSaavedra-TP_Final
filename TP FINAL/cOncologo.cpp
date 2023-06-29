@@ -17,7 +17,7 @@ void cOncologo::AtenderPaciente(cPaciente* paciente)
 	vector<cTumor*> PacienteTumores = paciente->get_miFicha()->get_Tumores();
 	int numT=0;
 	
-	for (int i = 0; i<PacienteTumores.size(); i++)
+	for (int i = 0; i < PacienteTumores.size(); i++)
 	{
 		//hago randoms para que determine las caracteristicas
 		numT = rand() % 3;
@@ -77,7 +77,7 @@ time_t cOncologo::TiempoTratamiento(cPaciente* paciente)
 	int mes = dias * 31;
 
 	if (paciente->get_miFicha()->get_Espera() == true) {//si esta en espera por radiacion .
-		for (int i = 0; i<tumoresaux.size(); i++)
+		for (int i = 0; i < tumoresaux.size(); i++)
 			if (tumoresaux[i]->get_Tamanio() == grande)//y su tumor es grande, espera mas
 				(nuevoTiempo + 31 * dias);
 			else //tumor mediano o pequenio
@@ -86,7 +86,7 @@ time_t cOncologo::TiempoTratamiento(cPaciente* paciente)
 		paciente->get_miFicha()->set_Tratamiento(nuevoTiempo);
 	}
 	int i = 0;
-	while(i<tumoresaux.size()) {
+	while(i < tumoresaux.size()) {
 	
 		while (tumoresaux[i]->get_Tamanio() == grande) {
 			eUbicacion ubi = tumoresaux[i]->get_Ubicacion();
@@ -196,7 +196,7 @@ time_t cOncologo::TiempoTratamiento(cPaciente* paciente)
 void cOncologo::ReevaluacionTumores(cPaciente* paciente)
 {
 	vector<cTumor*>Tumores = paciente->get_miFicha()->get_Tumores();
-	for (int i = 0; i<Tumores.size(); i++)
+	for (int i = 0; i < Tumores.size(); i++)
 	{
 		int num = rand() % 2 + 1;//si es 1 es true, si es 2 es false
 		if (num == 1)//es true; tumor benigno
