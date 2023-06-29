@@ -1,8 +1,9 @@
 #include "cTumor.h"
 
  cTumor ::cTumor(eUbicacion ubicacion) {
+
+	 calculoRadiacion();
 	this->Ubicacion = ubicacion;
-	this->AcumRadiacion = 0;
 	this->benigno = false;
 	this->Tamanio = pequenio;
 	this->terapia = nullptr;
@@ -74,6 +75,11 @@ void cTumor::calculoRadiacion()
 	srand(time(NULL));
 	float numero = rand() % 600 + 10;
 	numero = numero / 10;
-	this->AcumRadiacion = numero;
+	int num = rand() % 3+1;
+	if (num == 2) {
+		this->AcumRadiacion = 58.0;
+	}
+	else
+		this->AcumRadiacion = numero;
 }
 
