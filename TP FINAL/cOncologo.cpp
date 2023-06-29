@@ -79,7 +79,7 @@ time_t cOncologo::TiempoTratamiento(cPaciente* paciente)
 	int mes = dias * 31;
 
 	if (paciente->get_miFicha()->get_Espera() == true) {//si esta en espera por radiacion .
-		for (int i = 0; tumoresaux.size(); i++)
+		for (int i = 0; i<tumoresaux.size(); i++)
 			if (tumoresaux[i]->get_Tamanio() == grande)//y su tumor es grande, espera mas
 				(nuevoTiempo + 31 * dias);
 			else //tumor mediano o pequenio
@@ -194,22 +194,22 @@ time_t cOncologo::TiempoTratamiento(cPaciente* paciente)
 	return nuevoTiempo;
 }
 
-void cOncologo::VerificarFecha(cPaciente *paciente)
-{
-	//mira la fecha time de tratamiento y cuando se cumple el tiempo establecido, el oncologo debe ver al paciente denuevo
-	
-	time_t fechatratamiento = paciente->get_miFicha()->get_Tratamiento();
-
-	time_t fechahoy = time(0);//ponemos una fecha intermedia para que a veces entre y otras no
-	time_t tiempo_transcurrido = fechahoy - paciente->get_miFicha()->get_FechaInicio();
-	if (fechatratamiento > tiempo_transcurrido)//hay una diferencia entre la fecha del contructor de ficha y la fecha hoy de este metodo en teoria
-		Evaluacion(paciente);
-}
+//void cOncologo::VerificarFecha(cPaciente *paciente)
+//{
+//	//mira la fecha time de tratamiento y cuando se cumple el tiempo establecido, el oncologo debe ver al paciente denuevo
+//	
+//	time_t fechatratamiento = paciente->get_miFicha()->get_Tratamiento();
+//
+//	time_t fechahoy = time(0);//ponemos una fecha intermedia para que a veces entre y otras no
+//	time_t tiempo_transcurrido = fechahoy - paciente->get_miFicha()->get_FechaInicio();
+//	if (fechatratamiento > tiempo_transcurrido)//hay una diferencia entre la fecha del contructor de ficha y la fecha hoy de este metodo en teoria
+//		Evaluacion(paciente);
+//}
 
 void cOncologo::ReevaluacionTumores(cPaciente* paciente)
 {
 	vector<cTumor*>Tumores = paciente->get_miFicha()->get_Tumores();
-	for (int i = 0; Tumores.size(); i++)
+	for (int i = 0; i<Tumores.size(); i++)
 	{
 		int num = rand() % 2 + 1;//si es 1 es true, si es 2 es false
 		if (num == 1)//es true; tumor benigno
@@ -333,4 +333,20 @@ void cOncologo::Calcular_Sesiones(cPaciente* paciente, unsigned int frecuencia)
 		sesionesaux.push_back(aux);
 	}
 	paciente->get_miFicha()->set_Sesiones(sesionesaux);
+}
+
+void  cOncologo::VerifySesion(cPaciente* paciente) {
+	int aux =rand()% 1;//random entre 0 y 1
+	if (aux != 1) {
+	
+		Evaluacion(paciente);
+	}
+
+	
+
+
+
+
+
+
 }

@@ -28,8 +28,12 @@ int main() {
 	oncologo1->AtenderPaciente(paciente2);
 	dosimetrista1->TipoTerapiaRecibir(paciente2);
 	oncologo1->DosisXSesion(paciente2);
+	oncologo1->ReevaluacionTumores(paciente2);
+	oncologo1->TiempoTratamiento(paciente2);
 	//CentroMedico->AsistenciaPaciente(paciente2);
  //  dosimetrista1->RadTotalPaciente(paciente2);
+   //dosimetrista1->RadTotalTumores(paciente2);
+
 
 
 
@@ -45,7 +49,7 @@ int main() {
 	}
 
 	//CentroMedico->a5DeSobredosis(); //error salta de leer memoria que no existe
-	oncologo1->VerificarFecha(paciente2); //no lo ppuede verificar porque no entro en el if para llamar a Evaluar
+	//oncologo1->VerificarFecha(paciente2); //no lo ppuede verificar porque no entro en el if para llamar a Evaluar
 
 	//ver q funcionen
 	//CentroMedico->buscarXTumor(utero, branquiterapia);

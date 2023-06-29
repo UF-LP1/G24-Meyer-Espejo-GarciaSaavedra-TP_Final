@@ -71,10 +71,7 @@ int cDosimetrista::RadTotalPaciente(cPaciente* MiPaciente) {
 	return(radTP);
 }
 
-int cDosimetrista::RadTotalTumores(cPaciente* MiPaciente)
-{
-	return 0;
-}
+
 
 string cDosimetrista::get_Nombre() {
 	return this->Nombre;
@@ -84,4 +81,15 @@ string cDosimetrista::get_Apellido() {
 }
 string cDosimetrista::get_ID() {
 	return this->ID;
+}
+float cDosimetrista::RadTotalTumores(cPaciente* MiPaciente)
+{
+	float acumulacion = 0;
+	vector<cTumor*> TumoresActuales;
+	TumoresActuales = MiPaciente->get_miFicha()->get_Tumores();
+	for (int i = 0; i < TumoresActuales.size(); i++) {
+
+		acumulacion = acumulacion + TumoresActuales[i]->get_AcumRadiacion();
+	}
+	return (acumulacion);
 }
