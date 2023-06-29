@@ -263,13 +263,15 @@ bool cOncologo::VerificarSobredosis(cPaciente* paciente)
 
 void cOncologo::Evaluacion(cPaciente* paciente)
 {
+	ReevaluacionTumores(paciente);
 	cFicha* fichaaux = paciente->get_miFicha();
 	vector<cTumor*> tumoraux = fichaaux->get_Tumores();
+
 	int i = 0;
 
-	ReevaluacionTumores(paciente);
 
-	for (int j = 0; tumoraux.size(); j++)
+
+	for (int j = 0; j < tumoraux.size(); j++)
 	{
 
 		while (i < tumoraux.size()) {
