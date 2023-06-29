@@ -21,3 +21,17 @@ public:
 		return "No se a encontrado el paciente";
 	}
 };
+
+class exSobredosis5porciento :public exception {
+public:
+	const char* what() const throw() {
+		return "NO hay ningun paciente con limite de sobredosis del 5%";
+	}
+};
+
+class exNohayNingunCaso:public exception {
+public:
+	const char* what() const throw() {
+		return "NO hay ningun paciente con estas indicaciones";
+	}
+};

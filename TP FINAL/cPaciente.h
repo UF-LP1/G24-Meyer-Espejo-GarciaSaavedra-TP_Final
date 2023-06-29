@@ -15,6 +15,7 @@ public:
 	string to_string();
 	friend ostream& operator<< (ostream& out, cPaciente& c);
 	bool operator== (string oncologo);
+	string get_Nombre();
 
 private: 
 	string Nombre;

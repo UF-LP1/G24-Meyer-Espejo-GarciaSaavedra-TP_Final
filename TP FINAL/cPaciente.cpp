@@ -53,6 +53,11 @@ bool cPaciente::operator==(string oncologo)
 	
 	return (this->miFicha->get_Oncologo()==oncologo);
 }
+
+string cPaciente::get_Nombre()
+{
+	return this->Nombre;
+}
 	
 ostream& operator<<(ostream& out, cPaciente& c)
 {

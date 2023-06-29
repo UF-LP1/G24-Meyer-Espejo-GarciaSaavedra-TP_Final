@@ -117,6 +117,9 @@ vector<cPaciente*> cCentroMedico::buscarXTumoryTerapia(eUbicacion ubi, eTratamie
 			}
 		}
 	}
+	if (encontrados.empty())
+		throw exNohayNingunCaso();
+
 	return encontrados;
 }
 
@@ -128,7 +131,8 @@ vector<cPaciente*> cCentroMedico::a5DeSobredosis()
 	float acum = 0;
 	for (int i = 0; i < Pacientes.size(); i++) //recorro a los pacientes
 	{
-		int tam = Pacientes[i]->get_miFicha()->get_Tumores().size();
+		vector<cTumor*>Tumores = Pacientes[i]->get_miFicha()->get_Tumores();
+		int tam =Tumores.size();
 
 		for (int j = 0; j < tam; j++)
 		{
@@ -150,6 +154,9 @@ vector<cPaciente*> cCentroMedico::a5DeSobredosis()
 			}
 		}
 	}
+
+	if (encontrados.empty())
+		throw exSobredosis5porciento();
 
 	return encontrados;
 }
