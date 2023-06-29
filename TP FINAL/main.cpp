@@ -39,14 +39,7 @@ int main() {
 
 
 
-   //no puedo corroborar el try catch porque necesito los metodos que tienen problema en try catch
-	try {
-		oncologo1->VerificarSobredosis(paciente2);
-	}
-	catch (exception& e)
-	{
-		cout << e.what();
-	}
+  
 
 	//CentroMedico->a5DeSobredosis(); //error salta de leer memoria que no existe
 	//oncologo1->VerificarFecha(paciente2); //no lo ppuede verificar porque no entro en el if para llamar a Evaluar

@@ -212,52 +212,6 @@ string cOncologo::get_NroMatricula()
 }
 
 
-bool cOncologo::VerificarSobredosis(cPaciente* paciente) 
-{
-	int cont = 0;
-	if (paciente->get_miFicha()->get_RadPaciente() > paciente->get_miFicha()->get_RadMaxPaciente())//se esta pasando de sobredosis
-	{
-		throw exceptionSobredosisP();
-		//mandarlo a espera hasta que mejore su salud
-		paciente->get_miFicha()->set_espera(true);
-		cont++; //estaria con sobredosis
-	}
-	
-
-	//tumores
-	vector<cTumor*>listatumores = paciente->get_miFicha()->get_Tumores();
-	cTerapia* ptr_aux = nullptr;
-	
-	for (int i = 0; listatumores.size(); i++) //recorro los tumores
-	{
-		ptr_aux = listatumores[i]->get_terapia();
-
-		if (dynamic_cast<cBT*>(ptr_aux) != NULL)
-		{
-			//radiacion max por tumor en branquiterapia es de 150
-			if (listatumores[i]->get_AcumRadiacion() > 150) {//Va a ver sobredosis en ese tumor
-				cont++;
-				paciente->get_miFicha()->set_espera(true);
-				throw exSobredosisTumor();
-			}
-		}
-		if (dynamic_cast<cRS*>(ptr_aux) != NULL|| dynamic_cast<cRTH*>(ptr_aux) != NULL)
-		{
-			//radiacion max por tumor es de 60
-			if (listatumores[i]->get_AcumRadiacion() > 60) {//Va a ver sobredosis en ese tumor
-				cont++;
-				paciente->get_miFicha()->set_espera(true);
-				throw exSobredosisTumor();
-
-			}
-		}
-	}
-
-	if (cont != 0)
-		return true; //va a ver sobredosis
-	else
-		return false;
-}
 
 
 

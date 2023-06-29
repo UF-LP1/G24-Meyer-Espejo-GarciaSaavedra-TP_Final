@@ -17,7 +17,6 @@ public:
 	void Evaluacion(cPaciente* paciente);
 	void ReevaluacionTumores(cPaciente* paciente);
 	string get_NroMatricula();
-	bool VerificarSobredosis(cPaciente* paciente);
 	void Indicador_Tumores(cPaciente* paciente);
 	void Calcular_Sesiones(cPaciente* paciente, unsigned int frecuencia);
 	void VerifySesion(cPaciente* paciente);

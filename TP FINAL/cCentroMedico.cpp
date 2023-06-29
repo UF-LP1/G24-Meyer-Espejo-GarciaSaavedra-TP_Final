@@ -78,14 +78,15 @@ void cCentroMedico::operator+(cPaciente* paciente)
 vector<cPaciente*> cCentroMedico::buscarXTumoryTerapia(eUbicacion ubi, eTratamiento tratamiento)
 {
 	vector<cPaciente*> encontrados;
-	for (int i = 0; i < encontrados.size(); i++) //recorro pacientes
+	for (int i = 0; i < Pacientes.size(); i++) //recorro pacientes
+
 	{
-		int tam = encontrados[i]->get_miFicha()->get_Tumores().size();
+		int tam = Pacientes[i]->get_miFicha()->get_Tumores().size();
 		for (int j = 0; j < tam; j++) //recorro su lista de tumores
 		{
-			vector<cTumor*>Tumores = encontrados[i]->get_miFicha()->get_Tumores();
+			vector<cTumor*>Tumores = Pacientes[i]->get_miFicha()->get_Tumores();
 			eUbicacion suUbicacion = Tumores[i]->get_Ubicacion();
-			if (suUbicacion == utero)
+			if (suUbicacion == ubi)
 			{
 				eTratamiento suTratamiento = Tumores[i]->get_terapia()->get_expecificoTratamiento();
 
