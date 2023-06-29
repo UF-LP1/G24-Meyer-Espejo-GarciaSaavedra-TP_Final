@@ -101,12 +101,12 @@ int cDosimetrista::RadTotalPaciente(cPaciente* MiPaciente) {
 	RadiacionTerapia = MiPaciente->get_miFicha()->get_Terapias();
 	float radTP = 0.0; //por terapia paciente
 	int cont = 0;
-	cTerapia* ptr_aux = nullptr;
+	
 	for (int i = 0; i < RadiacionTerapia.size(); i++) {
 
-		ptr_aux = RadiacionTerapia[i];
-
-		if (dynamic_cast<cRS*>(ptr_aux)!=NULL || dynamic_cast<cRTH*>(ptr_aux) != NULL) {//seria radioterapia haz externo o sistematica
+		cBT* auxcBT=dynamic_cast<cBT*> (RadiacionTerapia[i]);
+		cRTH* auxcRTH = dynamic_cast<cRTH*> (RadiacionTerapia[i]);
+		if (auxcBT!=NULL || auxcRTH != NULL) {//seria radioterapia haz externo o sistematica
 			cont++;
 		}	
 	}
