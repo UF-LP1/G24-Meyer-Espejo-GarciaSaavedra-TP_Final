@@ -36,6 +36,7 @@ public:
 	vector<cTerapia*> get_Terapias();
 	void set_FrecSemanal(int f);
 	time_t	get_FechaInicio();
+	void setteoProxSesion();
 
 	//sobrecargas 
 	void operator+(cSesion* s); 
@@ -57,8 +58,9 @@ private:
 	time_t Tratamiento;
 	bool Finalizado;
 	int FrecTratamiento;
-	vector<cTumor*> Tumores; //se necesita imprimir 
+	vector<cTumor*> Tumores; 
 	vector<cSesion*> Sesiones;
 	int RadiacionMaxPaciente; //esta es el limite; la calcula el dosimetrista en el metodo RadTotalPaciente
 	int RadiacionPaciente;//se calcula en el metodo,calcradpaciente
+	time_t NextSesion;
 };

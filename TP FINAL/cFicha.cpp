@@ -4,8 +4,8 @@
 
 cFicha::cFicha(string oncologodni)
 {
-	
 	this->FechaInicio = time(0);
+	this->NextSesion = time(0);
 	this->estadoRad = 0;
 	this->espera = false;
 	this->Finalizado = false;
@@ -233,6 +233,18 @@ void cFicha::set_FrecSemanal(int f)
 time_t cFicha::get_FechaInicio()
 {
 	return this->FechaInicio;
+}
+
+void cFicha::setteoProxSesion()
+{
+	int diaseg = 86400;
+	//en el metodo AtenderPaciente (cOncologo) admitimos que la frecuencia podia ser o 1,2 o 3
+	if (this->FrecTratamiento == 1) //le faltan 7 dias
+		this->NextSesion = time(NULL) + 7 * diaseg;
+	else if (this->FrecTratamiento == 2)
+		this->NextSesion = time(NULL) + 4 * diaseg;
+	else 
+		this->NextSesion= time(NULL) + 2 * diaseg;
 }
 
 
