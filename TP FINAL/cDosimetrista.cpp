@@ -4,7 +4,7 @@ cDosimetrista::cDosimetrista(string id):ID(id){}
 cDosimetrista::~cDosimetrista()
 {}
 
-void cDosimetrista::TipoTerapiaRecibir(cPaciente* MiPaciente) { //termino mañana
+void cDosimetrista::TipoTerapiaRecibir(cPaciente* MiPaciente) { 
 
 	vector <cTumor*> TumoresPresentes;
 	TumoresPresentes = MiPaciente->get_miFicha()->get_Tumores();

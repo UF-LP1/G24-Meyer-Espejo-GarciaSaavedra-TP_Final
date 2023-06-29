@@ -71,7 +71,18 @@ int main() {
 
 
 
+	CentroMedico->a5DeSobredosis();
 
+	cPaciente* paciente5 = new cPaciente("cata", "F", "9875", "0-", 0.9); //no lo agrego al centro asi veo si salta el error
+	try {
+		CentroMedico->buscar(paciente5);
+
+	}
+	catch (exception& e)
+	{
+		cout << e.what() << endl;
+
+	}
 
 
 	delete paciente1;

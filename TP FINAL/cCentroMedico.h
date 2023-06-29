@@ -15,8 +15,9 @@ public:
 	void AsistenciaPaciente(cPaciente* miPaciente);
 	string to_string();
 	vector<cPaciente*> get_Pacientes();
-	void buscar(cPaciente* paciente);
+	int buscar(cPaciente* paciente);
 	void operator+(cPaciente* paciente);
+	void operator-(cPaciente* paciente);
 
 	//pedidos expecificos en consigna
 	vector<cPaciente*> buscarXTumoryTerapia(eUbicacion ubi, eTratamiento tratamiento);
