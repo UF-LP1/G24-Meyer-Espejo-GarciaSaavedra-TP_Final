@@ -96,16 +96,15 @@ void cFicha::operator-(cTumor* t)
 string cFicha::to_string()
 {
 	stringstream ss;
-	ss << "Oncologo a cargo" << this->OncologoAsignadoID;
-
-		ss << "\nTumores";
-
-	for (int i = 0; Tumores.size(); i++)
-	{
-		ss << "-" << Tumores[i];
-	}
-
+	ss << "Oncologo a cargo: " << this->OncologoAsignadoID << "\nEstado de espera: " << this->espera << "\nEstado de finalizacion" << this->Finalizado << "\nFrecuencia de tratamiento: " << this->FrecTratamiento << "\nRadiacion maxima de paciente: " << this->RadiacionMaxPaciente << "\nRadiacion paciente: " << this->RadiacionPaciente << endl;
 	return ss.str();
+}
+
+ostream& operator<<(ostream& out, cFicha& c)
+{
+	out << c.to_string();
+
+	return out;
 }
 
 time_t cFicha::get_Tratamiento()
@@ -199,8 +198,6 @@ void cFicha::CalcRadPaciente()
 	
 }
 
-
-
 int cFicha::get_RadPaciente()
 {
 	return this->RadiacionPaciente;
@@ -248,12 +245,7 @@ void cFicha::setteoProxSesion()
 }
 
 
-ostream& operator<<(ostream& out, cFicha& c)
-{
-	out << c.to_string();
-	//out<<"cualquier cosa";
-	return out;
-}
+
 void cFicha:: set_oncologo(string o) {
 
 

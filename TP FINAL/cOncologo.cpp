@@ -65,7 +65,6 @@ void cOncologo::DosisXSesion(cPaciente* paciente)
 		tumoraux[i]->get_terapia()->set_dosisxSesion(dosisSesion);
 
 	}
-
 }
 
 

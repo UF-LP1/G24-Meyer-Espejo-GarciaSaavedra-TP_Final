@@ -27,5 +27,4 @@ private:
 	bool benigno;
 	cTerapia* terapia;
 	
-
 };

@@ -1,15 +1,9 @@
 #include "cBT.h"
 
-
-
-
-
 cBT::cBT(eTamanio Tamanio):cTerapia(branquiterapia,Tamanio)
 {
 	
 }
-
-
 
 cBT::~cBT()
 {
@@ -42,3 +36,9 @@ float cBT::SetteoDox(eTamanio tamanio)
 	return dosis;
 }
 
+string cBT::to_string()
+{
+	stringstream ssBT;
+	ssBT << "El tratamiento es: " << this->tratamiento << ", dosis maxima por paciente: " << this->DosMaxP << ", dosis maxima por tumor: " << this->DosMaxT << endl;
+	return ssBT.str();
+}

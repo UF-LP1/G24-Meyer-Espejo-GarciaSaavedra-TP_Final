@@ -1,15 +1,11 @@
 #include "cRTH.h"
 
-
-
 cRTH::~cRTH()
 {}
 
 cRTH::cRTH(eTamanio TAmanio):cTerapia(hazExterno, TAmanio)
 {
 }
-
-
 
 float cRTH::multiplicidadTerapia()
 {
@@ -37,8 +33,12 @@ float cRTH::SetteoDox(eTamanio tamanio)
 			dosis = aux + 100;
 
 		return (dosis / 100);
-	
-
 }
 
 
+string cRTH::to_string()
+{
+	stringstream ssBT;
+	ssBT << "El tratamiento es: " << this->tratamiento << ", dosis maxima por paciente: " << this->DosMaxP << ", dosis maxima por tumor: " << this->DosMaxT << endl;
+	return ssBT.str();
+}

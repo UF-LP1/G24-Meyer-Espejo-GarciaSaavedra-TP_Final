@@ -65,7 +65,7 @@ void  cTumor::set_Terapia(cTerapia* TipoTs) {
 string cTumor:: to_string() {
 	stringstream ss;
 	
-	ss << "Ubicacion" << this->Ubicacion << ",Tamanio" << this->Tamanio << ",Terapia" << this->terapia << ",Acumulacion de radiacion" << this->AcumRadiacion;
-	return(ss.str());
+	ss << "Ubicacion: " << this->Ubicacion << "\nTamanio " << this->Tamanio << "\nTerapia " << this->terapia << "Enfermo: " << this->benigno <<endl;
+	return ss.str();
 }
 

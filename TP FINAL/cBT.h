@@ -9,6 +9,7 @@ public:
 	~cBT();
 	float multiplicidadTerapia();
 	float SetteoDox(eTamanio tamanio);
+	string to_string();
 
 	const unsigned int DosMaxP=180; //dosis maxima paciente
 	const unsigned int DosMaxT=150; //dosis maxima tumor

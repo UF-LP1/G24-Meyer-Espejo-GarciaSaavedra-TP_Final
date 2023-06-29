@@ -32,7 +32,11 @@ float cRS::SetteoDox(eTamanio tamanio)
 			dosis = aux + 200;
 
 		return(dosis / 100);
-	
 }
 
-
+string cRS::to_string()
+{
+	stringstream ssBT;
+	ssBT << "El tratamiento es: " << this->tratamiento << ", dosis maxima por paciente: " << this->DosMaxP << ", dosis maxima por tumor: " << this->DosMaxT << endl;
+	return ssBT.str();
+}
