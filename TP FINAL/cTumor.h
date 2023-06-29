@@ -3,6 +3,8 @@
 #include "eTamanio.h"
 #include "cTerapia.h"
 
+
+
 class cTumor {
 public:
 	cTumor(eUbicacion ubicacion);
@@ -18,7 +20,8 @@ public:
     void set_Terapia(cTerapia* TipoTs);
 	cTerapia* get_terapia();
 	string to_string();
-	
+	void calculoRadiacion();
+
 
 private:
 	eUbicacion Ubicacion;
@@ -26,5 +29,4 @@ private:
 	float AcumRadiacion;
 	bool benigno;
 	cTerapia* terapia;
-	
 };

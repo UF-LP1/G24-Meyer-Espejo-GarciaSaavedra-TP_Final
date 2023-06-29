@@ -23,6 +23,8 @@ public:
 	void VerifySesion(cPaciente* paciente);
 	void UpdateAcumRadiacion(cPaciente* paciente);
 
+
+
 private:
 	string Nombre;
 	string Apellido;

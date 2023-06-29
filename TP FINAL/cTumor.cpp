@@ -69,3 +69,11 @@ string cTumor:: to_string() {
 	return ss.str();
 }
 
+void cTumor::calculoRadiacion()
+{
+	srand(time(NULL));
+	float numero = rand() % 600 + 10;
+	numero = numero / 10;
+	this->AcumRadiacion = numero;
+}
+
